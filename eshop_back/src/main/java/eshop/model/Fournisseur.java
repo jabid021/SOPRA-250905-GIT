@@ -10,8 +10,7 @@ public class Fournisseur extends Personne{
 
 	@Column(name="company",length = 30)
 	private String societe;
-	
-	
+
 	public Fournisseur() {}
 
 

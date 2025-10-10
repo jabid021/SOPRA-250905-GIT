@@ -10,7 +10,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Client {
@@ -29,6 +32,13 @@ public class Client {
 	private Genre civilite;
 	
 	@ManyToMany
+	@JoinTable
+	(
+			name="achats",
+			joinColumns = @JoinColumn(name="client",nullable = false),
+			inverseJoinColumns = @JoinColumn(name="article",nullable = false),
+			uniqueConstraints=@UniqueConstraint(columnNames = {"client","article"}) 		
+	)
 	private List<Article> achats = new ArrayList();
 	
 	

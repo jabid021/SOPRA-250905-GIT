@@ -14,12 +14,16 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		Produit produit1 = new Produit("Formation SQL",1500);
-		Produit produit2 = new Produit("Formation Spring",2500);
-		
-		Client client1 = new Client("Abid","Jordan",32,LocalDate.parse("1993-05-01"),"1 bis","rue de paris","75009","Paris");
 		Fournisseur fournisseur1 = new Fournisseur("Abid","Charly","AJC");
 		
+		Produit produit1 = new Produit("Formation SQL",1500,fournisseur1);
+		Produit produit2 = new Produit("Formation Spring",2500,fournisseur1);
+		
+		Client client1 = new Client("Abid","Jordan",32,LocalDate.parse("1993-05-01"),"1 bis","rue de paris","75009","Paris");
+	
+		
+		client1.getAchats().add(produit1);
+		client1.getAchats().add(produit2);
 		
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
@@ -28,10 +32,10 @@ public class Test {
 		em.getTransaction().begin();
 		
 		em.persist(client1);
-		em.persist(fournisseur1);
+	
 		em.persist(produit1);
 		em.persist(produit2);
-		
+		em.persist(fournisseur1);
 
 		em.getTransaction().commit();
 	

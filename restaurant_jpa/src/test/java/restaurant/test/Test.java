@@ -31,7 +31,7 @@ public class Test {
 		Client client1 = new Client("Abid","Jordan",Genre.homme);
 		Client client2 = new Client("Doe","Jane",Genre.femme);
 		
-		Collections.addAll(client1.getAchats(), boisson1,boisson2,boisson1,plat1);
+		Collections.addAll(client1.getAchats(), boisson1,boisson2,plat1);
 		
 		
 		Tableuh table1 = new Tableuh(6);

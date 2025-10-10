@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,6 +16,7 @@ public class Tableuh {
 	private int nbPlace;
 	
 	@OneToOne
+	@JoinColumn(name="serveur")
 	private Employe serveur;
 	
 	

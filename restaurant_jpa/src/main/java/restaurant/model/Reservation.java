@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -26,8 +27,10 @@ public class Reservation {
 	*/		
 			
 	@ManyToOne	
+	@JoinColumn(name="tableuh",nullable = false)
 	private Tableuh table;
 	@ManyToOne
+	@JoinColumn(name="client",nullable=false)
 	private Client client;
 	
 	
