@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import restaurant.model.Admin;
 import restaurant.model.Boisson;
 import restaurant.model.Client;
 import restaurant.model.Employe;
@@ -14,11 +15,11 @@ import restaurant.model.Genre;
 public class Test {
 
 	public static void main(String[] args) {
-		Boisson boisson1 = new Boisson("Fanta",3.50,33);
+		Boisson boisson1 = new Boisson("Fanta",38.55,33);
 		Boisson boisson2 = new Boisson("Eau",1.20,100);
 		
-		Employe emp1 = new Employe("Doe","John",LocalDate.parse("2020-01-01"),"1 bis","Rue de Paris","75009","Paris");
-		
+		Employe emp1 = new Employe("login","password","Doe","John",LocalDate.parse("2020-01-01"),"1 bis","Rue de Paris","75009","Paris");
+		Admin admin = new Admin("root","root");
 		Client client1 = new Client("Abid","Jordan",Genre.homme);
 		Client client2 = new Client("Doe","Jane",Genre.femme);
 		
@@ -33,6 +34,7 @@ public class Test {
 		em.persist(emp1);
 		em.persist(client1);
 		em.persist(client2 );
+		em.persist(admin);
 		
 		em.getTransaction().commit();
 	

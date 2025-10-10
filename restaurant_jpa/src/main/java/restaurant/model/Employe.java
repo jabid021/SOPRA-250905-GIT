@@ -2,40 +2,42 @@ package restaurant.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Employe {
+@DiscriminatorValue("worker")
+public class Employe extends Compte{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	//Impossible de mettre nullable false pour le nom d'un employe car les admin qui sont dans la même table n'ont JAMAIS de nom/prenom, la colonne doit forcement pouvoir etre null
+	@Column(columnDefinition = "VARCHAR(20)")
 	private String nom;
+	
+	@Column(length = 25)
 	private String prenom;
+	
+	@Column(name="date_embauche")
 	private LocalDate dateEmbauche;
 	
-	private transient Adresse adresse;
+	//Les infos de l'adresse doivent etre embarquées dans la table compte
+	@Embedded
+	private  Adresse adresse;
 	
 	public Employe() {}
 	
-	public Employe(String nom, String prenom, LocalDate dateEmbauche,String numero,String voie,String ville,String cp) {
+	
+	public Employe(String login, String password, String nom, String prenom, LocalDate dateEmbauche, String numero,String voie,String ville,String cp) {
+		super(login, password);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateEmbauche = dateEmbauche;
-		this.adresse=new Adresse(numero,voie,ville,cp);
-		
+		this.adresse = new Adresse(numero,voie,ville,cp);
 	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public String getNom() {
 		return nom;

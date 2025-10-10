@@ -1,5 +1,6 @@
 package restaurant.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,10 +14,14 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name="lastname",nullable = false,columnDefinition = "VARCHAR(15)")
 	private String nom;
+	
+	@Column(name="firstname",nullable = false,length = 15)
 	private String prenom;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name="genre",nullable = false,columnDefinition = "enum('homme', 'femme', 'nb')")
 	private Genre civilite;
 	
 	

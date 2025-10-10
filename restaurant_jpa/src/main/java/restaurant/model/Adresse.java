@@ -1,11 +1,16 @@
 package restaurant.model;
 
+import javax.persistence.Embeddable;
+
+//Cote bdd,les infos d'une adresse doivent etre embarquables dans une autre table
+@Embeddable
 public class Adresse {
 
 	private String numero;
 	private String voie;
 	private String ville;
 	private String cp;
+	public Adresse() {}
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
 		this.numero = numero;
