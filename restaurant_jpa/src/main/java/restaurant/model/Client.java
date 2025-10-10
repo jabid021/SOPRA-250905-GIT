@@ -1,5 +1,8 @@
 package restaurant.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Client {
@@ -23,6 +27,9 @@ public class Client {
 	@Enumerated(EnumType.STRING)
 	@Column(name="genre",nullable = false,columnDefinition = "enum('homme', 'femme', 'nb')")
 	private Genre civilite;
+	
+	@ManyToMany
+	private List<Article> achats = new ArrayList();
 	
 	
 	public Client() {}
@@ -72,7 +79,15 @@ public class Client {
 	public void setCivilite(Genre civilite) {
 		this.civilite = civilite;
 	}
+	
+	
+	public List<Article> getAchats() {
+		return achats;
+	}
 
+	public void setAchats(List<Article> achats) {
+		this.achats = achats;
+	}
 
 	@Override
 	public String toString() {

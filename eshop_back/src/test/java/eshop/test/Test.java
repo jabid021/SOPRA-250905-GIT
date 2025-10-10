@@ -1,10 +1,13 @@
 package eshop.test;
 
+import java.time.LocalDate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import eshop.model.Personne;
+import eshop.model.Client;
+import eshop.model.Fournisseur;
 import eshop.model.Produit;
 
 public class Test {
@@ -14,7 +17,8 @@ public class Test {
 		Produit produit1 = new Produit("Formation SQL",1500);
 		Produit produit2 = new Produit("Formation Spring",2500);
 		
-		Personne client1 = new Personne("Abid","Jordan");
+		Client client1 = new Client("Abid","Jordan",32,LocalDate.parse("1993-05-01"),"1 bis","rue de paris","75009","Paris");
+		Fournisseur fournisseur1 = new Fournisseur("Abid","Charly","AJC");
 		
 		
 		
@@ -24,6 +28,7 @@ public class Test {
 		em.getTransaction().begin();
 		
 		em.persist(client1);
+		em.persist(fournisseur1);
 		em.persist(produit1);
 		em.persist(produit2);
 		
