@@ -10,8 +10,8 @@ public class Filiere {
 	private String libelle;
 	private LocalDate debut;
 	private LocalDate fin;
-	private List<Matiere> matieres = new ArrayList();
-	
+	private List<Module> matieres;
+	private List<Stagiaire> inscrits;
 	
 		
 	//update,select
@@ -62,12 +62,22 @@ public class Filiere {
 		this.fin = fin;
 	}
 
-	public List<Matiere> getMatieres() {
+	public List<Module> getMatieres() {
 		return matieres;
 	}
 
-	public void setMatieres(List<Matiere> matieres) {
+	public void setMatieres(List<Module> matieres) {
 		this.matieres = matieres;
+	}
+	
+	
+
+	public List<Stagiaire> getInscrits() {
+		return inscrits;
+	}
+
+	public void setInscrits(List<Stagiaire> inscrits) {
+		this.inscrits = inscrits;
 	}
 
 	@Override
