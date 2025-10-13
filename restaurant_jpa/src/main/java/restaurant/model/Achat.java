@@ -31,10 +31,7 @@ public class Achat {
 	@ManyToOne
 	@JoinColumn(name="article",nullable = false)
 	private Article article;
-	
-	@OneToMany(mappedBy="client")
-	private List<Reservation> historiqueReservation;
-	
+
 	
 	public Achat() {}
 
@@ -84,18 +81,6 @@ public class Achat {
 	public void setArticle(Article article) {
 		this.article = article;
 	}
-
-	
-
-	public List<Reservation> getHistoriqueReservation() {
-		return historiqueReservation;
-	}
-
-
-	public void setHistoriqueReservation(List<Reservation> historiqueReservation) {
-		this.historiqueReservation = historiqueReservation;
-	}
-
 
 	@Override
 	public String toString() {
