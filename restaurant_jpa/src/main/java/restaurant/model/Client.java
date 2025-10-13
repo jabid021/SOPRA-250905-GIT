@@ -12,10 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"lastname","firstname"}))
 public class Client {
 
 	@Id
@@ -30,17 +32,16 @@ public class Client {
 	@Enumerated(EnumType.STRING)
 	@Column(name="genre",nullable = false,columnDefinition = "enum('homme', 'femme', 'nb')")
 	private Genre civilite;
-	
-	@ManyToMany
+
+	@OneToMany
 	@JoinTable
 	(
 			name="achats",
-			joinColumns = @JoinColumn(name="client",nullable = false),
-			inverseJoinColumns = @JoinColumn(name="article",nullable = false),
+			joinColumns = @JoinColumn(name="client"), //col gauche
+			inverseJoinColumns = @JoinColumn(name="article"), //col droite
 			uniqueConstraints=@UniqueConstraint(columnNames = {"client","article"}) 		
 	)
-	private List<Article> achats = new ArrayList();
-	
+	private List<Achat> achats = new ArrayList();
 	
 	public Client() {}
 	
@@ -91,11 +92,11 @@ public class Client {
 	}
 	
 	
-	public List<Article> getAchats() {
+	public List<Achat> getAchats() {
 		return achats;
 	}
 
-	public void setAchats(List<Article> achats) {
+	public void setAchats(List<Achat> achats) {
 		this.achats = achats;
 	}
 

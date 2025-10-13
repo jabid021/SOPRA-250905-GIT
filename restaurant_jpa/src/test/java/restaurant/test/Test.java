@@ -2,12 +2,12 @@ package restaurant.test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collections;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import restaurant.model.Achat;
 import restaurant.model.Admin;
 import restaurant.model.Boisson;
 import restaurant.model.Client;
@@ -30,9 +30,15 @@ public class Test {
 		Admin admin = new Admin("root","root");
 		Client client1 = new Client("Abid","Jordan",Genre.homme);
 		Client client2 = new Client("Doe","Jane",Genre.femme);
+
 		
-		Collections.addAll(client1.getAchats(), boisson1,boisson2,plat1);
+		//On ne gere plus les achats du client via sa liste, mais chaque achat independamment
+		//Collections.addAll(client1.getAchats(), boisson1,boisson2,plat1);
 		
+		
+		Achat achat1 = new Achat(LocalDate.now(),client1,boisson1);
+		Achat achat2 = new Achat(LocalDate.now(),client1,boisson2);
+		Achat achat3 = new Achat(LocalDate.now(),client1,plat1);
 		
 		Tableuh table1 = new Tableuh(6);
 		Tableuh table2 = new Tableuh(12);
@@ -50,7 +56,7 @@ public class Test {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 		EntityManager em = emf.createEntityManager();
 		
-		em.getTransaction().begin();
+		em.getTransaction().begin(); 
 		
 		em.persist(boisson1);
 		em.persist(boisson2);
@@ -70,6 +76,12 @@ public class Test {
 		
 		em.persist(resa1);
 		em.persist(resa2);
+		
+		
+		em.persist(achat1);
+		em.persist(achat2);
+		em.persist(achat3);
+		
 		
 		em.getTransaction().commit();
 	
