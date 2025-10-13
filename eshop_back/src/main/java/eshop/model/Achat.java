@@ -1,7 +1,6 @@
-package restaurant.model;
+package eshop.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="achat")
 public class Achat {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,84 +22,60 @@ public class Achat {
 	
 	@Column(name="date_achat",nullable = false)
 	private LocalDate dateAchat;
-	
+	private int quantite;
 	
 	@ManyToOne
-	@JoinColumn(name="client",nullable = false)
+	@JoinColumn(name="acheteur",nullable = false)
 	private Client client;
 	@ManyToOne
-	@JoinColumn(name="article",nullable = false)
-	private Article article;
-	
-	@OneToMany(mappedBy="client")
-	private List<Reservation> historiqueReservation;
+	@JoinColumn(name="produit",nullable = false)
+	private Produit produit;
 	
 	
 	public Achat() {}
-
-
-	public Achat(LocalDate dateAchat, Client client, Article article) {
+	
+	public Achat(LocalDate dateAchat, int quantite, Client client, Produit produit) {
 		this.dateAchat = dateAchat;
+		this.quantite = quantite;
 		this.client = client;
-		this.article = article;
+		this.produit = produit;
 	}
-
-
+	
 	public Integer getId() {
 		return id;
 	}
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 	public LocalDate getDateAchat() {
 		return dateAchat;
 	}
-
-
 	public void setDateAchat(LocalDate dateAchat) {
 		this.dateAchat = dateAchat;
 	}
-
-
+	public int getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
 	public Client getClient() {
 		return client;
 	}
-
-
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-
-	public Article getArticle() {
-		return article;
+	public Produit getProduit() {
+		return produit;
 	}
-
-
-	public void setArticle(Article article) {
-		this.article = article;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
-
-	
-
-	public List<Reservation> getHistoriqueReservation() {
-		return historiqueReservation;
-	}
-
-
-	public void setHistoriqueReservation(List<Reservation> historiqueReservation) {
-		this.historiqueReservation = historiqueReservation;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Achat [id=" + id + ", dateAchat=" + dateAchat + ", client=" + client + ", article=" + article + "]";
+		return "Achat [id=" + id + ", dateAchat=" + dateAchat + ", quantite=" + quantite + ", client=" + client
+				+ ", produit=" + produit + "]";
 	}
-
+	
 	
 }

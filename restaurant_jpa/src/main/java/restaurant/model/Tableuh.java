@@ -1,10 +1,13 @@
 package restaurant.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,6 +22,8 @@ public class Tableuh {
 	@JoinColumn(name="serveur")
 	private Employe serveur;
 	
+	@OneToMany(mappedBy="table")
+	private List<Reservation> historiqueResa;
 	
 	 public Tableuh() {}
 
@@ -55,6 +60,17 @@ public class Tableuh {
 
 	 public void setServeur(Employe serveur) {
 		 this.serveur = serveur;
+	 }
+
+
+	 
+	 public List<Reservation> getHistoriqueResa() {
+		return historiqueResa;
+	}
+
+
+	 public void setHistoriqueResa(List<Reservation> historiqueResa) {
+		 this.historiqueResa = historiqueResa;
 	 }
 
 

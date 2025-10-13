@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import eshop.model.Achat;
 import eshop.model.Client;
 import eshop.model.Fournisseur;
 import eshop.model.Produit;
@@ -22,9 +23,11 @@ public class Test {
 		Client client1 = new Client("Abid","Jordan",32,LocalDate.parse("1993-05-01"),"1 bis","rue de paris","75009","Paris");
 	
 		
-		client1.getAchats().add(produit1);
-		client1.getAchats().add(produit2);
+		//client1.getAchats().add(produit1);
+		//client1.getAchats().add(produit2);
 		
+		Achat achat1 = new Achat(LocalDate.now(),1,client1,produit1);
+		Achat achat2 = new Achat(LocalDate.now(),2,client1,produit2);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 		EntityManager em = emf.createEntityManager();
@@ -39,6 +42,8 @@ public class Test {
 		
 		em.persist(client1);
 	
+		em.persist(achat1);
+		em.persist(achat2);
 
 		em.getTransaction().commit();
 	

@@ -1,5 +1,7 @@
 package restaurant.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity //OBLIGATOIRE, permet de creer une table 
@@ -26,6 +29,10 @@ public abstract class Article {
 	//En bdd, on peut limiter le nombre de decimales avec le type "DECIMAL(x,y)"   x => nombre total de digits , y=> nombre de digits apres la virgule
 	@Column(name="price",columnDefinition = "DECIMAL(5,2)")
 	protected double prix;
+	
+	
+	@OneToMany(mappedBy="article")
+	protected List<Achat> ventes;
 	
 	//JPA aura besoin d'un constructeur vide pour fonctionner
 	public Article() {}
@@ -58,4 +65,13 @@ public abstract class Article {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+
+	public List<Achat> getVentes() {
+		return ventes;
+	}
+
+	public void setVentes(List<Achat> ventes) {
+		this.ventes = ventes;
+	}
+	
 }

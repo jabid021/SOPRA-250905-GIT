@@ -10,8 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -33,15 +31,18 @@ public class Client {
 	@Column(name="genre",nullable = false,columnDefinition = "enum('homme', 'femme', 'nb')")
 	private Genre civilite;
 
-	@OneToMany
-	@JoinTable
+	@OneToMany(mappedBy="client")
+	/*@JoinTable
 	(
 			name="achats",
 			joinColumns = @JoinColumn(name="client"), //col gauche
 			inverseJoinColumns = @JoinColumn(name="article"), //col droite
 			uniqueConstraints=@UniqueConstraint(columnNames = {"client","article"}) 		
-	)
+	)*/
 	private List<Achat> achats = new ArrayList();
+	
+	@OneToMany(mappedBy="client")
+	private List<Reservation> historiqueResa;
 	
 	public Client() {}
 	
@@ -98,6 +99,16 @@ public class Client {
 
 	public void setAchats(List<Achat> achats) {
 		this.achats = achats;
+	}
+
+	
+	
+	public List<Reservation> getHistoriqueResa() {
+		return historiqueResa;
+	}
+
+	public void setHistoriqueResa(List<Reservation> historiqueResa) {
+		this.historiqueResa = historiqueResa;
 	}
 
 	@Override

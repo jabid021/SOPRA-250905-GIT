@@ -82,10 +82,8 @@ public class Test {
 		em.persist(achat2);
 		em.persist(achat3);
 		
-		
 		em.getTransaction().commit();
-	
-	
+
 		em.close();
 		emf.close();
 		

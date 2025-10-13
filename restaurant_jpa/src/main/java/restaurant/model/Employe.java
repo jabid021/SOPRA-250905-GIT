@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("worker")
@@ -24,6 +25,9 @@ public class Employe extends Compte{
 	//Les infos de l'adresse doivent etre embarquées dans la table compte
 	@Embedded
 	private  Adresse adresse;
+	
+	@OneToOne(mappedBy="serveur")
+	private Tableuh affectation;
 	
 	public Employe() {}
 	
@@ -70,6 +74,18 @@ public class Employe extends Compte{
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
+	
+
+	public Tableuh getAffectation() {
+		return affectation;
+	}
+
+
+	public void setAffectation(Tableuh affectation) {
+		this.affectation = affectation;
+	}
+
 
 	@Override
 	public String toString() {
