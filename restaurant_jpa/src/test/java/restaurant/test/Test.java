@@ -56,7 +56,7 @@ public class Test {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 		EntityManager em = emf.createEntityManager();
 		
-		em.getTransaction().begin(); 
+		/*em.getTransaction().begin(); 
 		
 		em.persist(boisson1);
 		em.persist(boisson2);
@@ -82,7 +82,7 @@ public class Test {
 		em.persist(achat2);
 		em.persist(achat3);
 		
-		em.getTransaction().commit();
+		em.getTransaction().commit();*/
 
 		em.close();
 		emf.close();
