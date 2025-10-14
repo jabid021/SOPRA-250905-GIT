@@ -48,10 +48,6 @@ public class Test {
 
 		Stagiaire stagiaire1 = new Stagiaire("stagiaire","stagiaire","COSTENARO","Alyssa",Civilite.Femme,"email@email.fr","1","rue de Paris","75009","Paris", ordinateur1, filiere1);
 		Stagiaire stagiaire2 = new Stagiaire("stagiaire2","stagiaire2","DA COSTA","Jany",Civilite.Homme,"email2@email.fr","3bis","rue de Paris","75009","Paris", ordinateur2, filiere1);
-
-
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
-		EntityManager em = emf.createEntityManager();
 		
 
 		Singleton.getInstance().getEmf().close();
