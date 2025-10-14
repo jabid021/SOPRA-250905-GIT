@@ -1,13 +1,25 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Matiere {
+	
+	@Id //OBLIGATOIRE pour preciser quelle colonne sert d'id coté bdd
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //OBLIGATOIRE* 
+	@Column(name="id")
 	private Integer id;
+	
+	@Column(name="marque",columnDefinition = "VARCHAR(50)")
 	private String libelle;
 	
 	
-	public Matiere(Integer id, String libelle) {
-		this.id = id;
-		this.libelle = libelle;
+	public Matiere() {
+		
 	}
 
 	public Matiere(String libelle) {

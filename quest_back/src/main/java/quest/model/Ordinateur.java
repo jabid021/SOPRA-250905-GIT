@@ -24,15 +24,12 @@ public class Ordinateur {
 	public Ordinateur() {
 		
 	}
-	public Ordinateur(Integer id, String marque, int ram) {
-		this.id = id;
-		this.marque = marque;
-		this.ram = ram;
-	}
 	public Ordinateur(String marque, int ram) {
+	
 		this.marque = marque;
 		this.ram = ram;
 	}
+
 	
 	public Integer getId() {
 		return id;
