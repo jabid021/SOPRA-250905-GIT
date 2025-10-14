@@ -1,11 +1,23 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 
+	@Column(length = 15, nullable=true)
 	private String numero;
+	@Column(length = 50, nullable=true)
 	private String voie;
+	@Column(length = 50, nullable=true)
 	private String ville;
+	@Column(length = 15, nullable=true)
 	private String cp;
+	
+	public Adresse() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
 		this.numero = numero;
