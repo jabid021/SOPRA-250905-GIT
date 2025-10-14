@@ -1,9 +1,25 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ordinateur")
 public class Ordinateur {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="numero")
 	private Integer id;
+	
+	@Column(name="marque", columnDefinition="VARCHAR(25)", nullable=false)
 	private String marque;
+	
+	@Column(name="ram",columnDefinition = "int default 4")
 	private int ram;
 	
 	public Ordinateur(Integer id, String marque, int ram) {
@@ -15,6 +31,8 @@ public class Ordinateur {
 		this.marque = marque;
 		this.ram = ram;
 	}
+	
+	public Ordinateur() {}
 	
 	public Integer getId() {
 		return id;
