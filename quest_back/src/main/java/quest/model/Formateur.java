@@ -12,7 +12,7 @@ public class Formateur extends Personne {
 
 	private boolean admin;
 	
-	@OneToMany(mappedBy="Formateur")
+	@OneToMany(mappedBy="formateur")
 	private List<Module> formations;
 	
 	public Formateur(Integer id, String login, String password, String nom, String prenom,Civilite civilite, boolean admin) {
