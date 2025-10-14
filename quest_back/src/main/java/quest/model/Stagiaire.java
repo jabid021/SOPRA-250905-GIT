@@ -1,15 +1,33 @@
 package quest.model;
 
-public class Stagiaire extends Personne{
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+@Entity
+@DiscriminatorValue("Stagiaire")
+public class Stagiaire extends Personne {
+
+	@Column(name = "email", nullable = true, columnDefinition = "VARCHAR(50)")
 	private String email;
+	
+	@Embedded
 	private Adresse adresse;
+	
+	@OneToOne
 	private Ordinateur ordinateur;
+	
+	@ManyToOne
 	private Filiere filiere;
+	
+	public Stagiaire() {}
 	
 	public Stagiaire(Integer id, String login, String password, String nom, String prenom,Civilite civilite, String email,
 			String numero,String voie,String ville,String cp, Ordinateur ordinateur,Filiere filiere) {
-		super(id, login, password, nom, prenom,civilite);
+		super(login, password, nom, prenom,civilite);
 		this.email = email;
 		this.adresse = new Adresse(numero,voie,ville,cp);
 		this.ordinateur = ordinateur;
