@@ -4,16 +4,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+@Entity
+@Table(name="filiere")
 public class Filiere {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(nullable = false,columnDefinition = "VARCHAR(50)")
 	private String libelle;
 	private LocalDate debut;
 	private LocalDate fin;
+	@OneToMany(mappedBy="matiere")
 	private List<Module> matieres;
+	@OneToMany(mappedBy="matiere")
 	private List<Stagiaire> inscrits;
 	
-		
+	public Filiere() {}
 	//update,select
 	public Filiere(Integer id, String libelle, LocalDate debut, LocalDate fin) {
 		this.id = id;
