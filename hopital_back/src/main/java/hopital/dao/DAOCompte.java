@@ -73,7 +73,7 @@ public class DAOCompte implements IDAOCompte{
 		//Compte compte = em.createQuery("SELECT c from Compte c where c.login=:login and c.password=:password",Compte.class).setParameter("login", login).setParameter("password", password).getSingleResult();
 		
 		em.close();
-		}catch(Exception e) {e.printStackTrace();}
+		}catch(Exception e) {}
 		
 		return compte;
 	}

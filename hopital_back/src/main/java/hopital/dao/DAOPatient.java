@@ -12,7 +12,7 @@ public class DAOPatient implements IDAOPatient{
 	@Override
 	public List<Patient> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		List<Patient> patients  = em.createQuery("from Client").getResultList();
+		List<Patient> patients  = em.createQuery("from Patient").getResultList();
 		em.close();
 		return patients;
 	}
