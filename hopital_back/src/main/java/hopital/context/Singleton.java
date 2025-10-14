@@ -12,9 +12,9 @@ import hopital.dao.IDAOVisite;
 
 public class Singleton {
 
-	private IDAOCompte daoCompte = new DAOCompteJDBC();
-	private IDAOPatient daoPatient = new DAOPatientJDBC();
-	private IDAOVisite daoVisite = new DAOVisiteJDBC();
+	private IDAOCompte daoCompte = new DAOCompte();
+	private IDAOPatient daoPatient = new DAOPatient();
+	private IDAOVisite daoVisite = new DAOVisite();
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 	private static Singleton instance=null;
 	
