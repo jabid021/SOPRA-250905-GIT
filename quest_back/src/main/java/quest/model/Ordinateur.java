@@ -14,10 +14,10 @@ public class Ordinateur {
 	@Column(name="numero")
 	private Integer id;
 	
-	@Column(name="marque",columnDefinition = "VARCHAR(25)")
+	@Column(name="marque",nullable=false,columnDefinition = "VARCHAR(25)")
 	private String marque;
 	
-	@Column(name="ram")
+	@Column(name="ram",nullable=false)
 	private int ram;
 	
 	
