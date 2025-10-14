@@ -57,4 +57,15 @@ public class DAOClient implements IDAOClient {
 		em.close();
 	}
 
+	@Override
+	public Client findByIdWithHistoriqueResa(Integer idClient) {
+		Client client=null;
+		try {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		client  = em.createQuery("SELECT c from Client c LEFT JOIN FETCH c.historiqueResa where c.id=:id",Client.class).setParameter("id", idClient).getSingleResult();
+		em.close();
+		}catch(Exception e) {e.printStackTrace();}
+		return client;
+	}
+
 }

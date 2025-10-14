@@ -75,4 +75,12 @@ public class DAOArticle implements IDAOArticle {
 		return articles;
 	}
 
+	@Override
+	public List<Article> findAllByNomLike(String recherche) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Article> articles  = em.createQuery("SELECT a from Article a where a.nom like :lib").setParameter("lib", "%"+recherche+"%").getResultList();
+		em.close();
+		return articles;
+	}
+
 }

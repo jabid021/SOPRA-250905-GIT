@@ -3,6 +3,7 @@ package restaurant.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import restaurant.context.Singleton;
 import restaurant.model.Compte;
@@ -56,4 +57,25 @@ public class DAOCompte implements IDAOCompte {
 		em.close();
 	}
 
+	@Override
+	public Compte findByLoginAndPassword(String login, String password) {
+		Compte compte=null;
+		try {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		
+		
+		Query query = em.createQuery("SELECT c from Compte c where c.login=:login and c.password=:password");
+		query.setParameter("login", login);
+		query.setParameter("password", password);
+		compte = (Compte) query.getSingleResult();
+		
+		//Compte compte = em.createQuery("SELECT c from Compte c where c.login=:login and c.password=:password",Compte.class).setParameter("login", login).setParameter("password", password).getSingleResult();
+		
+		em.close();
+		}catch(Exception e) {e.printStackTrace();}
+		
+		return compte;
+	}
+
 }
+
