@@ -6,5 +6,4 @@ import quest.model.Filiere;
 
 public interface IDAOFiliere extends IDAO<Filiere, Integer> {
 	
-	public List<Filiere> findByLibLike(String libelle);
 }

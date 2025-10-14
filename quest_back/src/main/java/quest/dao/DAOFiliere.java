@@ -57,15 +57,5 @@ public class DAOFiliere implements IDAOFiliere{
 		em.close();
 	}
 
-	@Override
-	public List<Filiere> findByLibLike(String libelle) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query query = em.createQuery("SELECT p from Filiere p where p.libelle like :lib");
-		query.setParameter("lib", "%"+libelle+"%");
-		List<Filiere> filieres = query.getResultList();
-		em.close();
-		return filieres;
-	}
-
 
 }
