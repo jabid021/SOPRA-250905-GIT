@@ -1,19 +1,37 @@
 package quest.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="filiere")
 public class Filiere {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name="libelle",nullable = false,length = 50)
 	private String libelle;
+	@Column(name="debut",nullable = false)
 	private LocalDate debut;
+	@Column(name="fin",nullable = false)
 	private LocalDate fin;
+	@OneToMany(mappedBy="filiere")
 	private List<Module> matieres;
+	@OneToMany(mappedBy="filiere")
 	private List<Stagiaire> inscrits;
 	
 		
+	public Filiere() {}
+	
 	//update,select
 	public Filiere(Integer id, String libelle, LocalDate debut, LocalDate fin) {
 		this.id = id;
