@@ -1,18 +1,18 @@
 package hopital.test;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import hopital.context.Singleton;
+import hopital.model.Visite;
 
 public class TestMapping {
 
 	public static void main(String[] args) {
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
+		for(Visite f : Singleton.getInstance().getDaoVisite().findAllByIdPatient(1)) 
+		{
+			System.out.println(f);
+		}
 		
-		
-		emf.close();
-
 	}
 
 }
