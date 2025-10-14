@@ -1,6 +1,7 @@
 package hopital.dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -145,4 +146,14 @@ public class DAOPatientJDBC implements IDAOPatient{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public List<Patient> findByNom(String nom){
+		return null;
+	}
+	@Override
+	public List<Patient> findByNomAndPrenom(String nom, String prenom){
+		return null;
+	}
 }
+
+
