@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,13 +28,16 @@ public class Module {
 	@Column(nullable = false)
 	private int quest;
 	
-	@Column(nullable = true)
+	@ManyToOne
+	@JoinColumn(name="filiere")
 	private Filiere filiere;
 	
-	@Column(nullable = true)
+	@ManyToOne
+	@JoinColumn(name="matiere")
 	private Matiere matiere;
 	
-	@Column(nullable = true)
+	@ManyToOne
+	@JoinColumn(name="formateur")
 	private Formateur formateur;
 	
 	public Module() {}
