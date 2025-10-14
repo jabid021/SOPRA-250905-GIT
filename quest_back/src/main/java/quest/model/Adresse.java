@@ -1,11 +1,21 @@
 package quest.model;
 
-public class Adresse {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Adresse {
+	
+	@Column(columnDefinition = "varchar(15)")
 	private String numero;
+	@Column(columnDefinition = "varchar(50)")
 	private String voie;
+	@Column(columnDefinition = "varchar(50)")
 	private String ville;
+	@Column(columnDefinition = "varchar(15)")
 	private String cp;
+	
+	public Adresse() {}
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
 		this.numero = numero;
