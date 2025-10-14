@@ -14,25 +14,22 @@ public class Ordinateur {
 	@Column(name="numero")
 	private Integer id;
 	
-	@Column(name="marque",columnDefinition = "VARCHAR(25)")
+	@Column(name="marque",nullable=false,columnDefinition = "VARCHAR(25)")
 	private String marque;
 	
-	@Column(name="ram")
+	@Column(name="ram",nullable=false)
 	private int ram;
 	
 	
 	public Ordinateur() {
 		
 	}
-	public Ordinateur(Integer id, String marque, int ram) {
-		this.id = id;
-		this.marque = marque;
-		this.ram = ram;
-	}
 	public Ordinateur(String marque, int ram) {
+	
 		this.marque = marque;
 		this.ram = ram;
 	}
+
 	
 	public Integer getId() {
 		return id;
