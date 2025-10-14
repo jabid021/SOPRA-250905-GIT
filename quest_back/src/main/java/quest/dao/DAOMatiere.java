@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import quest.model.Matiere;
 import quest.context.Singleton;
 
-public class DAOMatiere implements IDAOMatiere {}
+public class DAOMatiere implements IDAOMatiere {
 
     @Override
     public List<Matiere> findAll() {
@@ -54,14 +54,5 @@ public class DAOMatiere implements IDAOMatiere {}
         em.getTransaction().commit();
         em.close();*/
     }
-
-
-
-
-
-
-
-
-
 
 }
