@@ -5,120 +5,73 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import hopital.context.Singleton;
+import hopital.model.Compte;
 import hopital.model.Patient;
+import hopital.model.Visite;
 
 public class DAOPatient implements IDAOPatient {
 
-    private EntityManager em;
-
-    public DAOPatient(EntityManager em) {
-        this.em = em;
-    }
-
+   
     @Override
     public List<Patient> findAll() {
-        List<Patient> patients = null;
-        try {
-            Query query = em.createQuery("SELECT p FROM Patient p");
-            patients = query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return patients;
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Patient> patients  = em.createQuery("from Compte").getResultList();
+		em.close();
+		return patients;
     }
 
     @Override
     public Patient findById(Integer id) {
-        Patient patient = null;
-        try {
-            patient = em.find(Patient.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return patient;
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Patient patient  = em.find(Patient.class, id);
+		em.close();
+		return patient;
     }
 
     @Override
     public Patient save(Patient patient) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            if (patient.getId() == null) {
-                // insert patient
-                em.persist(patient);
-            } else {
-                // Update patient
-                patient = em.merge(patient);
-            }
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        }
-        return patient;
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		patient=  em.merge(patient);
+		em.getTransaction().commit();
+		em.close();
+		return patient;
     }
 
     @Override
     public void deleteById(Integer id) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            Patient patient = em.find(Patient.class, id);
-            if (patient != null) {
-                em.remove(patient);
-            }
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        }
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Patient patient = em.find(Patient.class, id);
+		em.remove(patient);
+		em.getTransaction().commit();
+		em.close();
     }
 
     @Override
     public void delete(Patient patient) {
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            if (!em.contains(patient)) {
-                patient = em.merge(patient);
-            }
-            em.remove(patient);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        }
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		patient = em.merge(patient);
+		em.remove(patient);
+		em.getTransaction().commit();
+		em.close();
     }
 
-    // Additional utility methods if needed
+    @Override
     public List<Patient> findByNom(String nom) {
-        List<Patient> patients = null;
-        try {
-            Query query = em.createQuery("SELECT p FROM Patient p WHERE p.nom = :nom");
-            query.setParameter("nom", nom);
-            patients = query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return patients;
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Patient> patients = em.createQuery("SELECT p FROM Patient p WHERE p.nom = :nom", Patient.class).setParameter("nom", nom).getResultList();
+		em.close();
+		return patients;
     }
 
+    @Override
     public List<Patient> findByNomAndPrenom(String nom, String prenom) {
-        List<Patient> patients = null;
-        try {
-            Query query = em.createQuery("SELECT p FROM Patient p WHERE p.nom = :nom AND p.prenom = :prenom");
-            query.setParameter("nom", nom);
-            query.setParameter("prenom", prenom);
-            patients = query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+        List<Patient> patients = em.createQuery("SELECT p FROM Patient p WHERE p.nom = :nom AND p.prenom = :prenom", Patient.class).setParameter("nom", nom).setParameter("prenom", prenom).getResultList();
+        em.close();
         return patients;
     }
 }

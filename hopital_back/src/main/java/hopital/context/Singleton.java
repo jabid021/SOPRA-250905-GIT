@@ -1,6 +1,7 @@
 package hopital.context;
 
 import javax.persistence.EntityManagerFactory;
+
 import javax.persistence.Persistence;
 
 import hopital.dao.DAOCompte;
