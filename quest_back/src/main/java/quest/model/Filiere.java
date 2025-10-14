@@ -28,10 +28,10 @@ public class Filiere {
 	@Column(columnDefinition = "date")
 	private LocalDate fin;
 	
-	@OneToMany(mappedBy="matiere")
-	private List<Module> matieres;
+	@OneToMany(mappedBy="filiere")
+	private List<Module> modules;
 	
-	@OneToMany(mappedBy="stagiaire")
+	@OneToMany(mappedBy="filiere")
 	private List<Stagiaire> inscrits;
 	
 	public Filiere() {}
@@ -84,12 +84,12 @@ public class Filiere {
 		this.fin = fin;
 	}
 
-	public List<Module> getMatieres() {
-		return matieres;
+	public List<Module> getModules() {
+		return modules;
 	}
 
-	public void setMatieres(List<Module> matieres) {
-		this.matieres = matieres;
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
 	}
 	
 	
@@ -104,8 +104,10 @@ public class Filiere {
 
 	@Override
 	public String toString() {
-		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + "]";
+		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + ", modules="
+				+ modules + ", inscrits=" + inscrits + "]";
 	}
+
 	
 	
 }

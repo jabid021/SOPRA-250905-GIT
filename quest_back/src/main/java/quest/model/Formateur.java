@@ -5,18 +5,16 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Formateur")
 public class Formateur extends Personne {
 
-	@Column(name="admin", columnDefinition="tinyint(1)")
+	@Column(name="admin")
 	private boolean admin;
 	
-	@ManyToOne
-	@mappedBy(name="formateur")
+	@OneToMany(mappedBy="formateur")
 	private List<Module> formations;
 	
 	public Formateur() {}

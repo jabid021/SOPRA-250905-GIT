@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "personne")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Stagiaire','Formateur')")
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('Stagiaire','Formateur')")
 public abstract class Personne {
 
 	@Id
@@ -33,7 +35,7 @@ public abstract class Personne {
 	protected String prenom;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name="type_personne",columnDefinition = "enum('Homme', 'Femme', 'NB')")
+	@Column(name="civilite",columnDefinition = "enum('Homme', 'Femme', 'NB')")
 	protected Civilite civilite;
 	
 	public Personne() {}

@@ -23,7 +23,7 @@ public class Stagiaire extends Personne{
 	private Ordinateur ordinateur;
 	
 	@ManyToOne
-	@JoinColumn(name="inscrit")
+	@JoinColumn(name="filiere")
 	private Filiere filiere;
 	
 	public Stagiaire() {}
