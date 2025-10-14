@@ -1,11 +1,32 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("Stagiaire")
 public class Stagiaire extends Personne{
 
+	@Column(columnDefinition = "VARCHAR(50)")
 	private String email;
+	
+	@Embedded
 	private Adresse adresse;
+	
+	@OneToOne
+	@JoinColumn(name="ordinateur")
 	private Ordinateur ordinateur;
+	
+	@ManyToOne
+	@JoinColumn(name="inscrit")
 	private Filiere filiere;
+	
+	public Stagiaire() {}
 	
 	public Stagiaire(Integer id, String login, String password, String nom, String prenom,Civilite civilite, String email,
 			String numero,String voie,String ville,String cp, Ordinateur ordinateur,Filiere filiere) {
