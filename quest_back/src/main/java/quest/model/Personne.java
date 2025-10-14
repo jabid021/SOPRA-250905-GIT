@@ -13,13 +13,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="person")
+@Table(name="personne")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_personne", columnDefinition = "ENUM('Formateur','Stagiaire')")
 public abstract class Personne {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	@Column(columnDefinition="varchar(25)",unique=true,nullable=false)
 	protected String login;
@@ -34,6 +32,15 @@ public abstract class Personne {
 	protected Civilite civilite;
 	
 	public Personne() {}
+	
+	public Personne(Integer id, String login, String password, String nom, String prenom,Civilite civilite) {
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.civilite=civilite;
+	}
 	
 	public Personne(String login, String password, String nom, String prenom,Civilite civilite) {
 		this.login = login;
