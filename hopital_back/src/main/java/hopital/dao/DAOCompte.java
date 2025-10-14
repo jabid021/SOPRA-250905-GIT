@@ -58,15 +58,15 @@ public class DAOCompte implements IDAOCompte{
 	}
 
 	@Override
-	public Compte findByLoginAndPassword(String mail, String mdp) {
+	public Compte findByLoginAndPassword(String login, String password) {
 		Compte compte=null;
 		try {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		
 		
-		Query query = em.createQuery("SELECT c from Compte c where c.mail=:mail and c.mdp=:mdp");
-		query.setParameter("mail", mail);
-		query.setParameter("mdp", mdp);
+		Query query = em.createQuery("SELECT c from Compte c where c.login=:login and c.password=:password");
+		query.setParameter("login", login);
+		query.setParameter("password", password);
 		compte = (Compte) query.getSingleResult();
 		
 		//Compte compte = em.createQuery("SELECT c from Compte c where c.login=:login and c.password=:password",Compte.class).setParameter("login", login).setParameter("password", password).getSingleResult();
