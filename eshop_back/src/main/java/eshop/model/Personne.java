@@ -1,6 +1,9 @@
 package eshop.model;
 
+
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +17,12 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_personne", columnDefinition = "ENUM('customer','supplier')")
 public abstract class Personne {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+
 	protected String nom;
 	protected String prenom;
 	
@@ -26,7 +31,9 @@ public abstract class Personne {
 	public Personne(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
+
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -52,10 +59,7 @@ public abstract class Personne {
 		this.prenom = prenom;
 	}
 
-	@Override
-	public String toString() {
-		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
-	}
+
 	
 	
 	

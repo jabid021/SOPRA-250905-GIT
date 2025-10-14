@@ -3,23 +3,18 @@ package hopital.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 @Entity
 @Table(name="patient")
 public class Patient implements Serializable{
-
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(length = 50,nullable=false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(15)")
 	private String nom;
-	@Column(length = 50,nullable=false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(15)")
 	private String prenom;
-	
+
 	@OneToMany(mappedBy="patient")
 	private List<Visite> historique;
 	
@@ -27,6 +22,14 @@ public class Patient implements Serializable{
 	
 	public Patient(Integer id, String nom, String prenom) {
 		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+
+	}
+
+
+	public Patient( String nom, String prenom) {
+
 		this.nom = nom;
 		this.prenom = prenom;
 	}

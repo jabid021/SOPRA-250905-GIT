@@ -3,6 +3,7 @@ package eshop.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+
 @Embeddable
 public class Adresse {
 
@@ -15,6 +16,7 @@ public class Adresse {
 	@Column(name="postal_code",length = 15)
 	private String cp;
 	
+
 	public Adresse() {}
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
@@ -69,7 +71,8 @@ public class Adresse {
 	public String toString() {
 		return "Adresse [numero=" + numero + ", voie=" + voie + ", ville=" + ville + ", cp=" + cp + "]";
 	}
-	
-	
-	
 }
+	
+	
+	
+

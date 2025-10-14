@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+
 import eshop.context.Singleton;
 import eshop.model.Produit;
+
 
 public class DAOProduit implements IDAOProduit {
 
@@ -57,25 +59,23 @@ public class DAOProduit implements IDAOProduit {
 		em.close();
 	}
 
+	
 	@Override
-	public List<Produit> findByLibLike(String libelle) {
+	public List<Produit> findByLibLike(String libelle)  {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Query query = em.createQuery("SELECT p from Produit p where p.libelle like :lib");
-		query.setParameter("lib", "%"+libelle+"%");
-		List<Produit> produits = query.getResultList();
+		List<Produit> produits  = em.createQuery("SELECT p from Produit p where p.libelle like :lib").setParameter("lib", "%"+libelle+"%").getResultList();
 		em.close();
 		return produits;
 	}
-
+	
 	@Override
 	public Produit findByIdWithVentes(Integer idProduit) {
-		Produit produit = null;
+		Produit produit=null;
 		try {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		produit  = em.createQuery("SELECT p from Produit p LEFT JOIN FETCH p.ventes where p.id=:id",Produit.class).setParameter("id", idProduit).getSingleResult();
 		em.close();
 		}catch(Exception e) {e.printStackTrace();}
-		
 		return produit;
 	}
 
@@ -86,5 +86,6 @@ public class DAOProduit implements IDAOProduit {
 		em.close();
 		return produits;
 	}
+
 
 }

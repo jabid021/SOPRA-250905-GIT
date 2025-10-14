@@ -2,24 +2,18 @@ package hopital.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="visite")
 public class Visite {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numero;
+	@Column(columnDefinition = "DECIMAL(5,2)")
 	private double prix;
 	private int salle;
+
 	@Column(name="date_visite",nullable = false)
 	private LocalDate dateVisite;
 	
@@ -34,6 +28,14 @@ public class Visite {
 	
 	public Visite(Integer numero, double prix, int salle, LocalDate dateVisite, Patient patient, Medecin medecin) {
 		this.numero = numero;
+		this.prix = prix;
+		this.salle = salle;
+		this.dateVisite = dateVisite;
+		this.patient = patient;
+		this.medecin = medecin;
+	}
+
+	public Visite(double prix, int salle, LocalDate dateVisite, Patient patient, Medecin medecin) {
 		this.prix = prix;
 		this.salle = salle;
 		this.dateVisite = dateVisite;

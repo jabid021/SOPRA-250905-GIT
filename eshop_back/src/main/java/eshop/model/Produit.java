@@ -29,9 +29,9 @@ public class Produit {
 	@ManyToOne
 	@JoinColumn(name="vendeur",nullable = false)
 	private Fournisseur fournisseur;
-	
-	
-	@OneToMany(mappedBy="produit")
+
+	@OneToMany(mappedBy = "produit")
+
 	private List<Achat> ventes;
 	
 	
