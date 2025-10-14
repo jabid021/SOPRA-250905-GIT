@@ -17,7 +17,8 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_personne", columnDefinition = "ENUM('Formateur','Stagiaire')")
 public abstract class Personne {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	@Column(columnDefinition="varchar(25)",unique=true,nullable=false)
 	protected String login;

@@ -17,7 +17,7 @@ public class Filiere {
 	private LocalDate fin;
 	@OneToMany(mappedBy="matiere")
 	private List<Module> matieres;
-	@OneToMany(mappedBy="matiere")
+	@OneToMany(mappedBy="filiere")
 	private List<Stagiaire> inscrits;
 	
 	public Filiere() {}
