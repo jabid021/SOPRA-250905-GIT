@@ -1,14 +1,39 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="personne")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('Stagiaire','Formateur')")
 public abstract class Personne {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	@Column(length = 25,nullable = false,unique = true)
 	protected String login;
+	@Column(length = 180,nullable = false)
 	protected String password;
+	@Column(length = 30,nullable = false)
 	protected String nom;
+	@Column(length = 30,nullable = false)
 	protected String prenom;
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "ENUM('Homme','Femme','NB')",nullable = false)
 	protected Civilite civilite;
 	
+	public Personne() {}
 	
 	public Personne(Integer id, String login, String password, String nom, String prenom,Civilite civilite) {
 		this.id = id;

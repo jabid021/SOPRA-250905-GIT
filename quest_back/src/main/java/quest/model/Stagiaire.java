@@ -1,11 +1,28 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Stagiaire extends Personne{
 
+	@Column(length = 50)
 	private String email;
+	@Embedded
 	private Adresse adresse;
+
+	@OneToOne
+	@JoinColumn(name="ordinateur")
 	private Ordinateur ordinateur;
+	@ManyToOne
+	@JoinColumn(name="filiere")
 	private Filiere filiere;
+
+	public Stagiaire() {}
 	
 	public Stagiaire(Integer id, String login, String password, String nom, String prenom,Civilite civilite, String email,
 			String numero,String voie,String ville,String cp, Ordinateur ordinateur,Filiere filiere) {
@@ -15,7 +32,7 @@ public class Stagiaire extends Personne{
 		this.ordinateur = ordinateur;
 		this.filiere=filiere;
 	}
-	
+
 	public Stagiaire(String login, String password, String nom, String prenom,Civilite civilite, String email,
 			String numero,String voie,String ville,String cp, Ordinateur ordinateur,Filiere filiere) {
 		super(login, password, nom, prenom,civilite);
@@ -48,8 +65,8 @@ public class Stagiaire extends Personne{
 	public void setOrdinateur(Ordinateur ordinateur) {
 		this.ordinateur = ordinateur;
 	}
-	
-	
+
+
 
 	public Filiere getFiliere() {
 		return filiere;
@@ -66,9 +83,9 @@ public class Stagiaire extends Personne{
 				+ filiere + "]";
 	}
 
-	
 
-	
-	
-	
+
+
+
+
 }
