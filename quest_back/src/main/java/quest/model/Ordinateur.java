@@ -13,6 +13,7 @@ public class Ordinateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="numero")
 	private Integer id;
 	
 	@Column(nullable = false,columnDefinition = "VARCHAR(25)")
