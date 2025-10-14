@@ -20,7 +20,7 @@ public class Matiere {
 	@Column(name="id")
 	private Integer id;
 
-	@Column(name="libelle", VARCHAR(50), nullable=false)
+	@Column(name="libelle", columnDefinition="VARCHAR(50)", nullable=false) 
 	private String libelle;
 
 	public Matiere() {
