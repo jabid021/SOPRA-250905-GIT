@@ -68,4 +68,28 @@ public class DAOClient implements IDAOClient {
 		return client;
 	}
 
+	@Override
+	public List<Long> countClientByCivilite() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Long> values  = em.createQuery("SELECT COUNT(c) from Client c group by c.civilite").getResultList();
+		em.close();
+		return values;
+	}
+	
+	@Override
+	public List<Object[]> countClientByCiviliteWithCivilite() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Object[]> values  = em.createQuery("SELECT c.civilite, COUNT(c) from Client c group by c.civilite").getResultList();
+		em.close();
+		return values;
+	}
+
+	@Override
+	public List<Client> findAllWithHistoriqueResa() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Client> clients  = em.createQuery("SELECT distinct c from Client c LEFT JOIN FETCH c.historiqueResa").getResultList();
+		em.close();
+		return clients;
+	}
+
 }

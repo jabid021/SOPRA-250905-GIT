@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import restaurant.dao.Couleur;
 import restaurant.model.Achat;
 import restaurant.model.Admin;
 import restaurant.model.Boisson;
@@ -44,6 +45,10 @@ public class Test {
 		Tableuh table2 = new Tableuh(12);
 		Tableuh table3 = new Tableuh(4);
 		
+		table1.getCouleurs().add(Couleur.Blanc);
+		table1.getCouleurs().add(Couleur.Rouge);
+		
+		table2.getCouleurs().add(Couleur.Vert);
 		
 
 		Reservation resa1 = new Reservation(LocalDateTime.now(), 2, table3, client2);
@@ -56,7 +61,7 @@ public class Test {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 		EntityManager em = emf.createEntityManager();
 		
-		/*em.getTransaction().begin(); 
+		em.getTransaction().begin(); 
 		
 		em.persist(boisson1);
 		em.persist(boisson2);
@@ -82,7 +87,7 @@ public class Test {
 		em.persist(achat2);
 		em.persist(achat3);
 		
-		em.getTransaction().commit();*/
+		em.getTransaction().commit();
 
 		em.close();
 		emf.close();

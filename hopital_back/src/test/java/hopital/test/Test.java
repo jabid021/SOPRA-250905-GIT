@@ -188,7 +188,7 @@ public class Test {
 			String nom = saisieString("Saisir votre nom");
 			String prenom = saisieString("Saisir votre prenom");
 			patient = new Patient(id, nom, prenom);
-			daoPatient.insert(patient);
+			patient=daoPatient.save(patient);
 		}
 		System.out.println("Ajout du patient dans la file d'attente "+patient+"");
 		fileAttente.add(patient);
@@ -213,9 +213,9 @@ public class Test {
 
 			//Si on veut garder une trace de toutes les visites, on passe à null l'id du patient
 			v.setPatient(null);
-			daoVisite.update(v);
+			daoVisite.save(v);
 		}
-		daoPatient.delete(id);
+		daoPatient.deleteById(id);
 	}
 
 	public static void menuSecretairePause() {
@@ -295,7 +295,7 @@ public class Test {
 		{
 			for(Visite v : medecin.getConsultations()) 
 			{
-				daoVisite.insert(v);
+				v=daoVisite.save(v);
 				System.out.println("Sauvegarde "+v);
 			}
 			medecin.getConsultations().clear();
@@ -315,7 +315,7 @@ public class Test {
 		switch(choix) 
 		{
 		case 1 : seConnecter();break;
-		case 2 : System.exit(0);break;
+		case 2 : Singleton.getInstance().getEmf().close();System.exit(0);break;
 		}
 		menuPrincipal();
 	}

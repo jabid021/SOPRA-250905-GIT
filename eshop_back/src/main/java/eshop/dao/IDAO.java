@@ -1,13 +1,9 @@
-package hopital.dao;
+package eshop.dao;
 
 import java.util.List;
 
 public interface IDAO<T,K> {
 
-
-	String urlBdd = "jdbc:mysql://localhost:3306/hopital";
-	String loginBdd = "root";
-	String passwordBdd = "root";
 	
 	public List<T> findAll();
 	public T findById(K id);

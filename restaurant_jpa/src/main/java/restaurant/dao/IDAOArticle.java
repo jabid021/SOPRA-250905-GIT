@@ -12,4 +12,8 @@ public interface IDAOArticle extends IDAO<Article,Integer> {
 	public List<Boisson> findAllBoisson();
 	public List<Plat> findAllPlat();
 	public List<Article> findAllByNomLike(String recherche);
+	
+	public Long countArticleMinPrix(double prix);
+	
+	
 }

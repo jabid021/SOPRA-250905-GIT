@@ -2,6 +2,7 @@ package quest.test;
 
 import java.time.LocalDate;
 
+import quest.context.Singleton;
 import quest.model.Civilite;
 import quest.model.Filiere;
 import quest.model.Formateur;
@@ -15,9 +16,15 @@ public class Test {
 
 	public static void main(String[] args) {
 
+		Singleton.getInstance();
+		
 		Ordinateur ordinateur1 = new Ordinateur("Dell",4);
 		Ordinateur ordinateur2 = new Ordinateur("Asus",8);
-		Ordinateur ordinateur6 = new Ordinateur("HP",4);
+		Ordinateur ordinateur3 = new Ordinateur("HP",4);
+		
+		//ordinateur1 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		//ordinateur2 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		//ordinateur3 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
 	
 		Formateur formateur1 = new Formateur("formateur","formateur","ABID","Jordan",Civilite.Homme,true);
 		Formateur formateur2 = new Formateur("formateur","formateur","PERROUALT","Jeremy",Civilite.Homme,false);
@@ -43,8 +50,13 @@ public class Test {
 		Stagiaire stagiaire2 = new Stagiaire("stagiaire2","stagiaire2","DA COSTA","Jany",Civilite.Homme,"email2@email.fr","3bis","rue de Paris","75009","Paris", ordinateur2, filiere1);
 
 		
-
 	
+		
+		
+		
+		
+
+		Singleton.getInstance().getEmf().close();
 	}
 
 }

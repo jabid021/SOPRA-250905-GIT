@@ -82,8 +82,7 @@ public class Filiere {
 
 	@Override
 	public String toString() {
-		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + ", matieres="
-				+ matieres + "]";
+		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + "]";
 	}
 	
 	

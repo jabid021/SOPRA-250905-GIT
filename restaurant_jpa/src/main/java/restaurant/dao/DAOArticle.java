@@ -83,4 +83,12 @@ public class DAOArticle implements IDAOArticle {
 		return articles;
 	}
 
+	@Override
+	public Long countArticleMinPrix(double prix) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Long count  = em.createQuery("SELECT COUNT(a) from Article a where prix<=:prix",Long.class).setParameter("prix", prix).getSingleResult();
+		em.close();
+		return count;
+	}
+
 }
