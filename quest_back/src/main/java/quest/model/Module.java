@@ -2,6 +2,11 @@ package quest.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="module")
 public class Module {
 
 	private Integer id;
