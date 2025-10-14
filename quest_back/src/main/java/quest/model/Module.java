@@ -2,16 +2,44 @@ package quest.model;
 
 import java.time.LocalDate;
 
-public class Module {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="module")
+public class Module {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(nullable=false)
 	private LocalDate debut;
+	
+	@Column(nullable=false)
 	private LocalDate fin;
+	
+	@Column(nullable=false)
 	private int quest;
+	
+	@ManyToOne
+	@JoinColumn(name="filiere")
 	private Filiere filiere;
+	
+	@ManyToOne
+	@JoinColumn(name = "matiere")
 	private Matiere matiere;
+	
+	@ManyToOne
+	@JoinColumn(name="formateur")
 	private Formateur formateur;
 	
+	public Module() {}
 	
 	public Module(LocalDate debut, LocalDate fin, int quest, Filiere filiere, Matiere matiere,Formateur formateur) {
 		this.debut = debut;
