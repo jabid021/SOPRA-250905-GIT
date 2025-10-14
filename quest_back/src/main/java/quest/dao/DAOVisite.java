@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import quest.context.Singleton;
+
 
 public class DAOVisite implements IDAOVisite {
 	
