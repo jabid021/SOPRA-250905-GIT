@@ -2,38 +2,56 @@ package hopital.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import hopital.model.Patient;
+import hopital.context.Singleton;
 
 public class DAOPatient implements IDAOPatient{
 
 	@Override
 	public List<Patient> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Patient> patients = em.createQuery("from Patient", Patient.class).getResultList();
+		em.close();
+		return patients;
 	}
 
 	@Override
 	public Patient findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Patient patient = em.find(Patient.class, id);
+		em.close();
+		return patient;
 	}
 
 	@Override
 	public Patient save(Patient patient) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		patient = em.merge(patient);
+		em.getTransaction().commit();
+		em.close();
+		return patient;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Patient patient = em.find(Patient.class, id);
+		em.remove(patient);
+		em.getTransaction().commit();
+		em.close();		
 	}
 
 	@Override
 	public void delete(Patient patient) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		em.remove(em.merge(patient));
+		em.getTransaction().commit();
+		em.close();		
 	}
 
 }
