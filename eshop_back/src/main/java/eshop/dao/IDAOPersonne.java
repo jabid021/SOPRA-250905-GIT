@@ -11,5 +11,7 @@ public interface IDAOPersonne extends IDAO<Personne,Integer> {
 	public List<Fournisseur> findAllFournisseur();
 	public List<Client> findAllClient();
 	public Client findByIdWithAchats(Integer idClient);
+
 	public Fournisseur findByIdWithStock(Integer idFournisseur);
+
 }

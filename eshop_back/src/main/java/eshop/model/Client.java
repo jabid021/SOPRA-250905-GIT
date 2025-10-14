@@ -22,9 +22,15 @@ public class Client extends Personne {
 	private LocalDate dateNaissance;
 	@Embedded
 	private Adresse adresse;
+	@OneToMany(mappedBy="client")
+	/*@OneToMany
 	
+<<<<<<< Updated upstream
 	@OneToMany(mappedBy="client")
 	/*@JoinTable
+=======
+	@JoinTable
+>>>>>>> Stashed changes
 	(
 	name="achats",
 	joinColumns = @JoinColumn(name="acheteur"),

@@ -1,80 +1,91 @@
 package eshop.test;
 
 import java.util.List;
-import java.util.Scanner;
+
+
 
 import eshop.context.Singleton;
+import eshop.model.Achat;
 import eshop.model.Client;
 import eshop.model.Fournisseur;
+import eshop.model.Personne;
 import eshop.model.Produit;
 
 public class TestDAO {
 
-	public static String saisieString(String message) 
-	{
-		Scanner monScanner = new Scanner(System.in);
-		System.out.println(message);
-		return monScanner.nextLine();
-	}
+
 	
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+
+        System.out.println("========= TEST DAO ESHOP =========");
+
+        // -------------------- PERSONNES --------------------
+        System.out.println("\n---- Liste complète des personnes ----");
+        for (Personne p : Singleton.getInstance().getDaoPersonne().findAll()) {
+            System.out.println(p);
+        }
+
+        System.out.println("\n---- Liste des clients ----");
+        for (Client c : Singleton.getInstance().getDaoPersonne().findAllClient()) {
+            System.out.println(c);
+        }
+
+        System.out.println("\n---- Liste des fournisseurs ----");
+        for (Fournisseur f : Singleton.getInstance().getDaoPersonne().findAllFournisseur()) {
+            System.out.println(f);
+        }
+        
+        // Test : trouver un client avec ses achats
+        System.out.println("\n---- Client avec ses achats ----");
+        Client clientAvecAchats = Singleton.getInstance().getDaoPersonne().findByIdWithAchats(2);
+        if (clientAvecAchats != null) {
+            System.out.println(clientAvecAchats);
+            System.out.println(clientAvecAchats.getAchats());
+        } else {
+            System.out.println("Aucun client trouvé avec cet ID");
+        }
+        
+
+        // Test : trouver un fournisseur avec son stock
+        System.out.println("\n---- Fournisseur avec son stock ----");
+        Fournisseur fournisseurAvecStock = Singleton.getInstance().getDaoPersonne().findByIdWithStock(1);
+        if (fournisseurAvecStock != null) {
+            System.out.println(fournisseurAvecStock);
+            System.out.println(fournisseurAvecStock.getStock());
+        } else {
+            System.out.println("Aucun fournisseur trouvé avec cet ID");
+        }
+
+        // -------------------- PRODUITS --------------------
+        System.out.println("\n---- Liste complète des produits ----");
+        for (Produit pr : Singleton.getInstance().getDaoProduit().findAll()) {
+            System.out.println(pr);
+        }
+        String libelle = "Forma";
+		System.out.println("Liste des produits contenant : "+libelle);
 		
-		String saisie = saisieString("Saisir un libelle");
-		List<Produit> produits = Singleton.getInstance().getDaoProduit().findByLibLike(saisie);
-		
-		if(produits.isEmpty()) 
+		for(Produit p : Singleton.getInstance().getDaoProduit().findByLibLike(libelle)) 
 		{
-			System.out.println("Aucun produit ne contient "+saisie);
-		}
-		for(Produit p : produits) {
 			System.out.println(p);
 		}
+
+        // -------------------- ACHATS --------------------
+        System.out.println("\n---- Liste complète des achats ----");
+        for (Achat a : Singleton.getInstance().getDaoAchat().findAll()) {
+            System.out.println(a);
+        }
+        System.out.println("\n---- Liste complète des ventes pour un produit ----");
+        Produit produit = Singleton.getInstance().getDaoProduit().findByIdWithVentes(2);
 		
-		System.out.println("-----------");
-		
-		Produit p2 = Singleton.getInstance().getDaoProduit().findByIdWithVentes(1);
-		System.out.println("Liste des ventes du produit "+p2.getLibelle()+" :");
-		if(p2.getVentes().isEmpty()) 
-		{
-			System.out.println("Aucune vente");
-		}
-		else 
-		{
-			System.out.println("Ventes total : "+p2.getVentes().size());
-		}
-		
-		System.out.println("-----------");
-		
-		
-		Fournisseur fournisseur = Singleton.getInstance().getDaoPersonne().findByIdWithStock(1);
-		System.out.println("----Fournisseur + le stock-----");
-		System.out.println("Voici le stock du fournisseur "+fournisseur.getPrenom()+" "+fournisseur.getNom()+" :");
-		for(Produit p : fournisseur.getStock())
-		{
-			System.out.println(p.getLibelle());
-		}
-		
-		//Comment recuperer uniquement les produit du stock d'un fournisseur : 
-		System.out.println("----Uniquement le stock-----");
-		for(Produit p : Singleton.getInstance().getDaoProduit().findByFournisseur(1))
-		{
-			System.out.println(p.getLibelle());
-		}
-		
-		System.out.println("-----------");
-		
-		Client client = Singleton.getInstance().getDaoPersonne().findByIdWithAchats(2);
-		System.out.println("Le client "+client.getPrenom()+" "+client.getNom()+" a effectue "+client.getAchats().size()+" achat(s)");
-		
-		
-		
-		System.out.println(Singleton.getInstance().getDaoProduit().findById(1).getVentes());
-		
-		
-		
-		
-		
-		Singleton.getInstance().getEmf().close();
-	}
+		System.out.println(produit);
+		System.out.println(produit.getVentes());
+        
+        
+
+
+        // -------------------- FIN DU TEST --------------------
+        Singleton.getInstance().getEmf().close();
+        System.out.println("\n========= FIN DU TEST =========");
+    }
 
 }

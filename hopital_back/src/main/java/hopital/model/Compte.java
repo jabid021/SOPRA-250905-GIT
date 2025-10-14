@@ -1,5 +1,6 @@
 package hopital.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -15,18 +16,17 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "enum('Medecin', 'Secretaire')")
 public abstract class Compte {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
-	@Column(length = 35,nullable = false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(35)",unique = true)
 	protected String login;
-	@Column(length = 100,nullable = false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(100)")
 	protected String password;
 	
-	
 	public Compte() {}
-	
+
 	public Compte(Integer id, String login, String password) {
 		this.id = id;
 		this.login = login;

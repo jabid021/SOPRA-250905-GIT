@@ -3,12 +3,9 @@ package eshop.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import eshop.dao.DAOAchat;
-import eshop.dao.DAOPersonne;
-import eshop.dao.DAOProduit;
-import eshop.dao.IDAOAchat;
-import eshop.dao.IDAOPersonne;
-import eshop.dao.IDAOProduit;
+import eshop.dao.*;
+
+
 
 public class Singleton {
 
@@ -17,8 +14,10 @@ public class Singleton {
 	private static Singleton instance=null;
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 	private IDAOAchat daoAchat = new DAOAchat();
-	private IDAOProduit daoProduit = new DAOProduit();
+
 	private IDAOPersonne daoPersonne = new DAOPersonne();
+	private IDAOProduit daoProduit = new DAOProduit();
+
 	
 	
 	
@@ -34,22 +33,24 @@ public class Singleton {
 		return emf;
 	}
 
-	public IDAOAchat getDaoAchat() {
-		return daoAchat;
+	public void setEmf(EntityManagerFactory emf) {
+		this.emf = emf;
 	}
 
-	public IDAOProduit getDaoProduit() {
-		return daoProduit;
+	public IDAOAchat getDaoAchat() {
+		return daoAchat;
 	}
 
 	public IDAOPersonne getDaoPersonne() {
 		return daoPersonne;
 	}
 
-	
+	public IDAOProduit getDaoProduit() {
+		return daoProduit;
+	}
 
 	
 	
 	
-	
+
 }
