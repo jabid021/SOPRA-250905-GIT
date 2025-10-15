@@ -29,14 +29,14 @@ public class Module {
 	private Filiere filiere;
 	
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(name = "matiere")
 	private Matiere matiere;
 	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "formateur")
 	private Formateur formateur;
 	
-	
+	public Module() {}
 	public Module(LocalDate debut, LocalDate fin, int quest, Filiere filiere, Matiere matiere,Formateur formateur) {
 		this.debut = debut;
 		this.fin = fin;
