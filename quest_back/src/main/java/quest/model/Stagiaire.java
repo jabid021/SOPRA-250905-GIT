@@ -17,7 +17,7 @@ public class Stagiaire extends Personne{
 	@Embedded
 	private Adresse adresse;
 	@OneToOne
-	@JoinColumn(nullable=true)
+	@JoinColumn(name="ordinateur",nullable=true)
 	private Ordinateur ordinateur;
 	@ManyToOne
 	@JoinColumn(name="filiere", nullable=true)
