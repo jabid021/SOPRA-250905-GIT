@@ -14,7 +14,7 @@ public class Matiere {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(50)")
 	private String libelle;
 	
 	public Matiere() {}

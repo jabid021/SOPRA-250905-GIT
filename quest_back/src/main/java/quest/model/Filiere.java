@@ -1,7 +1,6 @@
 package quest.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,7 +21,9 @@ public class Filiere {
 	private Integer id;
 	@Column(columnDefinition = "VARCHAR(50)")
 	private String libelle;
+	@Column(nullable=false)
 	private LocalDate debut;
+	@Column(nullable=false)
 	private LocalDate fin;
 	@OneToMany(mappedBy = "filiere")
 	private List<Module> matieres;

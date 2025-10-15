@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import quest.context.Singleton;
+import quest.model.Module;
 
 public class DAOModule implements IDAOModule{
 
@@ -54,6 +55,8 @@ public class DAOModule implements IDAOModule{
         em.getTransaction().commit();
         em.close();
     }
+
+
 
 
 }
