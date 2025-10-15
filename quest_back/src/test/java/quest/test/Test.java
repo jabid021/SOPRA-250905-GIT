@@ -22,16 +22,22 @@ public class Test {
 		Ordinateur ordinateur2 = new Ordinateur("Asus",8);
 		Ordinateur ordinateur3 = new Ordinateur("HP",4);
 		
-		//ordinateur1 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
-		//ordinateur2 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
-		//ordinateur3 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		ordinateur1 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		ordinateur2 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		ordinateur3 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
 	
 		Formateur formateur1 = new Formateur("formateur","formateur","ABID","Jordan",Civilite.Homme,true);
 		Formateur formateur2 = new Formateur("formateur","formateur","PERROUALT","Jeremy",Civilite.Homme,false);
 		
+		formateur1 = Singleton.getInstance().getDAOFormateur.save(formateur1);
+		formateur2 = Singleton.getInstance().getDAOFormateur.save(formateur2);
+		
 		
 		Filiere filiere1 = new Filiere("250905-DIS-448-JAVA",LocalDate.parse("2025-09-05"),LocalDate.parse("2025-12-05"));
 		Filiere filiere2 = new Filiere("250908-DIS-448-JAVA",LocalDate.parse("2025-09-08"),LocalDate.parse("2025-12-08"));
+		
+		filiere1 = Singleton.getInstance().getDAOFiliere.save(filiere1);
+		filiere2 = Singleton.getInstance().getDAOFiliere.save(filiere2);
 		
 		
 		Matiere matiere1 = new Matiere("Java");
@@ -39,17 +45,30 @@ public class Test {
 		Matiere matiere3 = new Matiere("HTML");
 		Matiere matiere4 = new Matiere("Gestion du stress");
 		
+		matiere1 = Singleton.getInstance().getDAOMatiere.save(matiere1);
+		matiere2 = Singleton.getInstance().getDAOMatiere.save(matiere2);
+		matiere3 = Singleton.getInstance().getDAOMatiere.save(matiere3);
+		matiere4 = Singleton.getInstance().getDAOMatiere.save(matiere4);
+		
 		Module module1 = new Module(LocalDate.parse("2025-09-10"), LocalDate.parse("2025-09-15"), 7575, filiere1, matiere1,formateur1);
 		Module module2 = new Module(LocalDate.parse("2025-09-16"), LocalDate.parse("2025-09-18"), 8781, filiere1, matiere2,formateur1);
 		Module module3 = new Module(LocalDate.parse("2025-10-16"), LocalDate.parse("2025-10-17"), 9276, filiere1, matiere3,formateur1);
 		Module module4 = new Module(LocalDate.parse("2025-09-23"), LocalDate.parse("2025-09-23"), 6867, filiere1, matiere4,formateur1);
 		Module module5 = new Module(LocalDate.parse("2025-09-23"), LocalDate.parse("2025-09-23"), 7777, filiere2, matiere1,formateur2);
 
+		module1 = Singleton.getInstance().getDAOModule.save(module1);
+		module2 = Singleton.getInstance().getDAOModule.save(module2);
+		module3 = Singleton.getInstance().getDAOModule.save(module3);
+		module4 = Singleton.getInstance().getDAOModule.save(module4);
+		module5 = Singleton.getInstance().getDAOModule.save(module5);
+		
+		
 	
 		Stagiaire stagiaire1 = new Stagiaire("stagiaire","stagiaire","COSTENARO","Alyssa",Civilite.Femme,"email@email.fr","1","rue de Paris","75009","Paris", ordinateur1, filiere1);
 		Stagiaire stagiaire2 = new Stagiaire("stagiaire2","stagiaire2","DA COSTA","Jany",Civilite.Homme,"email2@email.fr","3bis","rue de Paris","75009","Paris", ordinateur2, filiere1);
 
-		
+		stagiaire1 = Singleton.getInstance().getDAOStagiaire.save(stagiaire1);
+		stagiaire2 = Singleton.getInstance().getDAOStagiaire.save(stagiaire2);
 	
 		
 		
