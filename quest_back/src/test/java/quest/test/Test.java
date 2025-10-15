@@ -15,7 +15,8 @@ public class Test {
 
 
 	public static void main(String[] args) {
-
+		
+		System.out.println("Début Test");
 		Singleton.getInstance();
 		
 		Ordinateur ordinateur1 = new Ordinateur("Dell",4);
@@ -57,6 +58,8 @@ public class Test {
 		
 
 		Singleton.getInstance().getEmf().close();
+		
+		System.out.println("Fin Test");
 	}
 
 }
