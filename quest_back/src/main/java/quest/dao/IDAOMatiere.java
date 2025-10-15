@@ -2,16 +2,10 @@ package quest.dao;
 
 import java.util.List;
 
-import eshop.model.Client;
-import eshop.model.Fournisseur;
-import eshop.model.Personne;
+import quest.model.Matiere;
 
-public interface IDAOMatiere extends IDAO<Personne,Integer> {
+public interface IDAOMatiere extends IDAO<Matiere,Integer> {
 
-	public List<Fournisseur> findAllFournisseur();
-	public List<Client> findAllClient();
-	public Client findByIdWithAchats(Integer idClient);
-
-	public Fournisseur findByIdWithStock(Integer idFournisseur);
+	
 
 }
