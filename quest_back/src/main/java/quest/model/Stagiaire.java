@@ -18,6 +18,10 @@ public class Stagiaire extends Personne{
 	@ManyToOne
 	private Filiere filiere;
 	
+	
+	public Stagiaire() {
+	}
+
 	public Stagiaire(Integer id, String login, String password, String nom, String prenom,Civilite civilite, String email,
 			String numero,String voie,String ville,String cp, Ordinateur ordinateur,Filiere filiere) {
 		super(id, login, password, nom, prenom,civilite);
