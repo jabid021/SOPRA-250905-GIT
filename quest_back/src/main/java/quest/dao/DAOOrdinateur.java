@@ -5,53 +5,53 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import quest.context.Singleton;
-import quest.model.Module;
+import quest.model.Ordinateur;
 
-public class DAOModule implements IDAOModule{
+public class DAOOrdinateur implements IDAOOrdinateur {
 
 	@Override
-	public List<Module> findAll() {
+	public List<Ordinateur> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		List<Module> modules  = em.createQuery("from Module").getResultList();
+		List<Ordinateur> modules  = em.createQuery("from Ordinateur").getResultList();
 		em.close();
 		return modules;
 	}
 
 	@Override
-	public Module findById(Integer id) {
+	public Ordinateur findById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Module module  = em.find(Module.class, id);
+		Ordinateur ordinateur  = em.find(Ordinateur.class, id);
 		em.close();
-		return module;
+		return ordinateur;
 	}
 
 	@Override
-	public Module save(Module module) {
+	public Ordinateur save(Ordinateur ordinateur) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		module=  em.merge(module);
+		ordinateur=  em.merge(ordinateur);
 		em.getTransaction().commit();
 		em.close();
-		return module;
+		return ordinateur;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		Module module = em.find(Module.class, id);
-		em.remove(module);
+		Ordinateur ordinateur = em.find(Ordinateur.class, id);
+		em.remove(ordinateur);
 		em.getTransaction().commit();
 		em.close();
 	
 	}
 
 	@Override
-	public void delete(Module module) {
+	public void delete(Ordinateur ordinateur) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		module = em.merge(module);
-		em.remove(module);
+		ordinateur = em.merge(ordinateur);
+		em.remove(ordinateur);
 		em.getTransaction().commit();
 		em.close();
 	}
