@@ -5,55 +5,54 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import quest.context.Singleton;
+import quest.model.Matiere;
 
-
-public class DAOModule implements IDAOModule{
+public class DAOMatiere implements IDAOMatiere {
 	
 	@Override
-	public List<Module> findAll() {
+	public List<Matiere> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		List<Module> module  = em.createQuery("from Module").getResultList();
+		List<Matiere> matiere  = em.createQuery("from Matiere").getResultList();
 		em.close();
-		return module;
+		return matiere;
 	}
 
 	@Override
-	public Module findById(Integer id) {
+	public Matiere findById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Module module  = em.find(Module.class, id);
+		Matiere matiere  = em.find(Matiere.class, id);
 		em.close();
-		return module;
+		return matiere;
 	}
 
 	@Override
-	public Module save(Module module) {
+	public Matiere save(Matiere matiere) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		module = em.merge(module);
+		matiere = em.merge(matiere);
 		em.getTransaction().commit();
 		em.close();
-		return module;
+		return matiere;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		Module module = em.find(Module.class, id);
-		em.remove(module);
+		Matiere matiere = em.find(Matiere.class, id);
+		em.remove(matiere);
 		em.getTransaction().commit();
 		em.close();
 	
 	}
 
 	@Override
-	public void delete(Module module) {
+	public void delete(Matiere matiere) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		module = em.merge(module);
-		em.remove(module);
+		matiere = em.merge(matiere);
+		em.remove(matiere);
 		em.getTransaction().commit();
 		em.close();
 	}
-
 }
