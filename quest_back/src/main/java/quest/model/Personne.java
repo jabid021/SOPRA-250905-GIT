@@ -1,15 +1,62 @@
 package quest.model;
 
-public abstract class Personne {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "personne")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type_personne", columnDefinition = "ENUM('Stagiaire','Formateur')")
+public abstract class Personne {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	
+	@Column(length = 25, nullable = false, unique = true)
 	protected String login;
+	
+	@Column(length = 180, nullable = false)
 	protected String password;
+	
+	@Column(length = 30, nullable = false)
 	protected String nom;
+	
+	@Column(length = 30, nullable = false)
 	protected String prenom;
+	
+	@Enumerated(EnumType.STRING)
 	protected Civilite civilite;
 	
+	@Column
+	private Boolean admin;
 	
+	@Embedded
+	private Adresse adresse;
+	
+	@ManyToOne
+    @JoinColumn(name = "filiere")
+    private Filiere filiere;
+
+    @ManyToOne
+    @JoinColumn(name = "ordinateur")
+    private Ordinateur ordinateur;
+	
+	public Personne() {}
+    
 	public Personne(Integer id, String login, String password, String nom, String prenom,Civilite civilite) {
 		this.id = id;
 		this.login = login;
@@ -74,5 +121,19 @@ public abstract class Personne {
 	public void setCivilite(Civilite civilite) {
 		this.civilite = civilite;
 	}
+	public Filiere getFiliere() {
+        return filiere;
+    }
 
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    public Ordinateur getOrdinateur() {
+        return ordinateur;
+    }
+
+    public void setOrdinateur(Ordinateur ordinateur) {
+        this.ordinateur = ordinateur;
+    }
 }
