@@ -19,7 +19,7 @@ public class Filiere {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(columnDefinition = "VARCHAR(50)")
+	@Column(columnDefinition = "VARCHAR(50)",nullable=false)
 	private String libelle;
 	@Column(nullable=false)
 	private LocalDate debut;

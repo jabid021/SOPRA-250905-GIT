@@ -1,7 +1,6 @@
 package quest.model;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -9,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity 
-@DiscriminatorValue("Stagiaire")
 public class Stagiaire extends Personne{
 
 	@Column(length=50)

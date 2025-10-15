@@ -1,13 +1,18 @@
 package quest.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
 
+	@Column(length = 15)
 	private String numero;
+	@Column(length = 50)
 	private String voie;
+	@Column(length = 50)
 	private String ville;
+	@Column(length = 15)
 	private String cp;
 	
 	public Adresse() {}

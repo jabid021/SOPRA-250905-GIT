@@ -5,10 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import antlr.collections.List;
 
 @Entity
 @Table (name = "ordinateur")
@@ -21,7 +18,7 @@ public class Ordinateur {
 	@Column(name = "marque", nullable = false, length = 25)
 	private String marque;
 	
-	@Column(name = "ram", nullable = false)
+	@Column(name = "ram")
 	private int ram;
 	
 	public Ordinateur() {}

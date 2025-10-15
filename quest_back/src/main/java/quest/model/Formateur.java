@@ -2,12 +2,10 @@ package quest.model;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity 
-@DiscriminatorValue("Formateur")
 public class Formateur extends Personne {
 
 	private boolean admin;
