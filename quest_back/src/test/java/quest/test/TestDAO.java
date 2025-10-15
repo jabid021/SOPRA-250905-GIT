@@ -65,12 +65,12 @@ public class TestDAO {
             System.out.println(f);
         }
         
-        System.out.println("\n---- Module avec ID ----");
+        System.out.println("\n---- Filiere avec ID ----");
         Filiere filiere = Singleton.getInstance().getDaoFiliere().findById(2);
         if (filiere != null) {
             System.out.println(filiere);
         } else {
-            System.out.println("Aucun module trouvé avec cet ID");
+            System.out.println("Aucune filiere trouvée avec cet ID");
         }
         
 	}
