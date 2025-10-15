@@ -1,11 +1,31 @@
 package quest.model;
 
-public class Ordinateur {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import antlr.collections.List;
+
+@Entity
+@Table (name = "ordinateur")
+public class Ordinateur {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numero")
 	private Integer id;
+	
+	@Column(name = "marque", nullable = false, length = 25)
 	private String marque;
+	
+	@Column(name = "ram", nullable = false)
 	private int ram;
 	
+	public Ordinateur() {}
+	 
 	public Ordinateur(Integer id, String marque, int ram) {
 		this.id = id;
 		this.marque = marque;

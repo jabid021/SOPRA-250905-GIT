@@ -2,10 +2,22 @@ package quest.model;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity 
+@DiscriminatorValue("formateur")
 public class Formateur extends Personne {
 
 	private boolean admin;
+	@OneToMany
+	@JoinColumn(name="libelle", nullable=false)
 	private List<Module> formations;
+	
+	
+	public Formateur() {}
 	
 	public Formateur(Integer id, String login, String password, String nom, String prenom,Civilite civilite, boolean admin) {
 		super(id, login, password, nom, prenom,civilite);
