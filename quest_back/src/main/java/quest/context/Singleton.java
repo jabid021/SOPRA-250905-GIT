@@ -3,10 +3,27 @@ package quest.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import quest.dao.DAOFiliere;
+import quest.dao.DAOMatiere;
+import quest.dao.DAOModule;
+import quest.dao.DAOOrdinateur;
+import quest.dao.DAOPersonne;
+import quest.dao.IDAOFiliere;
+import quest.dao.IDAOMatiere;
+import quest.dao.IDAOModule;
+import quest.dao.IDAOOrdinateur;
+import quest.dao.IDAOPersonne;
+
 public class Singleton {
 
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 	private static Singleton instance=null;
+	
+	private IDAOPersonne daoPersonne = new DAOPersonne();
+	private IDAOFiliere daoFiliere = new DAOFiliere();
+	private IDAOMatiere daoMatiere = new DAOMatiere();
+	private IDAOModule daoModule = new DAOModule();
+	private IDAOOrdinateur daoOrdinateur = new DAOOrdinateur();
 	
 	
 	private Singleton() {}
@@ -19,6 +36,26 @@ public class Singleton {
 
 	public EntityManagerFactory getEmf() {
 		return emf;
+	}
+
+	public IDAOPersonne getDaoPersonne() {
+		return daoPersonne;
+	}
+
+	public IDAOFiliere getDaoFiliere() {
+		return daoFiliere;
+	}
+
+	public IDAOMatiere getDaoMatiere() {
+		return daoMatiere;
+	}
+
+	public IDAOModule getDaoModule() {
+		return daoModule;
+	}
+
+	public IDAOOrdinateur getDaoOrdinateur() {
+		return daoOrdinateur;
 	}
 	
 	
