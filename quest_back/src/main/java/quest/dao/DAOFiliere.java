@@ -3,8 +3,8 @@ package quest.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 
+import quest.context.Singleton;
 import quest.model.Filiere;
 
 public class DAOFiliere implements IDAOFiliere {
@@ -26,40 +26,33 @@ public class DAOFiliere implements IDAOFiliere {
     }
 
     @Override
-    public Filiere insert(Filiere f) {
-        EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(f);
-        tx.commit();
-        em.close();
-        return f;
-    }
+    public Filiere save(Filiere filiere) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		filiere = em.merge(filiere);
+		em.getTransaction().commit();
+		em.close();
+		return filiere;
+	}
 
     @Override
-    public Filiere update(Filiere f) {
-        EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        f = em.merge(f);
-        tx.commit();
-        em.close();
-        return f;
-    }
+	public void deleteById(Integer id) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Filiere client = em.find(Filiere.class, id);
+		em.remove(client);
+		em.getTransaction().commit();
+		em.close();
+	
+	}
 
     @Override
-    public boolean delete(Integer id) {
-        EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        Filiere f = em.find(Filiere.class, id);
-        if (f != null) {
-            tx.begin();
-            em.remove(f);
-            tx.commit();
-            em.close();
-            return true;
-        }
-        em.close();
-        return false;
+    public void delete(Filiere filiere) {
+    	EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		filiere = em.merge(filiere);
+		em.remove(filiere);
+		em.getTransaction().commit();
+		em.close();
     }
 }
