@@ -9,12 +9,14 @@ import restaurant.dao.DAOClient;
 import restaurant.dao.DAOCompte;
 import restaurant.dao.DAOReservation;
 import restaurant.dao.DAOTableuh;
+import restaurant.dao.DAOVaisselle;
 import restaurant.dao.IDAOAchat;
 import restaurant.dao.IDAOArticle;
 import restaurant.dao.IDAOClient;
 import restaurant.dao.IDAOCompte;
 import restaurant.dao.IDAOReservation;
 import restaurant.dao.IDAOTableuh;
+import restaurant.dao.IDAOVaisselle;
 
 public class Singleton {
 
@@ -28,7 +30,7 @@ public class Singleton {
 	private IDAOCompte daoCompte = new DAOCompte();
 	private IDAOReservation daoReservation = new DAOReservation();
 	private IDAOTableuh daoTableuh = new DAOTableuh();
-	
+	private IDAOVaisselle daoVaisselle = new DAOVaisselle();
 	
 	
 	private Singleton() {}
@@ -68,6 +70,10 @@ public class Singleton {
 
 	public IDAOTableuh getDaoTableuh() {
 		return daoTableuh;
+	}
+
+	public IDAOVaisselle getDaoVaisselle() {
+		return daoVaisselle;
 	}
 
 

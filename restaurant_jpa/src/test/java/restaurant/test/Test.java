@@ -7,16 +7,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import restaurant.dao.Couleur;
 import restaurant.model.Achat;
 import restaurant.model.Admin;
+import restaurant.model.Assiette;
 import restaurant.model.Boisson;
 import restaurant.model.Client;
+import restaurant.model.Couleur;
+import restaurant.model.Couvert;
 import restaurant.model.Employe;
 import restaurant.model.Genre;
 import restaurant.model.Plat;
 import restaurant.model.Reservation;
 import restaurant.model.Tableuh;
+import restaurant.model.Verre;
 
 public class Test {
 
@@ -57,6 +60,10 @@ public class Test {
 		table3.setServeur(emp1);
 		
 		
+		Verre verre = new Verre("Description d'un verre",100);
+		Assiette assiette = new Assiette("Description d'une assiette");
+		Couvert couvert = new Couvert("Description d'un couvert",true);
+		
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("configJPA");
 		EntityManager em = emf.createEntityManager();
@@ -86,6 +93,10 @@ public class Test {
 		em.persist(achat1);
 		em.persist(achat2);
 		em.persist(achat3);
+		
+		em.persist(verre);
+		em.persist(assiette);
+		em.persist(couvert);
 		
 		em.getTransaction().commit();
 

@@ -17,8 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import restaurant.dao.Couleur;
-
 @Entity
 public class Tableuh {
 

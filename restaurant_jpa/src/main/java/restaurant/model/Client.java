@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"lastname","firstname"}))
@@ -31,6 +32,11 @@ public class Client {
 	@Column(name="genre",nullable = false,columnDefinition = "enum('homme', 'femme', 'nb')")
 	private Genre civilite;
 
+	@Version
+	private int version;
+	
+	
+	
 	@OneToMany(mappedBy="client")
 	/*@JoinTable
 	(
@@ -109,6 +115,15 @@ public class Client {
 
 	public void setHistoriqueResa(List<Reservation> historiqueResa) {
 		this.historiqueResa = historiqueResa;
+	}
+
+	
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

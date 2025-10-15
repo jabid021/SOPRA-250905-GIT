@@ -25,7 +25,7 @@ public abstract class Personne {
 	protected String login;
 	@Column(length = 180,nullable = false)
 	protected String password;
-	@Column(length = 30,nullable = false)
+	@Column(nullable = false,columnDefinition = "VARCHAR(30) default 'Doe'")
 	protected String nom;
 	@Column(length = 30,nullable = false)
 	protected String prenom;

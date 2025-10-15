@@ -25,10 +25,10 @@ public class Module {
 	private int quest;
 	
 	@ManyToOne
-	@JoinColumn(name="filiere")
+	@JoinColumn(name="filiere",nullable = false)
 	private Filiere filiere;
 	@ManyToOne
-	@JoinColumn(name="matiere")
+	@JoinColumn(name="matiere",nullable = false)
 	private Matiere matiere;
 	@ManyToOne
 	@JoinColumn(name="formateur")

@@ -17,6 +17,7 @@ public class Ordinateur {
 	private Integer id;
 	@Column(length = 25,nullable = false)
 	private String marque;
+	@Column(columnDefinition = "int default 4")
 	private int ram;
 	
 	public Ordinateur() {}

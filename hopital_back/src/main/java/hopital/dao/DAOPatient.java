@@ -2,38 +2,73 @@ package hopital.dao;
 
 import java.util.List;
 
-import hopital.model.Patient;
+import javax.persistence.EntityManager;
 
-public class DAOPatient implements IDAOPatient{
+import hopital.context.Singleton;
+import hopital.model.Patient;
+import hopital.model.Visite;
+
+public class DAOPatient implements IDAOPatient {
 
 	@Override
 	public List<Patient> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Patient> patients  = em.createQuery("from Patient").getResultList();
+		em.close();
+		return patients;
 	}
 
 	@Override
 	public Patient findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Patient patient  = em.find(Patient.class, id);
+		em.close();
+		return patient;
 	}
 
 	@Override
 	public Patient save(Patient patient) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		patient=  em.merge(patient);
+		em.getTransaction().commit();
+		em.close();
+		return patient;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Patient patient = em.find(Patient.class, id);
+		for(Visite v : patient.getHistorique()) 
+		{
+			v.setPatient(null);
+			em.merge(v);
+		}
+		em.remove(patient);
+		em.getTransaction().commit();
+		em.close();
+
 	}
 
 	@Override
 	public void delete(Patient patient) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		patient = em.merge(patient);
+		for(Visite v : patient.getHistorique()) 
+		{
+			v.setPatient(null);
+			em.merge(v);
+		}
+		em.remove(patient);
+		em.getTransaction().commit();
+		em.close();
 	}
 
+
+
+
 }
+

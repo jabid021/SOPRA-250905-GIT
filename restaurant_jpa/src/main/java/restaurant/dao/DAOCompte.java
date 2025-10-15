@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import restaurant.context.Singleton;
+import restaurant.model.Admin;
 import restaurant.model.Compte;
+import restaurant.model.Employe;
 
 public class DAOCompte implements IDAOCompte {
 
@@ -75,6 +77,22 @@ public class DAOCompte implements IDAOCompte {
 		}catch(Exception e) {e.printStackTrace();}
 		
 		return compte;
+	}
+
+	@Override
+	public List<Admin> findAllAdmin() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Admin> comptes  = em.createQuery("from Admin").getResultList();
+		em.close();
+		return comptes;
+	}
+
+	@Override
+	public List<Employe> findAllEmploye() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Employe> comptes  = em.createQuery("from Employe").getResultList();
+		em.close();
+		return comptes;
 	}
 
 }
