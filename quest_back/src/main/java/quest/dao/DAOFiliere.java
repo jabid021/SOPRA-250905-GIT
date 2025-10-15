@@ -5,99 +5,60 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import quest.context.Singleton;
+import quest.model.Filiere;
 
-import eshop.context.Singleton;
-import eshop.model.Client;
-import eshop.model.Fournisseur;
-import eshop.model.Personne;
 
-public class DAOFiliere implements IDAOPersonne {
+
+public class DAOFiliere implements IDAOFiliere {
 
 	@Override
-	public List<Personne> findAll() {
+	public List<Filiere> findAll() {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		List<Personne> personnes  = em.createQuery("from Personne").getResultList();
+		List<Filiere> filieres  = em.createQuery("from Filiere").getResultList();
 		em.close();
-		return personnes;
+		return filieres;
 	}
 
 	@Override
-	public Personne findById(Integer id) {
+	public Filiere findById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		Personne personne  = em.find(Personne.class, id);
+		Filiere filiere  = em.find(Filiere.class, id);
 		em.close();
-		return personne;
+		return filiere;
 	}
 
 	@Override
-	public Personne save(Personne personne) {
+	public Filiere save(Filiere filiere) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		personne=  em.merge(personne);
+		filiere=  em.merge(filiere);
 		em.getTransaction().commit();
 		em.close();
-		return personne;
+		return filiere;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		Personne personne = em.find(Personne.class, id);
-		em.remove(personne);
+		Filiere filiere = em.find(Filiere.class, id);
+		em.remove(filiere);
 		em.getTransaction().commit();
 		em.close();
 	
 	}
 
 	@Override
-	public void delete(Personne personne) {
+	public void delete(Filiere filiere) {
 		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
-		personne = em.merge(personne);
-		em.remove(personne);
+		filiere = em.merge(filiere);
+		em.remove(filiere);
 		em.getTransaction().commit();
 		em.close();
 	}
 
-	@Override
-	public List<Client> findAllClient() {
-	    EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-	    List<Client> customers = em.createQuery("from Client", Client.class).getResultList();
-	    em.close();
-	    return customers;
-	}
-
-	@Override
-	public List<Fournisseur> findAllFournisseur() {
-	    EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-	    List<Fournisseur> suppliers = em.createQuery("from Fournisseur", Fournisseur.class).getResultList();
-	    em.close();
-	    return suppliers;
-	}
-	
-	@Override
-	public Client findByIdWithAchats(Integer idClient) {
-		Client client=null;
-		try {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		client  = em.createQuery("SELECT c from Client c LEFT JOIN FETCH c.achats where c.id=:id",Client.class).setParameter("id", idClient).getSingleResult();
-		em.close();
-		}catch(Exception e) {e.printStackTrace();}
-		return client;
-	}
-
-	@Override
-	public Fournisseur findByIdWithStock(Integer idFournisseur) {
-		Fournisseur fournisseur = null;
-		try {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		fournisseur  = em.createQuery("SELECT f from Fournisseur f JOIN FETCH f.stock where f.id=:id",Fournisseur.class).setParameter("id", idFournisseur).getSingleResult();
-		em.close();
-		}catch(Exception e) {e.printStackTrace();}
-		
-		return fournisseur;
-	}
 
 	
 

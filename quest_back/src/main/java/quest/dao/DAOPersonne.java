@@ -5,11 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import quest.context.Singleton;
+import quest.model.Personne;
 
-import eshop.context.Singleton;
-import eshop.model.Client;
-import eshop.model.Fournisseur;
-import eshop.model.Personne;
+
 
 public class DAOPersonne implements IDAOPersonne {
 
@@ -60,45 +59,10 @@ public class DAOPersonne implements IDAOPersonne {
 		em.close();
 	}
 
-	@Override
-	public List<Client> findAllClient() {
-	    EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-	    List<Client> customers = em.createQuery("from Client", Client.class).getResultList();
-	    em.close();
-	    return customers;
-	}
-
-	@Override
-	public List<Fournisseur> findAllFournisseur() {
-	    EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-	    List<Fournisseur> suppliers = em.createQuery("from Fournisseur", Fournisseur.class).getResultList();
-	    em.close();
-	    return suppliers;
-	}
-	
-	@Override
-	public Client findByIdWithAchats(Integer idClient) {
-		Client client=null;
-		try {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		client  = em.createQuery("SELECT c from Client c LEFT JOIN FETCH c.achats where c.id=:id",Client.class).setParameter("id", idClient).getSingleResult();
-		em.close();
-		}catch(Exception e) {e.printStackTrace();}
-		return client;
-	}
-
-	@Override
-	public Fournisseur findByIdWithStock(Integer idFournisseur) {
-		Fournisseur fournisseur = null;
-		try {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		fournisseur  = em.createQuery("SELECT f from Fournisseur f JOIN FETCH f.stock where f.id=:id",Fournisseur.class).setParameter("id", idFournisseur).getSingleResult();
-		em.close();
-		}catch(Exception e) {e.printStackTrace();}
-		
-		return fournisseur;
-	}
 
 	
 
 }
+	
+
+
