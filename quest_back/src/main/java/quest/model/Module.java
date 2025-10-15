@@ -19,23 +19,25 @@ public class Module {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "debut",nullable=false)
 	private LocalDate debut;
+	@Column(name = "fin",nullable=false)
 	private LocalDate fin;
 	
-	@Column(name = "quest")
+	@Column(name = "quest",nullable=false)
 	private int quest;
 	
 	 @ManyToOne
-	 @JoinColumn(name = "id_filiere")
+	 @JoinColumn(name = "filiere")
 	 
 	private Filiere filiere;
 	 
 	 @ManyToOne
-	 @JoinColumn(name = "id_matiere")
+	 @JoinColumn(name = "matiere")
 	private Matiere matiere;
 	 
 	 @ManyToOne
-	 @JoinColumn(name = "id_formateur")
+	 @JoinColumn(name = "formateur")
 	private Formateur formateur;
 	
 	

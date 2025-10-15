@@ -14,7 +14,7 @@ public class Matiere {
 	@Column(name="id")
 	private Integer id;
 	
-	@Column(name="marque",nullable=false ,columnDefinition = "VARCHAR(50)")
+	@Column(name="libelle",nullable=false ,columnDefinition = "VARCHAR(50)")
 	private String libelle;
 	
 	

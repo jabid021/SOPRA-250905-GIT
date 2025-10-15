@@ -22,9 +22,9 @@ public class Test {
 		Ordinateur ordinateur2 = new Ordinateur("Asus",8);
 		Ordinateur ordinateur3 = new Ordinateur("HP",4);
 		
-		//ordinateur1 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
-		//ordinateur2 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
-		//ordinateur3 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		ordinateur1 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur1);
+		ordinateur2 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur2);
+		ordinateur3 = Singleton.getInstance().getDaoOrdinateur().save(ordinateur3);
 	
 		Formateur formateur1 = new Formateur("formateur","formateur","ABID","Jordan",Civilite.Homme,true);
 		Formateur formateur2 = new Formateur("formateur","formateur","PERROUALT","Jeremy",Civilite.Homme,false);
@@ -46,8 +46,8 @@ public class Test {
 		Module module5 = new Module(LocalDate.parse("2025-09-23"), LocalDate.parse("2025-09-23"), 7777, filiere2, matiere1,formateur2);
 
 	
-		Stagiaire stagiaire1 = new Stagiaire("stagiaire","stagiaire","COSTENARO","Alyssa",Civilite.Femme,"email@email.fr","1","rue de Paris","75009","Paris", ordinateur1, filiere1);
-		Stagiaire stagiaire2 = new Stagiaire("stagiaire2","stagiaire2","DA COSTA","Jany",Civilite.Homme,"email2@email.fr","3bis","rue de Paris","75009","Paris", ordinateur2, filiere1);
+		Stagiaire stagiaire1 = new Stagiaire("stagiaire","stagiaire","COSTENARO","Alyssa",Civilite.Femme,"email@email.fr","1","rue de Paris","Paris","75009", ordinateur1, filiere1);
+		Stagiaire stagiaire2 = new Stagiaire("stagiaire2","stagiaire2","DA COSTA","Jany",Civilite.Homme,"email2@email.fr","3bis","rue de Paris","Paris","75009", ordinateur2, filiere1);
 
 		
 	

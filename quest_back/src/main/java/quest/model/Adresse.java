@@ -1,14 +1,18 @@
 package quest.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 //Cote bdd,les infos d'une adresse doivent etre embarquables dans une autre table
 @Embeddable
 public class Adresse {
-
+	@Column(name="numero",columnDefinition = "VARCHAR(15)")
 	private String numero;
+	@Column(name="voie",columnDefinition = "VARCHAR(50)")
 	private String voie;
+	@Column(name="ville",columnDefinition = "VARCHAR(50)")
 	private String ville;
+	@Column(name="cp",columnDefinition = "VARCHAR(15)")
 	private String cp;
 	
 	public Adresse() {}

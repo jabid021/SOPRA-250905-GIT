@@ -3,6 +3,8 @@ package quest.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="personne")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Formateur','Stagiaire')")
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('Formateur','Stagiaire')")
 public abstract class Personne {
 
 	@Id
@@ -32,7 +34,8 @@ public abstract class Personne {
 	@Column(nullable = false,columnDefinition = "VARCHAR(120)")
 	protected String prenom;
 	
-	
+	@Column(nullable = false,columnDefinition = "enum('Homme', 'Femme', 'NB')")
+	@Enumerated(EnumType.STRING)
 	protected Civilite civilite;
 	
 	
