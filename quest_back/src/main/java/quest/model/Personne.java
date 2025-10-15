@@ -35,7 +35,7 @@ public abstract class Personne {
 	protected String prenom;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "ENUM('Homme','Femme','NB')")
+	@Column(columnDefinition = "ENUM('Homme','Femme','NB')",nullable=false)
 	protected Civilite civilite;
 
 
