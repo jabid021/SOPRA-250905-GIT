@@ -4,10 +4,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import quest.dao.DAOFiliere;
+import quest.dao.DAOMatiere;
 import quest.dao.DAOModule;
 import quest.dao.DAOOrdinateur;
 import quest.dao.DAOPersonne;
 import quest.dao.IDAOFiliere;
+import quest.dao.IDAOMatiere;
 import quest.dao.IDAOModule;
 import quest.dao.IDAOOrdinateur;
 import quest.dao.IDAOPersonne;
