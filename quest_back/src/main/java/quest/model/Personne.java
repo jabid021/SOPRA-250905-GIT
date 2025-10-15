@@ -3,6 +3,8 @@ package quest.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
-	@Column(length=25)
+	@Column(length=25,unique=true)
 	protected String login;
 	@Column(length=180)
 	protected String password;
@@ -27,6 +29,7 @@ public abstract class Personne {
 	protected String nom;
 	@Column(length=30)
 	protected String prenom;
+	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition="enum('Homme', 'Femme', 'NB')")
 	protected Civilite civilite;
 	
