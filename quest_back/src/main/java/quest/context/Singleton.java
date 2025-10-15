@@ -3,6 +3,13 @@ package quest.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import quest.dao.DAOFiliere;
+import quest.dao.DAOMatiere;
+import quest.dao.DAOModule;
+import quest.dao.IDAOFiliere;
+import quest.dao.IDAOMatiere;
+import quest.dao.IDAOModule;
+
 
 public class Singleton {
 
@@ -10,7 +17,7 @@ public class Singleton {
 	private static Singleton instance=null;
 	private IDAOPersonne daoAchat = new DAOPersonne();
 	private IDAOOrdinateur daoArticle = new DAOOrdinateur();
-	private IDAOFiliere daoClient = new DAOFiliere());
+	private IDAOFiliere daoClient = new DAOFiliere();
 	private IDAOModule daoCompte = new DAOModule();
 	private IDAOMatiere daoTableuh = new DAOMatiere();
 	
@@ -27,25 +34,6 @@ public class Singleton {
 		return emf;
 	}
 
-	public IDAOPersonne getDaoAchat() {
-		return daoAchat;
-	}
-
-	public IDAOOrdinateur getDaoArticle() {
-		return daoArticle;
-	}
-
-	public IDAOFiliere getDaoClient() {
-		return daoClient;
-	}
-
-	public IDAOModule getDaoCompte() {
-		return daoCompte;
-	}
-
-	public IDAOMatiere getDaoTableuh() {
-		return daoTableuh;
-	}
 	
 	
 }
