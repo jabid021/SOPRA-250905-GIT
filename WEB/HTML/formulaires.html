@@ -13,6 +13,14 @@ button => submit / reset / button
 bloc visuel pour les forms => fieldset / legend
 
 
+attributs de la balise form :
+
+action => page cible vers laquelle le formulaire send les données
+
+method => GET et POST
+  En GET => parametres du formulaire passent dans l'url => www.ajc-ingeniere.fr/pageCible?param1=value1&param2=value2...
+  En POST (uniquemnt pour les formulaires) => parametres du formulaire n'apparaissent pas dans l'url (transmission direct au serveur)
+
 -->
 
 
@@ -20,7 +28,7 @@ bloc visuel pour les forms => fieldset / legend
 
 <h1>Demo Formulaire</h1>
 
-<form>
+<form action="pageCible" method="POST" >
 
   <fieldset>
     <legend>Bloc 1</legend>
@@ -32,7 +40,7 @@ bloc visuel pour les forms => fieldset / legend
       </tr>
       <tr>
         <td>Password : </td>
-        <td><input type="password" placeholder="Saisir votre mot de passe" name="password"></td>
+        <td><input type="password" placeholder="Saisir votre mot de passe" pattern="^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$" name="password"></td>
       </tr>
 
       <tr>
@@ -47,7 +55,7 @@ bloc visuel pour les forms => fieldset / legend
 
       <tr>
         <td>Email : </td>
-        <td><input required  disabled type="email" placeholder="Saisir email" value="jordan@gmail.com" name="email"></td>
+        <td><input required  type="email" placeholder="Saisir email" value="jordan@gmail.com" name="email"></td>
       </tr>
 
       <tr>
@@ -98,6 +106,11 @@ bloc visuel pour les forms => fieldset / legend
       <tr>
         <td>Evals : </td>
         <td><textarea placeholder="Saisir votre eval" rows="5" cols="80" name="evals">Le commentaire actuel</textarea></td>
+      </tr>
+
+      <tr>
+        <td>CV : </td>
+        <td><input type="file"></td>
       </tr>
     </table>
   </fieldset>
