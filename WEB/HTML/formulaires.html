@@ -1,0 +1,161 @@
+<!--
+champ de texte (input) => text, password,number, email, url, date, time, week, tel, hidden, file, color, range
+Zone de texte => textarea
+List deroulante => select / option
+
+choix : checkbox (0,*) / radio  (0,1)
+
+button => submit / reset / button
+
+bloc visuel pour les forms => fieldset / legend
+
+
+-->
+
+
+
+
+<h1>Demo Formulaire</h1>
+
+<form>
+
+  <fieldset>
+    <legend>Bloc 1</legend>
+    <table>
+      <tr>
+        <td><label for="input-login">Login</label></td>
+        <td><input type="text" id="input-login" placeholder="Saisir votre login"></td>
+      </tr>
+      <tr>
+        <td>Password : </td>
+        <td><input type="password" placeholder="Saisir votre mot de passe"></td>
+      </tr>
+
+      <tr>
+        <td>Age : </td>
+        <td><input type="number" placeholder="Saisir age"></td>
+      </tr>
+
+      <tr>
+        <td>Email : </td>
+        <td><input required type="email" placeholder="Saisir email" value="jordan@gmail.com"></td>
+      </tr>
+
+      <tr>
+        <td>Tel : </td>
+        <td><input type="tel" placeholder="Saisir tel"></td>
+      </tr>
+
+      <tr>
+        <td>Naissance : </td>
+        <td><input type="date"></td>
+      </tr>
+
+
+    </table>
+  </fieldset>
+
+
+
+
+  <fieldset>
+    <legend>Bloc 2</legend>
+    <table>
+      <tr>
+        <td>RDV : </td>
+        <td><input type="time"></td>
+      </tr>
+      <tr>
+        <td>Planning : </td>
+        <td><input type="week"></td>
+      </tr>
+
+      <tr>
+        <td>Fond : </td>
+        <td><input type="color"></td>
+      </tr>
+
+
+      <tr>
+        <td>Note : </td>
+        <td><input type="range" min="0" max="20"></td>
+      </tr>
+
+      <tr>
+        <td>Evals : </td>
+        <td><textarea placeholder="Saisir votre eval" rows="5" cols="80">Le commentaire actuel</textarea></td>
+      </tr>
+    </table>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Bloc 3 - Choix</legend>
+
+    <table>
+      <tr>
+        <td>Civilite : </td>
+        <td>
+          <select>
+            <option>Homme</option>
+            <option selected>Femme</option>
+            <option>NB</option>
+          </select>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td>Vos OS : </td>
+        <td>
+          <select multiple>
+            <optgroup label="MSDOS">
+              <option>Windows</option>
+            </optgroup>
+
+            <optgroup label="Unix">
+              <option>MacOs</option>
+              <option>Linux</option>
+            </optgroup>
+          </select>
+
+
+          <select>
+            <optgroup label="MSDOS">
+              <option>Windows</option>
+            </optgroup>
+
+            <optgroup label="Unix">
+              <option>MacOs</option>
+              <option>Linux</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>Ingredients : </td>
+        <td>
+          <label for="ingredient-farine">Farine</label><input  checked type="checkbox" id="ingredient-farine">
+          <label for="ingredient-lait">Lait</label> <input type="checkbox" id="ingredient-lait">
+          <label for="ingredient-cafe">Cafe</label> <input type="checkbox" id="ingredient-cafe">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>Civilite : </td>
+        <td>
+          <label for="civilite-homme">Homme</label> <input type="radio" id="civilite-homme" name="civilite">
+          <label for="civilite-femme">Femme</label> <input checked type="radio" id="civilite-femme" name="civilite">
+          <label for="civilite-nb">NB</label> <input type="radio" id="civilite-nb" name="civilite">
+        </td>
+      </tr>
+
+    </table>
+  </fieldset>
+
+  <input type="submit" value="Save"><input type="reset" value="Reset">
+</form>
