@@ -20,28 +20,105 @@ La zone d'archives fait 15% de largeur
 La zone de navigation fait 30% de largeur
 La zone copyright fait 50% de largeur
 La zone vide fait le reste de la largeur
- -->
+-->
+
+<style>
+
+  body{margin:0;}
+
+  container
+  {
+    height:120vh;
+    display:grid;
+    grid-template-rows : 12.5% 1fr 10%;
+  }
+
+  header{
+    display:grid;
+    grid-template-columns : 15% 85%;
+    border:solid black 2px;
+  }
+
+  header>div:first-of-type
+  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    font-weight:bold;
+  }
+
+  header>div:last-of-type
+  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    text-transform:uppercase;
+    background-color:grey;
+  }
+
+  main{
+    display:grid;
+    grid-template-columns : 17% 68% 1fr;
+  }
+
+  main>nav
+  {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:30px;
+  }
+
+  #archives ul
+  {
+    list-style-type: none;
+  }
+
+  footer
+  {
+    background-color:yellow;
+    display:grid;
+    grid-template-columns : 30% 50% 1fr;
+  }
+
+  footer nav
+  {
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+  }
 
 
+  footer div:nth-of-type(1)
+  {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
-<div id="container">
+</style>
 
-  <div id="header">
+
+<container>
+
+  <header>
     <div>Logo</div>
     <div>Accueil</div>
-  </div>
+  </header>
 
 
-  <div id="main">
-    <div>
+  <main>
+    <nav>
       <a href="">Accueil</a>
       <a href="">Item 1</a>
       <a href="">Item 2</a>
       <a href="">Item 3</a>
       <a href="">Contact</a>
-    </div>
+    </nav>
 
-    <div id="content">
+    <content>
       <h1>Sujet de la page</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -86,9 +163,9 @@ La zone vide fait le reste de la largeur
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco</p>
 
-                  </div>
+                  </content>
 
-                  <div id="asside">
+                  <aside>
                     <p>Archives</p>
                     <div id="archives">
                       <ul>
@@ -98,18 +175,18 @@ La zone vide fait le reste de la largeur
                         <li><a href="">Mai 2019</a></li>
                       </ul>
                     </div>
-                  </div>
-                </div>
+                  </aside>
+                </main>
 
 
-                <div id="footer">
-                  <div>
+                <footer>
+                  <nav>
                     <a href="">Accueil</a>
                     <a href="">Plan</a>
                     <a href="">Contact</a>
                     <a href="">CGU</a>
-                  </div>
+                  </nav>
                   <div>Gabarit - Copyrigth &#8471; 2019-2022</div>
-                </div>
+                </footer>
 
-              </div>
+              </aside>
