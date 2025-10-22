@@ -1,0 +1,71 @@
+<!--
+
+types d'events :
+
+Events souris : click,mousedown (appuyer sur le click gauche), mouseup(relacher click gauche), dblclick, mouseover, mouseout,mousemove
+Event clavier : keypress, keydown,keyup
+Event formulaire : change, focus, focusout
+-->
+
+
+<style>
+  #titreEvent:hover
+  {
+    color:red;
+    font-size:45px;
+  }
+
+  #prenomStatut {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    margin-left:5px;
+  }
+
+  #carImg
+  {
+    position:absolute;
+    bottom:0;
+    right:0;
+  }
+</style>
+
+
+<container>
+  <p onclick="demoInlineJS()">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <h1 id="titreEvent">Souris ici pour zoom le parag suivant</h1>
+
+  <p id="paragEvent">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <input type="color" id="couleurParag"> <input id="btnReset" type="button" value="Reset Couleur">
+
+  <hr><hr><hr>
+
+
+  <table border>
+    <tr><th>Prenom</th></tr>
+    <tbody id="demoTableau">
+      <tr><td>Jordan</td></tr>
+      <tr><td>John</td></tr>
+    </tbody>
+    <tr><th>Prenom</th></tr>
+
+  </table>
+
+  <input id="input-prenom" type="text" placeholder="prenom">
+  <input disabled id="btnAddTab" type="button" value="Valider"><div id="prenomStatut"></div>
+
+<hr><hr><hr>
+
+
+
+<img id="carImg" src="blue.gif">
+
+</container>
+
+
+<script charset="utf-8" src="parags.js"></script>
+<script charset="utf-8" src="tab.js"></script>
