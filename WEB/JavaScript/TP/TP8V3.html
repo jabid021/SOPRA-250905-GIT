@@ -20,38 +20,32 @@
 
 <script charset="utf-8">
 
-var typeElement = prompt("Changer via : id / class / tag ?");
-var nomElement;
-var prop="color";
-var value = prompt(`Quelle value pour la prop : ${prop} pour le changement sur l'element : ${typeElement}`);
+  var elements = document.getElementsByTagName('*');
 
-if(typeElement=="id")
-{
-  nomElement="paragPrinci";
-  document.getElementById(nomElement).style.setProperty(prop,value);
-}
-else if(typeElement=="class")
-{
-    nomElement="secondaire";
-  for(balise of document.getElementsByClassName(nomElement))
-  {
-    balise.style.setProperty(prop,value);
+  var ids = [];
+  var classes = [];
+  var tags = [];
+
+  for (var i = 0; i < elements.length; i++) {
+    var el = elements[i];
+
+    if (el.id){ids.push(el.id);}
+
+    if (el.classList && el.classList.length) {
+      for (var j = 0; j < el.classList.length; j++) {
+        classes.push(el.classList[j]);
+      }
+    }
+
+    tags.push(el.tagName.toLowerCase());
   }
 
-}
-else if(typeElement=="tag")
-{
-    nomElement="p";
-  for(balise of document.getElementsByTagName(nomElement))
-  {
-    balise.style.setProperty(prop,value);
-  }
-}
-else
-{
-  alert("ce type d'element n'existe pas...");
-}
+ids = Array.from(new Set(ids));
+classes = Array.from(new Set(classes));
+tags = Array.from(new Set(tags));
 
-
+console.log('IDs:', ids);
+console.log('Classes:', classes);
+console.log('Tags:', tags);
 
 </script>
