@@ -58,14 +58,67 @@ Event formulaire : change, focus, focusout
   <input id="input-prenom" type="text" placeholder="prenom">
   <input disabled id="btnAddTab" type="button" value="Valider"><div id="prenomStatut"></div>
 
-<hr><hr><hr>
+  <hr><hr><hr>
+  <input id="startVoiture" type="button" value="VROUM"><input id="stopVoiture" type="button" value="Stop VROUM">
 
 
-
-<img id="carImg" src="blue.gif">
+  <img id="carImg" src="blue.gif">
 
 </container>
 
 
 <script charset="utf-8" src="parags.js"></script>
 <script charset="utf-8" src="tab.js"></script>
+
+
+
+<script>
+  var carColor="blue";
+  startVoiture.onclick=function()
+  {
+      document.body.onkeydown=deplacerVoiture;
+  }
+
+  stopVoiture.onclick=function()
+  {
+    document.body.onkeydown=null;
+  }
+
+  carImg.ondblclick=function()
+  {
+    carColor=(carColor=="blue")?"red":"blue";
+    carImg.setAttribute("src",carColor+".gif");
+  }
+
+
+  var posX=0;
+  var posY=0;
+  var vitesse=30;
+  function deplacerVoiture(event)
+  {
+    if(event.key=="ArrowLeft" || event.key=="q")
+    {
+      posX+=vitesse;
+      carImg.style.transform="scaleX(1)";
+    }
+    else if(event.key=="ArrowRight" || event.key=="d")
+    {
+      posX-=vitesse;
+      carImg.style.transform="scaleX(-1)";
+    }
+
+    else if(event.key=="ArrowUp" || event.key=="z")
+    {
+      posY+=vitesse;
+      carImg.style.transform="rotate(90deg)";
+    }
+    else if(event.key=="ArrowDown" || event.key=="s")
+    {
+      posY-=vitesse;
+      carImg.style.transform="rotate(-90deg)";
+    }
+
+    carImg.style.right=posX+"px";
+    carImg.style.bottom=posY+"px";
+  }
+</script>
