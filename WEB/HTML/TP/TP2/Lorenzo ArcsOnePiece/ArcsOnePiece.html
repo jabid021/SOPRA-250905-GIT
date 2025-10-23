@@ -38,12 +38,32 @@
     tbody tr:nth-child(even) {
       background-color: #FFF7CC;
     }
+
+    .titre-audio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* espace entre le titre et l’audio */
+      margin-bottom: 20px;
+    }
+
+    .titre-audio audio {
+      height: 40px;
+    }
+
+
   </style>
 
 
+  <div class="titre-audio">
+    <h1>Les Arcs de One Piece</h1>
+    <audio controls>
+      <source src="images_html/weare.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas la lecture audio.
+    </audio>
+  </div>
 
 
-<h1 align = "center"> Les Arcs de One Piece </h1>
 
 <table border width="80%" align="center">
 
