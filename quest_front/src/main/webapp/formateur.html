@@ -18,7 +18,7 @@
 		<td>Chen</td>
 		<td>Professeur</td>
 		<td>homme</td>
-		<td>true</td>
+		<td>oui</td>
 		<td>
 			<a href="updateFormateur.html?id=1"><input type="button" value="Modifier"></a>
 			<a href=""><input type="button" value="Supprimer"></a>
@@ -32,23 +32,26 @@
 		<td>Keteleeria</td>
 		<td>Professeure</td>
 		<td>femme</td>
-		<td>true</td>
+		<td>non</td>
 		<td>
-			<a href="updateFormateur.html?id=1"><input type="button" value="Modifier"></a>
+			<a href="updateFormateur.html?id=2"><input type="button" value="Modifier"></a>
 			<a href=""><input type="button" value="Supprimer"></a>
 		</td>
 	</tr>
 </table>
 
 <form method="POST" action="">
-	Login : <input required type="number" name="login"><br>
-	password : 
-	<select name="serveur.id">
-		<option value="">Pas de serveur</option>
-		<option value="1">John Doe</option>
-		<option value="2">Jane Doe</option>
-	</select><br>
-	Couleurs de la table : <input name="couleurs[]" value="Rouge" type="checkbox"> Rouge <input name="couleurs[]" value="Bleue" type="checkbox"> Bleue <input name="couleurs[]" value="Jaune" type="checkbox"> Jaune  
+	Login : <input type="text" id="login" name="login" placeholder="login" required><br>
+	Password : <input type="password" name="password" placeholder="password" required><br>
+	Nom : <input type="text" id="nom" name="nom" placeholder="nom" required><br>
+	Prénom : <input type="text" id="prenom" name="prenom" placeholder="prenom" required><br>
+	Civilité : <input type="radio" id="homme" name="civilite" value="homme" checked>
+            <label for="homme">Homme</label>
+            <input type="radio" id="femme" name="civilite" value="femme">
+            <label for="femme">Femme</label>
+            <input type="radio" id="nb" name="civilite" value="nb">
+            <label for="nb">Non-binaire</label><br>
+	Admin : <input type="checkbox" id="admin" name="admin"> Admin
 	<input type="submit" value="Ajouter">
 </form>
 
