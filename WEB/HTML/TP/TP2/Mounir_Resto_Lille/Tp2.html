@@ -2,8 +2,6 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <!--   <meta name="viewport" content="width=device-width, initial-scale=1" />
-    permet de rendre le site responsive a différent format -->
   <title>Top 5 meilleurs restaurants de Lille - Selon TripAdvisor</title>
   <style>
 
@@ -19,14 +17,12 @@
 
       h1{
         font-size:28px;
-        color:var(--accent);
+        color:Black;
         margin-bottom:4px;
       }
-
       table{
         opacity: 0.8;
         background-color: black;
-        width:100%;
         border-collapse:collapse;
         border-radius:10px;
         overflow:hidden;
@@ -66,6 +62,7 @@
         border-radius:8px;
       }
 
+
       a {
     background-color: white;     /* rectangle blanc */
     padding: 4px 8px;            /* espace intérieur */
@@ -84,11 +81,27 @@
         font-color : Lightgrey;
       }
 
+      .side-button {
+          align-self: center;
+        }
+
+        .side-button button {
+          background-color: #ff4c4c;
+          color: white;
+          padding: 15px 25px;
+          font-size: 1em;
+          font-weight: bold;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .side-button button:hover {
+          background-color: #ff6666;
+          transform: scale(1.05);
 
     }
-
-
-      #bg-video {
+  #bg-video {
         position: absolute;
         top: 0;
         left: 0;
@@ -98,13 +111,15 @@
         z-index: -1;
         filter: blur(10px);
 }
+
+
   </style>
 </head>
 <body>
-  <video autoplay muted loop id="bg-video">
+  <video id="bg-video" autoplay muted loop >
     <source src="Assets\vids\1192-143842659_small.mp4" type="video/mp4">
   </video>
-  <div class="container" >
+  <div >
     <h1>Top 5 meilleurs restaurants de Lille - Selon TripAdvisor</h1>
 
     <div class="card">
