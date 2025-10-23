@@ -43,7 +43,6 @@ function debutJeu()
   document.addEventListener("keydown", deplacement);
   document.getElementById("grass").style.height = "700px";
   document.getElementById("grass").style.width = "700px";
-  themePokemon.play();
 }
 /*function displayPrenom{
   pikachu
@@ -51,6 +50,8 @@ function debutJeu()
 
 function deplacement(event)
 {
+  themePokemon.play();
+
   let countX = 0;
   let countY = 0;
 
