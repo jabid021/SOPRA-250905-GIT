@@ -27,6 +27,14 @@ let hyperX = 500;
 let hyperY = 500;
 const hyperSpeed = 1;
 
+const selectPerso = document.getElementById('personnages');
+
+
+selectPerso.addEventListener('change', () => {
+    pokemon = selectPerso.value;
+    imgPikachu.setAttribute("src","assets/img/"+pokemon+direction+".png");
+  });
+
 inputName.addEventListener("input", () => {
   btnStart.disabled = inputName.value.trim() === "";
 });
