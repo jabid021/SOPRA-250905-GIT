@@ -82,19 +82,28 @@ footer {
 	padding: 0 10px;
 }
 
+img {
+	position: absolute; 
+	top: 20px; right: 
+	20px; border: 
+	2px solid black;
+	width: 150px;
+}
+
 </style>
 </head>
 <body>
 
 <h1>Gestion des ordinateurs</h1>
 
+<img src="https://i.ibb.co/j9w1t5mg/image.webp" alt="Blason">
 
 <table>
-<tr><th>ID</th><th>Marque</th><th>RAM</th>
+<tr><th>ID</th><th>Marque</th><th>RAM (Giga)</th><th>Actions</th>
 <tr>
 <td>1</td>
 <td>Dell</td>
-<td>4</td>
+<td>4Go</td>
 <td>
 	<a href="updateOrdinateur.html?id=1"><input type="button" value="Modifier"></a>
 	<a href=""><input type="button" value="Supprimer"></a>
@@ -104,7 +113,7 @@ footer {
 <tr>
 <td>2</td>
 <td>Asus</td>
-<td>8</td>
+<td>8Go</td>
 <td>
 	<a href="updateOrdinateur.html?id=2"><input type="button" value="Modifier"></a>
 	<a href=""><input type="button" value="Supprimer"></a>
@@ -124,14 +133,8 @@ footer {
 </table>
 
 <form method="POST" action="">
-
-	Marque : 
-	<select name="marque">
-		<option value="">Dell</option>
-		<option value="1">Asus</option>
-		<option value="2">HP</option>
-	</select><br>
-	RAM : <input required type="number" name="RAM"><br>
+	Marque : <input name="marque"><br>
+	RAM (Giga): <input required type="number" name="ram"><br>
 	<input type="submit" value="Ajouter">
 </form>
 <footer>

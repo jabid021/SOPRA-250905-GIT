@@ -45,6 +45,13 @@ footer {
 	width: 100%;
 	padding: 0 10px;
 }
+img {
+	position: absolute; 
+	top: 20px; right: 
+	20px; border: 
+	2px solid black;
+	width: 150px;
+}
 
 </style>
 </head>
@@ -52,15 +59,12 @@ footer {
 
 <h1>Update de l'ordinateur 1</h1>
 
-<form method="POST" action="">
+<img src="https://i.ibb.co/j9w1t5mg/image.webp" alt="Blason">
 
-	Marque : 
-	<select name="marque">
-		<option value="">Dell</option>
-		<option value="1">Asus</option>
-		<option value="2">HP</option>
-	</select><br>
-	RAM : <input required type="number" name="RAM"><br>
+<form method="POST" action="">
+	<input type="hidden" name="id" value="1">
+	Marque : <input name="Marque" value="Asus"><br>
+	RAM (Giga): <input required type="number" name="ram" value="4"><br>
 	<input type="submit" value="Modifier">
 </form>
 <footer>
