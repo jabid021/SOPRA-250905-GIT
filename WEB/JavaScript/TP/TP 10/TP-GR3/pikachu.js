@@ -9,11 +9,14 @@ var posY=0;
 var mouvement=30;
 var pokemon="pikachu";
 var direction="Down";
+var myInterval;
+var laDancePika = "assets/img/pikachuBack.png";
 imgPikachu.setAttribute("src","assets/img/"+pokemon+direction+".png");
 
 document.getElementById("inputName").onkeyup=verifInput;
 btnStart.onclick=startGame;
 document.getElementById("imgPikachu").onmouseover=displayTitle;
+
 
 function displayTitle(event){
   document.getElementById("imgPikachu").setAttribute("title", document.getElementById("inputName").value)
@@ -81,6 +84,63 @@ function deplacement(event)
   pikachu.style.top=posY+"px";
   pikachu.style.left=posX+"px";
   console.log(`position x et y  : ${posX} et ${posY}`);
- 
+  
+  if(posX == 330 && posY == 330){
+      jigglypuffSings();
+      setTimeout(stopDance, 10000);
+      var myInterval;
+      jouerMusique2();
+      } else {
+      jouerMusique1();
+    }
 
+}
+
+function jigglypuffSings(){
+  document.getElementById("imgPikachu").setAttribute("width","50px");
+  document.getElementById("imgPikachu").setAttribute("height","50px");
+  console.log("On rentre dans la fonction");
+  myInterval = setInterval(dancePika, 250);
+  
+}
+
+function dancePika(){
+    laDancePika=(laDancePika=="assets/img/pikachuBack.png")? "assets/img/pikachuBackRight.png":"assets/img/pikachuBack.png";
+    imgPikachu.setAttribute("src", laDancePika);
+}
+
+function stopDance (){
+  clearInterval(myInterval);
+  document.getElementById("imgJigglypuff").setAttribute("src","assets/img/jigglypuffGoogles.png");
+}
+
+document.getElementById("btnStart").addEventListener("click", () => {
+let m1 = document.getElementById("music1");
+m1.play();
+m1.volume = 0.1;
+});
+
+
+function jouerMusique1() {
+  let m1 = document.getElementById("music1");
+  let m2 = document.getElementById("music2");
+
+  
+  if (m1.paused) {
+    m1.pause();
+    m1.play();
+    m1.volume = 0.1;
+  }
+}
+
+function jouerMusique2() {
+  let m1 = document.getElementById("music1");
+  let m2 = document.getElementById("music2");
+
+  if (m2.paused) {
+    m1.pause();
+    m2.currentTime =45;
+    m2.play();
+    m2.volume=0.1;
+  }
 }
