@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quest Front</title>
+</head>
+<body>
+
+<h1>Update de la tableuh 1</h1>
+
+<form method="POST" action="">
+	<input type="hidden" name="id" value="1">
+	Nombre de place  : <input required type="number" name="nbPlace" value="3"><br>
+	Serveur : 
+	<select name="serveur.id">
+		<option value="">Pas de serveur</option>
+		<option value="1" selected>John Doe</option>
+		<option value="2">Jane Doe</option>
+	</select><br>
+	Couleurs de la table : <input name="couleurs[]" checked value="Rouge" type="checkbox"> Rouge <input name="couleurs[]"  checked value="Bleue" type="checkbox"> Bleue <input name="couleurs[]" value="Jaune" type="checkbox"> Jaune  
+	<input type="submit" value="Modifier">
+	</form>
+</body>
+</html>
