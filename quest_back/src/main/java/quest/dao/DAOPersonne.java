@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import quest.context.Singleton;
+import quest.model.Formateur;
 import quest.model.Personne;
+import quest.model.Stagiaire;
 
 public class DAOPersonne implements IDAOPersonne {
 
@@ -54,6 +56,22 @@ public class DAOPersonne implements IDAOPersonne {
 		em.remove(personne);
 		em.getTransaction().commit();
 		em.close();
+	}
+	
+	@Override
+	public List<Stagiaire> findAllStagiaire() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Stagiaire> personnes  = em.createQuery("from Stagiaire").getResultList();
+		em.close();
+		return personnes;
+	}
+	
+	@Override
+	public List<Formateur> findAllFormateur() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Formateur> personnes  = em.createQuery("from Formateur").getResultList();
+		em.close();
+		return personnes;
 	}
 
 }

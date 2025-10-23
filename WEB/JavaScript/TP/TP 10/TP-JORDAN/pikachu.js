@@ -17,44 +17,66 @@ var pokemon="pikachu";
 var direction="Down";
 imgPikachu.setAttribute("src","assets/img/"+pokemon+direction+".png");
 
-function verifInput(event)
+btnStart.onclick=lancerLeJeu;
+
+inputName.onkeyup=function(event)
 {
-  let prenom=document.getElementById("inputName").value;
-  if(prenom=="")
+  let nom = inputName.value;
+  if(nom=="")
   {
-    btnAddTab.disabled=true;
+    btnStart.disabled=true;
   }
   else
   {
+    btnStart.disabled=false;
     if(event.keyCode==13 || event.key=="Enter")
     {
-      ajouterTableau();
-    }
-    else{
-      btnAddTab.disabled=false;
+      lancerLeJeu();
     }
   }
 }
 
+
+function lancerLeJeu()
+{
+  formStart.style.display="none";
+  grass.style.display="block";
+  pikachu.setAttribute("title", inputName.value);
+  document.body.onkeydown=deplacement;
+}
+
 function deplacement(event)
 {
+
   if(event.key=="ArrowDown" || event.key=="s" )
   {
-
+    if(posY<660){
+      posY+=mouvement;
+    }
+    direction="Down";
   }
   else if(event.key=="ArrowRight" || event.key=="d" )
   {
-
+    if(posX<660){
+      posX+=mouvement;
+    }
+    direction="Right";
   }
 
   else if(event.key=="ArrowLeft" || event.key=="q")
   {
-
+    if(posX>0){
+      posX-=mouvement;
+    }
+    direction="Left";
   }
 
   else if(event.key=="ArrowUp" || event.key=="z")
   {
-
+    if(posY>0){
+      posY-=mouvement;
+    }
+    direction="Up";
   }
   pikachu.style.top=posY+"px";
   pikachu.style.left=posX+"px";
