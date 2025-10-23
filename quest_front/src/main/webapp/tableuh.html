@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>Gestion des tableuhs</h1>
+
+
+<table>
+<tr><th>ID</th><th>nbPlace</th><th>Serveur</th><th>Couleurs</th><th>Actions</th></tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<th>Pas de serveur</td>
+<th>Rouge,Jaune</td>
+<td>
+	<a href="updateTableuh.html?id=1"><input type="button" value="Modifier"></a>
+	<a href=""><input type="button" value="Supprimer"></a>
+</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>6</td>
+<th>1 - John Doe </td>
+<th>Pas de couleurs</td>
+<td>
+	<a href="updateTableuh.html?id=2"><input type="button" value="Modifier"></a>
+	<a href=""><input type="button" value="Supprimer"></a>
+</td>
+</tr>
+
+
+<tr>
+<td>3</td>
+<td>1</td>
+<th>Pas de serveur</td>
+<th>Rouge</td>
+<td>
+	<a href="updateTableuh.html?id=3"><input type="button" value="Modifier"></a>
+	<a href=""><input type="button" value="Supprimer"></a>
+</td>
+</tr>
+</table>
+
+	<form method="POST" action="">
+	Nombre de place  : <input required type="number" name="nbPlace"><br>
+	Serveur : 
+	<select name="serveur.id">
+		<option value="">Pas de serveur</option>
+		<option value="1">John Doe</option>
+		<option value="2">Jane Doe</option>
+	</select><br>
+	Couleurs de la table : <input name="couleurs[]" value="Rouge" type="checkbox"> Rouge <input name="couleurs[]" value="Bleue" type="checkbox"> Bleue <input name="couleurs[]" value="Jaune" type="checkbox"> Jaune  
+	<input type="submit" value="Ajouter">
+	</form>
+</body>
+</html>
