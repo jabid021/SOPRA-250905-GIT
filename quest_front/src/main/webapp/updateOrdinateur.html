@@ -53,14 +53,9 @@ footer {
 <h1>Update de l'ordinateur 1</h1>
 
 <form method="POST" action="">
-
-	Marque : 
-	<select name="marque">
-		<option value="">Dell</option>
-		<option value="1">Asus</option>
-		<option value="2">HP</option>
-	</select><br>
-	RAM : <input required type="number" name="RAM"><br>
+	<input type="hidden" name="id" value="1">
+	Marque : <input name="Marque" value="Asus"><br>
+	RAM (Giga): <input required type="number" name="ram" value="4"><br>
 	<input type="submit" value="Modifier">
 </form>
 <footer>

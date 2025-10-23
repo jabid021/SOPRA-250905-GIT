@@ -90,7 +90,7 @@ footer {
 
 
 <table>
-<tr><th>ID</th><th>Marque</th><th>RAM</th>
+<tr><th>ID</th><th>Marque</th><th>RAM (Giga)</th><th>Actions</th>
 <tr>
 <td>1</td>
 <td>Dell</td>
@@ -124,14 +124,8 @@ footer {
 </table>
 
 <form method="POST" action="">
-
-	Marque : 
-	<select name="marque">
-		<option value="">Dell</option>
-		<option value="1">Asus</option>
-		<option value="2">HP</option>
-	</select><br>
-	RAM : <input required type="number" name="RAM"><br>
+	Marque : <input name="marque"><br>
+	RAM (Giga): <input required type="number" name="ram"><br>
 	<input type="submit" value="Ajouter">
 </form>
 <footer>
