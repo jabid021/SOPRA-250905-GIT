@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,6 +97,8 @@ img {
 </head>
 <body>
 
+<div>${ordinateurs}</div>
+
 <h1>Gestion des ordinateurs</h1>
 
 <img src="https://i.ibb.co/j9w1t5mg/image.webp" alt="Blason">
@@ -103,20 +108,20 @@ img {
 <tr>
 <td>1</td>
 <td>Dell</td>
-<td>4Go</td>
+<td>4</td>
 <td>
-	<a href="updateOrdinateur.html?id=1"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="ordinateur?id=1"><input type="button" value="Modifier"></a>
+	<a href="ordinateur?id=1&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
 <tr>
 <td>2</td>
 <td>Asus</td>
-<td>8Go</td>
+<td>8</td>
 <td>
-	<a href="updateOrdinateur.html?id=2"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="ordinateur?id=2"><input type="button" value="Modifier"></a>
+	<a href="ordinateur?id=2&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
@@ -126,13 +131,13 @@ img {
 <td>HP</td>
 <td>4</td>
 <td>
-	<a href="updateOrdinateur.html?id=3"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="ordinateur?id=3"><input type="button" value="Modifier"></a>
+	<a href="ordinateur?id=3&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 </table>
 
-<form method="POST" action="">
+<form method="POST" action="ordinateur">
 	Marque : <input name="marque"><br>
 	RAM (Giga): <input required type="number" name="ram"><br>
 	<input type="submit" value="Ajouter">
