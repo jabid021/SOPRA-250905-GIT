@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +8,7 @@
 </head>
 <body>
 
-<h1>Gestion des tableuhs</h1>
-
+<div>${tables}</div>
 
 <table>
 <tr><th>ID</th><th>nbPlace</th><th>Serveur</th><th>Couleurs</th><th>Actions</th></tr>
@@ -57,5 +58,6 @@
 	Couleurs de la table : <input name="couleurs[]" value="Rouge" type="checkbox"> Rouge <input name="couleurs[]" value="Bleue" type="checkbox"> Bleue <input name="couleurs[]" value="Jaune" type="checkbox"> Jaune  
 	<input type="submit" value="Ajouter">
 	</form>
+
 </body>
 </html>
