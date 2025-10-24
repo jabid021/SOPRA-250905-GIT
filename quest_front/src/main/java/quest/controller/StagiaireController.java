@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import quest.context.Singleton;
-import quest.model.Adresse;
 import quest.model.Civilite;
 import quest.model.Personne;
 import quest.model.Stagiaire;
@@ -72,17 +71,7 @@ public class StagiaireController extends HttpServlet {
 
 	public void allStagiaires(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Personne> personnes = Singleton.getInstance().getDaoPersonne().findAll();
-		List<Personne> stagiaires = new ArrayList();
-
-		for(Personne p : personnes)
-		{
-			if (request.getParameter("type_personne").equals("Stagiaire"))
-			{
-				stagiaires.add(p);
-			}
-
-		}
+		List<Stagiaire> stagiaires = Singleton.getInstance().getDaoPersonne().findAllStagiaire();
 		
 		request.setAttribute("stagiaires", stagiaires);
 		this.getServletContext().getRequestDispatcher("/stagiaire.jsp").forward(request, response);
@@ -101,11 +90,10 @@ public class StagiaireController extends HttpServlet {
 		String voie = request.getParameter("adresse.voie");
 		String cp = request.getParameter("adresse.cp");
 		String ville = request.getParameter("adresse.ville");
-		Adresse adresse = new Adresse (numero, voie, cp ,ville);
-
+		
 		Civilite civilite = Civilite.valueOf(request.getParameter("civilite"));
 
-		Stagiaire stagiaire = new Stagiaire(login, password, nom, prenom, civilite, email, numero, voie, ville, cp, null, null);
+		Stagiaire stagiaire = new Stagiaire(id,login, password, nom, prenom, civilite, email, numero, voie, ville, cp, null, null);
 
 		Singleton.getInstance().getDaoPersonne().save(stagiaire);
 		
@@ -122,8 +110,6 @@ public class StagiaireController extends HttpServlet {
 		String voie = request.getParameter("adresse.voie");
 		String cp = request.getParameter("adresse.cp");
 		String ville = request.getParameter("adresse.ville");
-
-		Adresse adresse = new Adresse (numero, voie, cp ,ville);
 
 		Civilite civilite = Civilite.valueOf(request.getParameter("civilite"));
 

@@ -42,7 +42,6 @@ background-color:yellow;
 </head>
 <body>
 
-<div>${filiere}</div>
 <h1>Update de la filiere ${filiere.id}</h1>
 
 <form method="POST" action="filiere">

@@ -25,7 +25,7 @@ Civilite :
 		<option>Femme</option>
 		<option>NB</option>
 	</select><br>
-Email : <input type="text" name="email" placeholder="email" required value="${stagiaire.email}"> <br>
+Email : <input type="email" name="email" placeholder="email" required value="${stagiaire.email}"> <br>
 
 Adresse :   <input type="text" name="adresse.numero" placeholder="numero_rue" required value="${stagiaire.numero}"> <br>
  			<input type="text" name="adresse.rue" placeholder="rue" required value="${stagiaire.voie}"> <br>

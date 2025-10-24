@@ -93,7 +93,7 @@ font-weight:bold;
 		<option>Femme</option>
 		<option>NB</option>
 	</select><br> </td> </tr>
-<tr> <td id="gras">Email : </td> <td> <input type="text" name="email" placeholder="email" required> <br> </td> </tr>
+<tr> <td id="gras">Email : </td> <td> <input type="email" name="email" placeholder="email" required> <br> </td> </tr>
 
 <tr> <td id="gras">Adresse : </td>  <td> <input type="text" name="adresse.numero" placeholder="numero_rue" required> <br> </td> 
  		<td><input type="text" name="adresse.rue" placeholder="rue" required> <br> </td>
