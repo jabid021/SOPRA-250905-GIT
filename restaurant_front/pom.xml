@@ -15,7 +15,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>fomation-sopra</groupId>
+			<groupId>formation-sopra</groupId>
 			<artifactId>restaurant_jpa</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
