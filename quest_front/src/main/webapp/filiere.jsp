@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +27,9 @@ background-color: #f2f2f2;
 form {
 margin-bottom: 20px;
 }
+.retour{
+background-color: gray;
+}
 .supprimer{
 background-color:red;
 width:30%;
@@ -38,11 +44,15 @@ background-color:yellow;
 
 </style>
 </head>
+
+<div>${filieres}</div>
+
 <body>
+
 
 <h1>Gestion des filieres</h1>
 
-
+<a href="index.html" ><input type="button" value="Retour" class="retour"></a>
 
 <table>
 <tr><th>ID</th><th>libelle</th><th>debut</th><th>fin</th><th>Actions</th></tr>
@@ -52,8 +62,8 @@ background-color:yellow;
 <td>2025-10-10</td>
 <td>2025-12-10</td>
 <td>
-	<a href="updateFiliere.html?id=1"><input type="button" value="Modifier" class="modifier"></a>
-	<a href=""><input type="button" value="Supprimer" class="supprimer" onclick="alert('Êtes-vous sûr de vouloir supprimer ?')"></a>
+	<a href="filiere?id=1"><input type="button" value="Modifier" class="modifier"></a>
+	<a href="filiere?id=1&delete"><input type="button" value="Supprimer" class="supprimer" onclick="alert('Êtes-vous sûr de vouloir supprimer ?')"></a>
 </td>
 </tr>
 <tr>
@@ -62,8 +72,8 @@ background-color:yellow;
 <td>2022-10-10</td>
 <td>2022-12-10</td>
 <td>
-	<a href="updateFiliere.html?id=2"><input type="button" value="Modifier" class="modifier"></a>
-	<a href=""><input type="button" value="Supprimer" class="supprimer" onclick="alert('Êtes-vous sûr de vouloir supprimer ?')"></a>
+	<a href="filier?id=2"><input type="button" value="Modifier" class="modifier"></a>
+	<a href="filiere?id=2&delete"><input type="button" value="Supprimer" class="supprimer" onclick="alert('Êtes-vous sûr de vouloir supprimer ?')"></a>
 </td>
 </tr>
 
@@ -71,7 +81,7 @@ background-color:yellow;
 
 
 
-	<form method="POST" action="">
+	<form method="POST" action="filiere">
 	Nom de la formation : <input required type="text" name="libelle"><br>
 	Date de debut : <input required type="date" name="debut">
 	<br>
