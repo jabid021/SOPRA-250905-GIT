@@ -13,19 +13,17 @@ import restaurant.context.Singleton;
 import restaurant.model.Tableuh;
 
 @WebServlet("/table2")
-public class ServletTableuh extends HttpServlet {
+public class ServletTableuhV1 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		}
-		catch(Exception e) {}
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("prenom"));
 		
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		
 		List<Tableuh> tables = Singleton.getInstance().getDaoTableuh().findAll();
 		response.getWriter().println("<html>");
-		
 		response.getWriter().println("<table border>");
 		response.getWriter().println("<tr>");
 		response.getWriter().println("<th>Id</th><th>Nb Places</th><th>Serveur</th></tr>");

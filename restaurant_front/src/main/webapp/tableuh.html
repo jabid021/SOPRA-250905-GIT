@@ -17,8 +17,8 @@
 <td>Pas de serveur</td>
 <td>Rouge,Jaune</td>
 <td>
-	<a href="updateTableuh.html?id=1"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="table?id=1"><input type="button" value="Modifier"></a>
+	<a href="table?id=1&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
@@ -28,8 +28,8 @@
 <td>1 - John Doe </td>
 <td>Pas de couleurs</td>
 <td>
-	<a href="updateTableuh.html?id=2"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="table?id=2"><input type="button" value="Modifier"></a>
+	<a href="table?id=2&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
@@ -40,13 +40,13 @@
 <td>Pas de serveur</td>
 <td>Rouge</td>
 <td>
-	<a href="updateTableuh.html?id=3"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="table?id=3"><input type="button" value="Modifier"></a>
+	<a href="table?id=3&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 </table>
 
-	<form method="POST" action="">
+	<form method="POST" action="table">
 	Nombre de place  : <input required type="number" name="nbPlace"><br>
 	Serveur : 
 	<select name="serveur.id">
