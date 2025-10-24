@@ -84,7 +84,8 @@ public class FormateurController extends HttpServlet {
 		String password = request.getParameter("password");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		boolean admin = Boolean.parseBoolean(request.getParameter("admin"));
+		//boolean admin = Boolean.parseBoolean(request.getParameter("admin"));
+		boolean admin = (request.getParameter("admin")==null)?false:true;
 		Civilite civilite = Civilite.valueOf(request.getParameter("civilite"));
 
 		Formateur formateur = new Formateur(id,login,password, nom, prenom, civilite, admin);
@@ -101,7 +102,8 @@ public class FormateurController extends HttpServlet {
 		String password = request.getParameter("password");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		boolean admin = Boolean.parseBoolean(request.getParameter("admin"));
+		//boolean admin = Boolean.parseBoolean(request.getParameter("admin"));
+		boolean admin = (request.getParameter("admin")==null)?false:true;
 		Civilite civilite = Civilite.valueOf(request.getParameter("civilite"));
 
 		Formateur formateur = new Formateur(login,password, nom, prenom, civilite, admin);

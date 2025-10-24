@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <form action="updateFormateur" method="post">
+    <form action="formateur" method="post">
 
         <input type="hidden" id="id" name="id" value="${formateur.id}">
 
