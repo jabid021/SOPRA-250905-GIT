@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import quest.context.Singleton;
 import quest.model.Civilite;
 import quest.model.Formateur;
-import restaurant.model.Couleur;
-import restaurant.model.Employe;
-import restaurant.model.Tableuh;
 
 
 @WebServlet("/formateur")
@@ -61,7 +58,7 @@ public class FormateurController extends HttpServlet {
 	public void ficheFormateur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		Integer id=Integer.parseInt(request.getParameter("id"));
-		Formateur formateurBdd = Singleton.getInstance().getDaoFormateur().findById(id);
+		Formateur formateurBdd = (Formateur) Singleton.getInstance().getDaoPersonne().findById(id);
 
 		request.setAttribute("formateur", formateurBdd);
 		
@@ -72,7 +69,7 @@ public class FormateurController extends HttpServlet {
 
 	public void allFormateurs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Formateur> formateurs = Singleton.getInstance().getDaoFormateur().findAll();
+		List<Formateur> formateurs = Singleton.getInstance().getDaoPersonne().findAllFormateur();
 		request.setAttribute("formateurs", formateurs);
 		
 		this.getServletContext().getRequestDispatcher("/formateur.jsp").forward(request, response);
@@ -92,7 +89,7 @@ public class FormateurController extends HttpServlet {
 
 		Formateur formateur = new Formateur(id,login,password, nom, prenom, civilite, admin);
 
-		Singleton.getInstance().getDaoFormateur().save(formateur);
+		Singleton.getInstance().getDaoPersonne().save(formateur);
 		
 		response.sendRedirect("formateur");
 	}
@@ -109,7 +106,7 @@ public class FormateurController extends HttpServlet {
 
 		Formateur formateur = new Formateur(login,password, nom, prenom, civilite, admin);
 
-		Singleton.getInstance().getDaoFormateur().save(formateur);
+		Singleton.getInstance().getDaoPersonne().save(formateur);
 		
 		response.sendRedirect("formateur");
 	}
@@ -117,7 +114,7 @@ public class FormateurController extends HttpServlet {
 	{
 		Integer id=Integer.parseInt(request.getParameter("id"));
 		
-		Singleton.getInstance().getDaoFormateur().deleteById(id);
+		Singleton.getInstance().getDaoPersonne().deleteById(id);
 		response.sendRedirect("formateur");
 		
 	}
