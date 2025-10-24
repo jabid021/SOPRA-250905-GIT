@@ -56,22 +56,24 @@ public class TableuhController extends HttpServlet {
 
 
 
-	/*Integer id=Integer.parseInt(request.getParameter("id"));
-	Tableuh tableBdd = Singleton.getInstance().getDaoTableuh().findById(id);
+	/**/
 
-	request.setAttribute("table", tableBdd);
+	private void findById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		Integer id=Integer.parseInt(request.getParameter("id"));
+		Tableuh tableBdd = Singleton.getInstance().getDaoTableuh().findById(id);
 
-	this.getServletContext().getRequestDispatcher("/updateTableuh.jsp").forward(request, response);*/
+		request.setAttribute("table", tableBdd);
 
-	private void findById(HttpServletRequest request, HttpServletResponse response) 
+		this.getServletContext().getRequestDispatcher("/updateTableuh.jsp").forward(request, response);
+	}
+	private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{}
-	private void findAll(HttpServletRequest request, HttpServletResponse response) 
+	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{}
-	private void update(HttpServletRequest request, HttpServletResponse response) 
+	private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{}
-	private void insert(HttpServletRequest request, HttpServletResponse response) 
-	{}
-	private void delete(HttpServletRequest request, HttpServletResponse response) 
+	private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{}
 
 
