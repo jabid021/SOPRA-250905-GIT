@@ -27,10 +27,10 @@ Civilite :
 	</select><br>
 Email : <input type="email" name="email" placeholder="email" required value="${stagiaire.email}"> <br>
 
-Adresse :   <input type="text" name="adresse.numero" placeholder="numero_rue" required value="${stagiaire.numero}"> <br>
- 			<input type="text" name="adresse.rue" placeholder="rue" required value="${stagiaire.voie}"> <br>
- 			<input type="text" name="adresse.cp" placeholder="cp" required value="${stagiaire.cp}"> <br>
- 			<input type="text" name="adresse.ville" placeholder="ville" required value="${stagiaire.ville}"> <br>
+Adresse :   <input type="text" name="adresse.numero" placeholder="numero_rue" required value="${stagiaire.adresse.numero}"> <br>
+ 			<input type="text" name="adresse.voie" placeholder="rue" required value="${stagiaire.adresse.voie}"> <br>
+ 			<input type="text" name="adresse.cp" placeholder="cp" required value="${stagiaire.adresse.cp}"> <br>
+ 			<input type="text" name="adresse.ville" placeholder="ville" required value="${stagiaire.adresse.ville}"> <br>
 
 <input type="submit" value="Modifier">
 

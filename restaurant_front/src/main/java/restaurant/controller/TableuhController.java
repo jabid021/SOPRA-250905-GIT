@@ -72,10 +72,12 @@ public class TableuhController extends HttpServlet {
 	{
 		Integer id=Integer.parseInt(request.getParameter("id"));
 		Tableuh tableBdd = Singleton.getInstance().getDaoTableuh().findById(id);
-
+		
+		request.setAttribute("serveurs", Singleton.getInstance().getDaoCompte().findAllEmploye());
+		request.setAttribute("couleurs", Couleur.values());
 		request.setAttribute("table", tableBdd);
 
-		this.getServletContext().getRequestDispatcher("/updateTableuh.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateTableuh.jsp").forward(request, response);
 	}
 
 
@@ -83,9 +85,11 @@ public class TableuhController extends HttpServlet {
 	public void allTableuhs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		List<Tableuh> tables = Singleton.getInstance().getDaoTableuh().findAll();
+		request.setAttribute("serveurs", Singleton.getInstance().getDaoCompte().findAllEmploye());
+		request.setAttribute("couleurs", Couleur.values());
 		request.setAttribute("tables", tables);
 		
-		this.getServletContext().getRequestDispatcher("/tableuh.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/tableuh.jsp").forward(request, response);
 		
 	}
 	

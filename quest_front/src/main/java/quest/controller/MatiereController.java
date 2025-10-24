@@ -61,7 +61,7 @@ public class MatiereController extends HttpServlet {
 
 		request.setAttribute("matiere", matiereBdd);
 
-		this.getServletContext().getRequestDispatcher("/updateMatiere.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateMatiere.jsp").forward(request, response);
 	}
 
 
@@ -71,7 +71,7 @@ public class MatiereController extends HttpServlet {
 
 		List<Matiere> matieres = Singleton.getInstance().getDaoMatiere().findAll();
 		request.setAttribute("matieres", matieres);
-		this.getServletContext().getRequestDispatcher("/matiere.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/matiere.jsp").forward(request, response);
 
 	}
 

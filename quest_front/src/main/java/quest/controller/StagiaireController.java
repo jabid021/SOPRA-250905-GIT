@@ -1,7 +1,6 @@
 package quest.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import quest.context.Singleton;
 import quest.model.Civilite;
-import quest.model.Personne;
 import quest.model.Stagiaire;
 
 
@@ -64,7 +62,7 @@ public class StagiaireController extends HttpServlet {
 		Stagiaire  stagiaireBdd = (Stagiaire) Singleton.getInstance().getDaoPersonne().findById(id);
 
 		request.setAttribute("stagiaire", stagiaireBdd);
-		this.getServletContext().getRequestDispatcher("/updateStagiaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateStagiaire.jsp").forward(request, response);
 	}
 
 
@@ -74,7 +72,7 @@ public class StagiaireController extends HttpServlet {
 		List<Stagiaire> stagiaires = Singleton.getInstance().getDaoPersonne().findAllStagiaire();
 		
 		request.setAttribute("stagiaires", stagiaires);
-		this.getServletContext().getRequestDispatcher("/stagiaire.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/stagiaire.jsp").forward(request, response);
 	}
 
 

@@ -53,7 +53,7 @@ public class OrdinateurController extends HttpServlet {
 		Ordinateur tableBdd = Singleton.getInstance().getDaoOrdinateur().findById(id);
 
 		request.setAttribute("ordinateur", tableBdd);
-		this.getServletContext().getRequestDispatcher("/updateOrdinateur.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateOrdinateur.jsp").forward(request, response);
 	}
 
 
@@ -62,7 +62,7 @@ public class OrdinateurController extends HttpServlet {
 		List<Ordinateur> ordinateurs = Singleton.getInstance().getDaoOrdinateur().findAll();
 		request.setAttribute("ordinateurs", ordinateurs);
 		
-		this.getServletContext().getRequestDispatcher("/ordinateur.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ordinateur.jsp").forward(request, response);
 	}
 	
 	

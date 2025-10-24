@@ -63,7 +63,7 @@ public class FiliereController extends HttpServlet {
 
 		request.setAttribute("filiere", filiere);
 
-		this.getServletContext().getRequestDispatcher("/updateFiliere.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateFiliere.jsp").forward(request, response);
 	}
 
 
@@ -73,7 +73,7 @@ public class FiliereController extends HttpServlet {
 		List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
 		request.setAttribute("filieres", filieres);
 
-		this.getServletContext().getRequestDispatcher("/filiere.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/filiere.jsp").forward(request, response);
 
 	}
 

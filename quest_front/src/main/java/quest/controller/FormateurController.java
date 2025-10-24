@@ -62,7 +62,7 @@ public class FormateurController extends HttpServlet {
 
 		request.setAttribute("formateur", formateurBdd);
 		
-		this.getServletContext().getRequestDispatcher("/updateFormateur.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateFormateur.jsp").forward(request, response);
 	}
 
 
@@ -72,7 +72,7 @@ public class FormateurController extends HttpServlet {
 		List<Formateur> formateurs = Singleton.getInstance().getDaoPersonne().findAllFormateur();
 		request.setAttribute("formateurs", formateurs);
 		
-		this.getServletContext().getRequestDispatcher("/formateur.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/formateur.jsp").forward(request, response);
 		
 	}
 	

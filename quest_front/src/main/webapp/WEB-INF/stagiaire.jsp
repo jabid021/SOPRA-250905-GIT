@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gestion des Stagiaires</title>
 <style>
 
 
@@ -14,10 +19,6 @@ font-weight:bold;
 
 
 </style>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Gestion des Stagiaires</title>
 </head>
 <body>
 
@@ -96,7 +97,7 @@ font-weight:bold;
 <tr> <td id="gras">Email : </td> <td> <input type="email" name="email" placeholder="email" required> <br> </td> </tr>
 
 <tr> <td id="gras">Adresse : </td>  <td> <input type="text" name="adresse.numero" placeholder="numero_rue" required> <br> </td> 
- 		<td><input type="text" name="adresse.rue" placeholder="rue" required> <br> </td>
+ 		<td><input type="text" name="adresse.voie" placeholder="rue" required> <br> </td>
  		<td>	<input type="text" name="adresse.cp" placeholder="cp" required> <br> </td>
  		<td>	<input type="text" name="adresse.ville" placeholder="ville" required> <br> </td> </tr>
 
