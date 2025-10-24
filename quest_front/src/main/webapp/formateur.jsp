@@ -50,11 +50,11 @@
 	Password : <input type="password" name="password" placeholder="password" required><br>
 	Nom : <input type="text" id="nom" name="nom" placeholder="nom" required><br>
 	Prénom : <input type="text" id="prenom" name="prenom" placeholder="prenom" required><br>
-	Civilité : <input type="radio" id="homme" name="civilite" value="homme" checked>
+	Civilité : <input type="radio" id="homme" name="civilite" value="Homme" checked>
             <label for="homme">Homme</label>
-            <input type="radio" id="femme" name="civilite" value="femme">
+            <input type="radio" id="femme" name="civilite" value="Femme">
             <label for="femme">Femme</label>
-            <input type="radio" id="nb" name="civilite" value="nb">
+            <input type="radio" id="nb" name="civilite" value="NB">
             <label for="nb">Non-binaire</label><br>
 	Admin : <input type="checkbox" id="admin" name="admin"> Admin
 	<input type="submit" value="Ajouter">

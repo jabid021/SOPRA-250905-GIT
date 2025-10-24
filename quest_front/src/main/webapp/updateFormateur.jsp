@@ -30,11 +30,11 @@
         <p>Civilite</p>
         <div class="civilite">
             
-            <input type="radio" id="homme" name="civilite" value="homme" checked>
+            <input type="radio" id="homme" name="civilite" value="Homme" checked>
             <label for="homme">Homme</label>
-            <input type="radio" id="femme" name="civilite" value="femme">
+            <input type="radio" id="femme" name="civilite" value="Femme">
             <label for="femme">Femme</label>
-            <input type="radio" id="nb" name="civilite" value="nb">
+            <input type="radio" id="nb" name="civilite" value="NB">
             <label for="nb">Non-binaire</label> 
         </div>
         <br><br>
