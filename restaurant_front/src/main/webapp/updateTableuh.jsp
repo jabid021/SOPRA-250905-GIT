@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +8,12 @@
 </head>
 <body>
 
-<h1>Update de la tableuh 1</h1>
+<div>${table}</div>
+<h1>Update de la tableuh ${table.id}</h1>
 
-<form method="POST" action="">
-	<input type="hidden" name="id" value="1">
-	Nombre de place  : <input required type="number" name="nbPlace" value="3"><br>
+<form method="POST" action="table">
+	<input type="hidden" name="id" value="${table.id}">
+	Nombre de place  : <input required type="number" name="nbPlace" value="${table.nbPlace}"><br>
 	Serveur : 
 	<select name="serveur.id">
 		<option value="">Pas de serveur</option>

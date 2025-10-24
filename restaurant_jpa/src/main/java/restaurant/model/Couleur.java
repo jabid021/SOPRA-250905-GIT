@@ -1,5 +1,5 @@
 package restaurant.model;
 
 public enum Couleur {
-	Rouge,Vert,Jaune,Blanc
+	Rouge,Vert,Jaune,Blanc,Bleue
 }
