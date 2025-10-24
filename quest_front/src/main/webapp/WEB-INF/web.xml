@@ -11,4 +11,18 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
+  
+  <jsp-config>
+  	<jsp-property-group>
+  		<url-pattern>*.jsp</url-pattern>
+  		<include-prelude>/includes.jsp</include-prelude>
+  	</jsp-property-group>
+  </jsp-config>
+  
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error404.jsp</location>
+  </error-page>
+  
 </web-app>

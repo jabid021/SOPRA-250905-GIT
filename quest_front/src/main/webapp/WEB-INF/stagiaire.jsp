@@ -1,5 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gestion des Stagiaires</title>
 <style>
 
 
@@ -12,12 +19,10 @@ font-weight:bold;
 
 
 </style>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Gestion des Stagiaires</title>
 </head>
 <body>
+
+<div>${stagiaires}</div>
 
 <h1> Gestion des Stagiaires </h1>
 
@@ -48,8 +53,8 @@ font-weight:bold;
 <td> johndoe@email.com</td>
 <td> 1, Rue de Paris, 75000, Paris</td>
 <td>
-	<a href="updateStagiaire.html?id=1"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="stagiaire?id=1"><input type="button" value="Modifier"></a>
+	<a href="stagiaire?id=1&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
@@ -64,8 +69,8 @@ font-weight:bold;
 <td> janedoe@email.com</td>
 <td> 2, Rue de Paris, 75000, Paris</td>
 <td>
-	<a href="updateStagiaire.html?id=2"><input type="button" value="Modifier"></a>
-	<a href=""><input type="button" value="Supprimer"></a>
+	<a href="stagiaire?id=2"><input type="button" value="Modifier"></a>
+	<a href="stagiaire?id=2&delete"><input type="button" value="Supprimer"></a>
 </td>
 </tr>
 
@@ -73,7 +78,7 @@ font-weight:bold;
 
 <fieldset>
 
-<form  method="POST" action="">
+<form  method="POST" action="stagiaire">
 
 <table>
 <tr>
@@ -85,14 +90,14 @@ font-weight:bold;
 <tr> <td id="gras">Civilite : </td> <td>
 	<select name="civilite" required>
 		<option value=""> Choisir civilite  </option>
-		<option>homme</option>
-		<option>femme</option>
-		<option>nb</option>
+		<option>Homme</option>
+		<option>Femme</option>
+		<option>NB</option>
 	</select><br> </td> </tr>
-<tr> <td id="gras">Email : </td> <td> <input type="text" name="email" placeholder="email" required> <br> </td> </tr>
+<tr> <td id="gras">Email : </td> <td> <input type="email" name="email" placeholder="email" required> <br> </td> </tr>
 
 <tr> <td id="gras">Adresse : </td>  <td> <input type="text" name="adresse.numero" placeholder="numero_rue" required> <br> </td> 
- 		<td><input type="text" name="adresse.rue" placeholder="rue" required> <br> </td>
+ 		<td><input type="text" name="adresse.voie" placeholder="rue" required> <br> </td>
  		<td>	<input type="text" name="adresse.cp" placeholder="cp" required> <br> </td>
  		<td>	<input type="text" name="adresse.ville" placeholder="ville" required> <br> </td> </tr>
 

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,14 +60,15 @@ img {
 </head>
 <body>
 
-<h1>Update de l'ordinateur 1</h1>
+<div>${ordinateur}</div>
+<h1>Update de l'ordinateur ${ordinateur.id}</h1>
 
 <img src="https://i.ibb.co/j9w1t5mg/image.webp" alt="Blason">
 
-<form method="POST" action="">
-	<input type="hidden" name="id" value="1">
-	Marque : <input name="Marque" value="Asus"><br>
-	RAM (Giga): <input required type="number" name="ram" value="4"><br>
+<form method="POST" action="ordinateur">
+	<input type="hidden" name="id" value="${ordinateur.id}">
+	Marque : <input name="marque" value="${ordinateur.marque}"><br>
+	RAM (Giga): <input required type="number" name="ram" value="${ordinateur.ram}"><br>
 	<input type="submit" value="Modifier">
 </form>
 <footer>

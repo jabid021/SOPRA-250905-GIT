@@ -78,10 +78,11 @@ public class Stagiaire extends Personne{
 
 	@Override
 	public String toString() {
-		return "Stagiaire [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
-				+ prenom + ", email=" + email + ", adresse=" + adresse + ", ordinateur=" + ordinateur + ", filiere="
-				+ filiere + "]";
+		return "Stagiaire [email=" + email + ", adresse=" + adresse + ", ordinateur=" + ordinateur + ", filiere="
+				+ filiere + ", id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", civilite=" + civilite + "]";
 	}
+
 
 
 
