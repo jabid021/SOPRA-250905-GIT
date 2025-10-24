@@ -41,6 +41,15 @@ public class Tableuh {
 	
 	public Tableuh() {}
 
+	
+
+	 public Tableuh(Integer id, int nbPlace, Employe serveur) {
+		this.id = id;
+		this.nbPlace = nbPlace;
+		this.serveur = serveur;
+	}
+
+
 
 	 public Tableuh(int nbPlace) {
 		this.nbPlace = nbPlace;
