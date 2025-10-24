@@ -43,9 +43,11 @@ public class Formateur extends Personne {
 
 	@Override
 	public String toString() {
-		return "Formateur [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
-				+ prenom + ", admin=" + admin + "]";
+		return "Formateur [admin=" + admin + ", id=" + id + ", login=" + login + ", password=" + password + ", nom="
+				+ nom + ", prenom=" + prenom + ", civilite=" + civilite + "]";
 	}
+
+	
 	
 	
 }
