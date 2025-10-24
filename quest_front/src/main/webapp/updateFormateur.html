@@ -1,78 +1,11 @@
 <!DOCTYPE html>
 
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      width: 30%;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    input[type="radio"] {
-      margin-right: 5px;
-    }
-
-    p {
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    .civilite {
-        display: flex;
-        align-items: center;
-        gap: 10px; 
-        flex-wrap: wrap;    
-    }
-
-    .civilite p {
-        margin-right: 10px;
-        font-weight: bold;
-    }
-
-    button {
-      width: 100%;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-</style>
 
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pro fait soeur up date</title>
+<title>Modifier Pro fait soeur</title>
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -81,16 +14,16 @@
         <input type="hidden" id="id" name="id" value="">
 
         <label for="login">Login :</label>
-        <input type="text" id="login" name="login" placeholder="login" required><br><br>
+        <input type="text" id="login" name="login" placeholder="login" required value="profchen"><br><br>
 
         <label for="password">Password :</label>
-        <input type="password" name="password" placeholder="password" required><br><br>
+        <input type="password" name="password" placeholder="password" required value="profchen"><br><br>
         
         <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" placeholder="nom" required><br><br>
+        <input type="text" id="nom" name="nom" placeholder="nom" required value="Chen"><br><br>
 
         <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" placeholder="prenom" required><br><br>
+        <input type="text" id="prenom" name="prenom" placeholder="prenom" required value="Professeur"><br><br>
 
         <p>Civilite</p>
         <div class="civilite">
@@ -104,7 +37,7 @@
         </div>
         <br><br>
         <div class="admin">
-            <input type="checkbox" id="admin" name="admin" value="false">
+            <input type="checkbox" id="admin" name="admin" checked>
             <label for="admin">Admin</label><br><br>
         </div>
         
