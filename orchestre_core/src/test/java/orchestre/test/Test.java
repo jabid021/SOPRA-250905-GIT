@@ -1,19 +1,25 @@
 package orchestre.test;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import orchestre.config.AppConfig;
+import orchestre.model.Flutiste;
+import orchestre.model.Guitariste;
 import orchestre.model.IMusicien;
 
 public class Test {
 
 	public static void main(String[] args) {
 	
-		 ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		//ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
 
+		//AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		//Guitariste guitariste=(Guitariste) ctx.getBean(Guitariste.class);
 		
-		IMusicien guitariste= (IMusicien) ctx.getBean("guitariste");
-		IMusicien pianiste=(IMusicien) ctx.getBean("pianiste");
-		IMusicien flutiste=(IMusicien) ctx.getBean("flutiste");
+		//IMusicien pianiste=(Pianiste) ctx.getBean("pianiste");;
+		//IMusicien flutiste=(Flutiste) ctx.getBean("flutiste");;
+		
 		
 		guitariste.jouer();
 		pianiste.jouer();

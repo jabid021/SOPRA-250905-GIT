@@ -18,10 +18,10 @@
     <bean id="guitare" class="orchestre.model.Guitare"/>
     
 
-<context:component-scan base-package="orchestre.model"/>
+<!--<context:component-scan base-package="orchestre.model"/>
 
 
-<!--  
+  
 <bean id="piano" class="orchestre.model.Piano"/>
 <bean id="guitare" class="orchestre.model.Guitare"/>
 <bean id="flute" class="orchestre.model.Flute"/>
