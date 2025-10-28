@@ -1,15 +1,26 @@
 package orchestre.test;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-import orchestre.config.AppConfig;
-import orchestre.model.Flutiste;
-import orchestre.model.Guitariste;
 import orchestre.model.IMusicien;
 
 public class Test {
+	
+	@Autowired
+	@Qualifier("flutiste")
+	IMusicien flutiste;
+	
+	@Autowired
+	@Qualifier("guitariste")
 
-	public static void main(String[] args) {
+	IMusicien guitariste;
+
+	@Autowired
+	@Qualifier("pianiste")
+	IMusicien pianiste;
+
+	public void run(String[] args) {
 	
 		//ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
 
