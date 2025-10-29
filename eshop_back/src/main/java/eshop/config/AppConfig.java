@@ -22,11 +22,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan("eshop.dao")
 @EnableTransactionManagement 
 @PropertySource("classpath:application.properties")
+@PropertySource("classpath:infos.properties")
 public class AppConfig {
 
 	@Autowired
 	private Environment env;
 	
+	
+	
+	@Autowired
+	private Environment env;
 	
 	@Bean
 	public BasicDataSource dataSource() {
