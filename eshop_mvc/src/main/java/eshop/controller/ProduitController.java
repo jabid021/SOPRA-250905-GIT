@@ -31,6 +31,7 @@ public class ProduitController {
 		model.addAttribute("produitV",new Produit());
 		model.addAttribute("produits", daoProduit.findAll());
 		model.addAttribute("fournisseurs", daoPersonne.findAllFournisseur());
+		model.addAttribute("produit",new Produit());
 		return "produits/produits";
 	}
 
@@ -49,13 +50,12 @@ public class ProduitController {
 	}
 
 	@PostMapping
-	public String ajoutProduit(@Valid @ModelAttribute("produitV") Produit produit,BindingResult result,Model model) {
-		
-		if(result.hasErrors()) {
-			model.addAttribute("produitV",produit);
+	public String ajoutProduit(@Valid @ModelAttribute Produit produit,BindingResult result,Model model) {
+		if(result.hasErrors()) 
+		{
 			model.addAttribute("produits", daoProduit.findAll());
 			model.addAttribute("fournisseurs", daoPersonne.findAllFournisseur());
-
+			model.addAttribute("produit",produit);
 			return "produits/produits";
 		}
 		daoProduit.save(produit);
@@ -63,10 +63,11 @@ public class ProduitController {
 	}
 
 	@PostMapping("/{id}")
-	public String modifierProduit(@Valid @ModelAttribute("produitV") Produit produit,BindingResult result,Model model) {
-		if(result.hasErrors()) {
-			model.addAttribute("produitV",produit);
+	public String modifierProduit(@Valid @ModelAttribute Produit produit,BindingResult result,Model model) {
+		if(result.hasErrors()) 
+		{
 			model.addAttribute("fournisseurs", daoPersonne.findAllFournisseur());
+			model.addAttribute("produit",produit);
 			return "produits/updateProduit";
 		}
 		daoProduit.save(produit);
