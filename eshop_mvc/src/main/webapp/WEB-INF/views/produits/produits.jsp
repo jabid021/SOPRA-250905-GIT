@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +8,7 @@
 </head>
 <div id="content">
   <h1>Liste des Produits</h1>
-  <input id="btnAddProduit" type="button" class ="btn btn-success" value="Ajouter">
+  <!-- <input id="btnAddProduit" type="button" class ="btn btn-success" value="Ajouter"> -->
   <a href="home"><input type="button" class ="btn btn-info" value="Retour"></a>
 
   <table class="table table-striped">
@@ -55,32 +53,21 @@
 
   <div id="addFormProduit" class="formAjout">
     <h3>Ajouter Produit</h3>
-    <form:form modelAttribute="produit" action="produit" method="post">
-            <table>
-                <tr>
-                    <td>Libelle :</td>
-                    <td><form:input path="libelle" placeholder="Saisir libelle"
-                            required="required" /><td>
-                
-                </tr>
-                <tr>
-                    <td>Prix :</td>
-                    <td><form:input type="number" path="prix" placeholder="Saisir prix" required="required" /></td>
-                </tr>
-                <tr>
-	                <td> Fournisseur :</td>
-                    <td>
-                       <form:select path="fournisseur">
-					    <form:option value="" label="Selectionner un fournisseur"/>
-					    <form:options items="${fournisseurs}" />
-                       </form:select>
-                  
-                    </td>
-                </tr>
-            </table>
-            
-            <input class="btn btn-success" type="submit" value="Ajouter">
-        </form:form>
+    <form:form modelAttribute="produitVide" action="produit" method="post">
+      <table>
+      <tr><td>Libelle : </td><td><form:input required="required" path="libelle" placeholder="Saisir votre libelle"/> </td></tr>
+      <tr><td>Prix : </td><td><form:input required="required" path="prix" type="number" placeholder="Saisir prix" step="0.01"/> </td></tr>
+      <tr><td>Fournisseur : </td><td>
+      <form:select required="required" path="fournisseur.id">
+      	<form:option value="">Choisir un fournisseur</form:option>
+     	<form:options items="${fournisseurs}" itemValue="id" itemLabel="infosSelect"/>
+      </form:select></td></tr>
+      
+      </table>
+
+
+      <input class ="btn btn-success" type="submit" value="Ajouter">
+    </form:form>
   </div>
 
 </div>
@@ -88,7 +75,7 @@
 
 </body>
 </html>
-<script>
+<!--  <script>
 
 
   btnAddProduit.onclick=function()
@@ -96,4 +83,4 @@
     addFormProduit.style.display="block";
   }
  
-</script>
+</script>-->

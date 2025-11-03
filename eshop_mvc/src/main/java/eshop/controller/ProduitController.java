@@ -28,6 +28,7 @@ public class ProduitController {
 		model.addAttribute("produit",new Produit());
 		model.addAttribute("produits", daoProduit.findAll());
 		model.addAttribute("fournisseurs", daoPersonne.findAllFournisseur());
+		model.addAttribute("produitVide",new Produit());
 		return "produits/produits";
 	}
 
