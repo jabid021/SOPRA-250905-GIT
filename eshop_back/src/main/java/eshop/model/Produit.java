@@ -2,10 +2,8 @@ package eshop.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="product")
@@ -22,8 +25,13 @@ public class Produit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name="label",nullable = false,length = 50)
+	@NotEmpty(message = "Un produit a forcement un libelle")
+	@NotBlank(message = "Un libelle ne peut pas être vide")
 	private String libelle;
+	
 	@Column(name="price",columnDefinition = "DECIMAL(6,2)")
+	@Min(100)
+	@Max(10000)
 	private double prix;
 	
 	@ManyToOne
