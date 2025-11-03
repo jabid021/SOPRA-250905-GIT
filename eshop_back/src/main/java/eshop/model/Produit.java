@@ -76,7 +76,11 @@ public class Produit {
 		this.fournisseur = fournisseur;
 	}
 	
-	
+	public String getInfosSelect() 
+	{
+		return this.id+" - "+this.libelle+" "+this.prix+" ("+this.fournisseur.getId()+")";
+	}
+
 
 	public List<Achat> getVentes() {
 		return ventes;

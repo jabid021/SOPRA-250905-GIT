@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
     
 <!DOCTYPE html>
 <html>
@@ -53,23 +55,32 @@
 
   <div id="addFormProduit" class="formAjout">
     <h3>Ajouter Produit</h3>
-    <form action="produit" method="post">
-      <table>
-      <tr><td>Libelle : </td><td><input required name="libelle" type="text" placeholder="Saisir votre libelle"> </td></tr>
-      <tr><td>Prix : </td><td><input required name="prix" type="number" placeholder="Saisir prix" step="0.01"> </td></tr>
-      <tr><td>Fournisseur : </td><td>
-      <select required name="fournisseur.id">
-      <option value="">Choisir un fournisseur</option>
-      	<c:forEach items="${fournisseurs}" var="fournisseur">
-      	 <option value="${fournisseur.id}">${fournisseur.id} - ${fournisseur.nom} ${fournisseur.prenom}</option>
-      	</c:forEach>
-      </select></td></tr>
-      
-      </table>
-
-
-      <input class ="btn btn-success" type="submit" value="Ajouter">
-    </form>
+    <form:form modelAttribute="produit" action="produit" method="post">
+            <table>
+                <tr>
+                    <td>Libelle :</td>
+                    <td><form:input path="libelle" placeholder="Saisir libelle"
+                            required="required" /><td>
+                
+                </tr>
+                <tr>
+                    <td>Prix :</td>
+                    <td><form:input type="number" path="prix" placeholder="Saisir prix" required="required" /></td>
+                </tr>
+                <tr>
+	                <td> Fournisseur :</td>
+                    <td>
+                       <form:select path="fournisseur">
+					    <form:option value="" label="Selectionner un fournisseur"/>
+					    <form:options items="${fournisseurs}" />
+                       </form:select>
+                  
+                    </td>
+                </tr>
+            </table>
+            
+            <input class="btn btn-success" type="submit" value="Ajouter">
+        </form:form>
   </div>
 
 </div>
