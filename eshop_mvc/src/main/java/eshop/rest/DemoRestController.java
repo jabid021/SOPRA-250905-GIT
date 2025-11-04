@@ -2,6 +2,8 @@ package eshop.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,13 @@ public class DemoRestController {
 		Produit produit = new Produit();
 		Fournisseur fournisseur = new Fournisseur();
 		produit.setFournisseur(fournisseur);
+		return produit;
+	}
+	
+	@PostMapping("/produit")
+	public Produit insertProduit(@RequestBody Produit produit) 
+	{
+		System.out.println(produit);
 		return produit;
 	}
 }
