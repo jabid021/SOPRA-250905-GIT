@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="filiere")
 public class Filiere {
@@ -22,8 +24,10 @@ public class Filiere {
 	@Column(length = 50,nullable = false)
 	private String libelle;
 	@Column(nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate debut;
 	@Column(nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fin;
 	@OneToMany(mappedBy="filiere")
 	private List<Module> matieres;
@@ -106,6 +110,11 @@ public class Filiere {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	public String getInfos() 
+	{
+		return this.id+" - "+this.libelle;
 	}
 
 	@Override

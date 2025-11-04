@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import quest.dao.IDAOPersonne;
 import quest.model.Formateur;
-import quest.model.Ordinateur;
 import quest.model.Personne;
 import quest.model.Stagiaire;
 
@@ -73,14 +72,30 @@ public class PersonneService {
 
 	public Personne create(Personne personne) 
 	{
+		if(personne.getId()!=null) 
+		{
+			throw new RuntimeException("Comment ca une personne en insert a deja un id ?!");
+		}
 		return daoPersonne.save(personne);
 	}
 
 	public Personne update(Personne personne) 
 	{
+		if(personne.getId()==null) 
+		{
+			throw new RuntimeException("Comment ca une personne en update a sans un id ?!");
+		}
 		return daoPersonne.save(personne);
 	}
 
+	public Personne updateInfosConnect(Integer id,String login,String password) 
+	{
+		Personne personne = daoPersonne.findById(id).get();
+		personne.setLogin(login);
+		personne.setPassword(password);
+		return daoPersonne.save(personne);
+	}
+	
 	public void deleteById(Integer id) 
 	{
 		daoPersonne.deleteById(id);
