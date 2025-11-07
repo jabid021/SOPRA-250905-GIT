@@ -1,4 +1,4 @@
-package fr.formation.config;
+package quest.config;
 
 import java.util.List;
 
@@ -6,15 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -28,22 +24,33 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http, JwtHeaderFilter jwtFilter) throws Exception {
         // Configurer ici les accès généraux
         http.authorizeHttpRequests(auth -> {
-            // auth.requestMatchers("/api/matiere").hasRole("USER");
-            // auth.requestMatchers("/api/matiere").hasAuthority("ROLE_USER");
+            // On autorise les ressources externes (JSP, CSS, JS, IMG)
+            auth.requestMatchers("/WEB-INF/**", "/*.css", "/assets/**").permitAll();
 
-            auth.requestMatchers(HttpMethod.POST, "/api/utilisateur", "/api/utilisateur/connexion").permitAll();
+            // On autorise tout le monde sur connexion
+            auth.requestMatchers(HttpMethod.POST, "/api/auth").permitAll();
 
+            // Sinon, accès restreint aux utilisateurs authentifiés
             auth.requestMatchers("/**").authenticated();
         });
 
         // Activer le formulaire de connexion
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(form -> {
+            form.loginPage("/login"); // Page de login, GetMapping à gérer nous-même
+            form.loginProcessingUrl("/process_login"); // URL de process du login par Spring Security, PostMapping créé et géré par Spring Security
+            form.defaultSuccessUrl("/home", true); // Redirection vers /home après login OK
+            form.permitAll(); // On autorise la page de login
+        });
 
-        // Activer l'authentification par HTTP Basic
-        http.httpBasic(Customizer.withDefaults());
+        // Activer la page de déconnexion
+        http.logout(logout -> {
+            logout.logoutUrl("/logout") // URL de déconnexion, Mapping créé et géré par Spring Security
+                .logoutRequestMatcher(request -> "GET".equals(request.getMethod()) && request.getRequestURI().equals("/logout")); // Cette ligne est pour autoriser le GET sur /logout, car par défaut c'est du POST que Spring Security crée
+
+            logout.logoutSuccessUrl("/login"); // Redirection vers /login après logout OK
+        });
 
         // Désactiver la protection CSRF
-        // http.csrf(csrf -> csrf.disable());
         http.csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"));
 
         // Configuration de la politique CORS
@@ -68,33 +75,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // UserDetailsService -> Utilisé par l'AuthenticationProvider pour charger un utilisateur (username, password, roles, etc.)
-    // @Bean
-    UserDetailsService inMemory(PasswordEncoder passwordEncoder) {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-
-        manager.createUser(User
-            .withUsername("user")
-            // .password("{noop}123456") // noop == NoOperator => pas de hashage
-            // .password("123456")
-            // .password("$2a$10$zFeTn0rQKrsMXIT2I2NAl.70YWXs05/XyJsnSsznDjB4C.T0yv8hC")
-            .password(passwordEncoder.encode("123456"))
-            .roles("USER")
-            .build()
-        );
-
-        return manager;
-    }
-
     @Bean
     PasswordEncoder passwordEncoder() {
-        // return NoOpPasswordEncoder.getInstance(); // PAS BIEN
-
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-        System.out.println("\r\nMot de passe ===> " + passwordEncoder.encode("123456") + "\r\n");
-
-        return passwordEncoder;
+        return new BCryptPasswordEncoder();
     }
 
     // Permet d'injecter dans le contexte de Spring l'AuthenticationManager actuellement utilisé par Spring Security
