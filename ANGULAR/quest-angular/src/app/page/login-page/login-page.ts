@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthRequestDto } from '../../dto/auth-request-dto';
 import { AuthService } from '../../service/auth-service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ ReactiveFormsModule, CommonModule ],
+  imports: [ CommonModule, ReactiveFormsModule ],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
 export class LoginPage implements OnInit {
   protected userForm!: FormGroup;
+  protected usernameCtrl!: FormControl;
+  protected passwordCtrl!: FormControl;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.usernameCtrl = this.formBuilder.control('', Validators.required);
+    this.passwordCtrl = this.formBuilder.control('', [ Validators.required, Validators.minLength(6) ]);
+
     this.userForm = this.formBuilder.group({
-      username: this.formBuilder.control('Valeur', Validators.required),
-      password: this.formBuilder.control('',[Validators.required, Validators.minLength(6)])
+      username: this.usernameCtrl,
+      password: this.passwordCtrl
     });
   }
 
