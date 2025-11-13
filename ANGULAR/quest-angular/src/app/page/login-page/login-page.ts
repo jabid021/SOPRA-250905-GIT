@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthRequestDto } from '../../dto/auth-request-dto';
 import { AuthService } from '../../service/auth-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ ReactiveFormsModule ],
+  imports: [ ReactiveFormsModule, CommonModule ],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -16,8 +17,8 @@ export class LoginPage implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      username: this.formBuilder.control(''),
-      password: this.formBuilder.control('')
+      username: this.formBuilder.control('Valeur', Validators.required),
+      password: this.formBuilder.control('',[Validators.required, Validators.minLength(6)])
     });
   }
 

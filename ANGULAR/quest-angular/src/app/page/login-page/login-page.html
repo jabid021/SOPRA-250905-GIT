@@ -3,6 +3,7 @@
 <form (ngSubmit)="connecter()" [formGroup]="userForm">
     <input type="text" formControlName="username" placeholder="Nom d'utilisateur" />
     <input type="password" formControlName="password" placeholder="Mot de passe" />
+    <div *ngIf="userForm.get('password')?.hasError('minlength')"> LE mdp doit contenir au moins 6 characters</div>
 
     <input type="submit" value="Se connecter" />
 </form>
