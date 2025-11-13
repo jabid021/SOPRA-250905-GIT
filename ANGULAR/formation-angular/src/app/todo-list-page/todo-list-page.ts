@@ -6,6 +6,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Todo } from '../todo';
 import { TodoService } from '../todo-service';
 import { TodoStatePipe } from '../todo-state-pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list-page',
@@ -18,13 +19,16 @@ import { TodoStatePipe } from '../todo-state-pipe';
 export class TodoListPage implements OnInit {
   protected todo: Todo = new Todo(0, "Le titre du TODO", false, 1);
   protected todos!: Todo[];
+  protected todos$!: Observable<Todo[]>;
 
   constructor(private route: ActivatedRoute, private title: Title, private todoService: TodoService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.title.setTitle("Liste des Todos");
 
-    this.todos = this.todoService.findAll();
+    this.todos = await this.todoService.findAllPromise();
+
+    this.todos$ = this.todoService.findAll();
 
     this.route.queryParams.subscribe((params: any) => {
       console.log(params);
@@ -39,11 +43,13 @@ export class TodoListPage implements OnInit {
 
   public ajouterTodo() {
     this.todoService.save(this.todo);
+
     this.todo = new Todo(0, "", false, 1);
   }
 
   public modifierTodo() {
     this.todoService.save(this.todo);
+
     this.todo = new Todo(0, "", false, 1);
   }
 
