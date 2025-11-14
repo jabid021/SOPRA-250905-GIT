@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { AuthRequestDto } from '../../dto/auth-request-dto';
 import { AuthService } from '../../service/auth-service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,11 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login-page.css',
 })
 export class LoginPage implements OnInit {
+  protected loginError: boolean = false;
   protected userForm!: FormGroup;
   protected usernameCtrl!: FormControl;
   protected passwordCtrl!: FormControl;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.usernameCtrl = this.formBuilder.control('', Validators.required);
@@ -27,7 +29,18 @@ export class LoginPage implements OnInit {
     });
   }
 
-  public connecter() {
-    this.authService.auth(new AuthRequestDto(this.userForm.value.username, this.userForm.value.password));
+  public async connecter() {
+    try {
+      // La méthode auth renvoyant une Promise, on peut attendre la résolution avec "await"
+      await this.authService.auth(new AuthRequestDto(this.usernameCtrl.value, this.passwordCtrl.value));
+
+      // Si tout est OK, on va sur la page des matières
+      this.router.navigate([ '/matiere' ]);
+    }
+
+    // Si la connexion n'a pas pu se faire, affichage de l'erreur sur le template
+    catch {
+      this.loginError = true;
+    }
   }
 }
