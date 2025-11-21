@@ -2,6 +2,8 @@ package quest.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import quest.config.SecurityConfig;
 import quest.model.Matiere;
 import quest.service.MatiereService;
 import quest.view.Views;
@@ -22,7 +25,9 @@ import quest.view.Views;
 @RestController
 @RequestMapping("/api/matiere")
 public class MatiereRestController {
-
+	
+	 private final static Logger log = LoggerFactory.getLogger(MatiereRestController.class);
+	 
 	@Autowired
 	MatiereService matiereSrv;
 
@@ -31,6 +36,7 @@ public class MatiereRestController {
 	@GetMapping
 	public List<Matiere> allMatieres()
 	{
+		log.error("On recherche toutes les matieres");
 		return matiereSrv.getAll();
 	}
 
@@ -38,6 +44,7 @@ public class MatiereRestController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Matiere> ficheMatiere(@PathVariable Integer id, Matiere matiere) {
 		Matiere m = matiereSrv.getById(id);
+		log.error("On recherche la matiere{}",id);
 
 		if (m == null) {
 			return ResponseEntity.notFound().build();
