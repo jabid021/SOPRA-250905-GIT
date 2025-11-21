@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline -B
 
 COPY ./src ./src
 
-RUN mvn package
+RUN mvn clean verify sonar:sonar -Dsonar.projectKey=TP1-Docker -Dsonar.projectName='TP1-Docker' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_d182c3a1318937435ab1e4ca324721525daef9a2
 
 # RUN rm -R src
 # RUN rm pom.xml
@@ -26,3 +26,6 @@ COPY --from=builder /app/target/*.war quest-boot.war
 CMD [ "java", "-jar", "quest-boot.war" ]
 
 EXPOSE 8080
+
+
+

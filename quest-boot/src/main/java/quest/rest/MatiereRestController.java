@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import quest.config.SecurityConfig;
 import quest.model.Matiere;
 import quest.service.MatiereService;
 import quest.view.Views;
@@ -74,5 +73,4 @@ public class MatiereRestController {
 	public void supprimerMatiere(@PathVariable Integer id) {
 		matiereSrv.deleteById(id);
 	}
-
 }
