@@ -1,25 +1,30 @@
 package quest.service;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import quest.dao.IDAOMatiere;
 import quest.model.Matiere;
+import quest.rest.MatiereRestController;
 
 @Service
 public class MatiereService {
 
+	private final static Logger log = LoggerFactory.getLogger(MatiereService.class);
 	@Autowired
 	IDAOMatiere daoMatiere;
 
 	public Matiere getById(Integer id) throws RuntimeException
 	{
+		log.error("On pioche la matiere{} dans la base de données",id);
 		if(id==null) 
 		{
-			throw new RuntimeException("L'id d'une matiere ne peut pas etre null");	
+			throw new RuntimeException("L'id d'une matiere ne peut pas etre null");
+			
 		}
 	return daoMatiere.findById(id).orElse(null);
 	}

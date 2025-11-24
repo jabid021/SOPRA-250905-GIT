@@ -7,3 +7,6 @@ COPY ./target/*.war quest-boot.war
 CMD [ "java", "-jar", "quest-boot.war" ]
 
 EXPOSE 8080
+
+
+
