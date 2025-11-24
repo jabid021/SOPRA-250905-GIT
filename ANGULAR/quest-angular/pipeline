@@ -15,7 +15,7 @@ pipeline {
         stage('npm package') {
             agent {
                 docker {
-                    image 'nginx:latest'
+                    image 'node:lts-bullseye'
                     args '''
                         -v $HOME/.npm:/root/.npm:z
                         -u root
@@ -25,15 +25,17 @@ pipeline {
             }
 
             steps {
-                dir('quest-angular') {
+                dir('ANGULAR/quest-angular') {
                     sh 'npm -version'
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
             }
         }
 
         stage('Docker Build') {
             steps {
-                dir('quest-boot') {
+                dir('ANGULAR/quest-angular') {
                     sh 'docker build -t quest-angular .'
                 }
             }
