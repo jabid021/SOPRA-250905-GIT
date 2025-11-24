@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Github checkout') {
+            steps {
+                script {
+                    git credentialsId: 'github-login',
+                    url: 'git@github.com:jabid021/SOPRA-250905-GIT.git',
+                    branch: 'tp_grp5'
+                }
+            }
+        }
+
+        stage('npm package') {
+            agent {
+                docker {
+                    image 'nginx:latest'
+                    args '''
+                        -v $HOME/.npm:/root/.npm:z
+                        -u root
+                    '''
+                    reuseNode true // Sans ça, il y aura un 2eme workspace
+                }
+            }
+
+            steps {
+                dir('quest-angular') {
+                    sh 'npm -version'
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                dir('quest-boot') {
+                    sh 'docker build -t quest-angular .'
+                }
+            }
+        }
+    }
+}
