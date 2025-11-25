@@ -55,12 +55,12 @@ pipeline {
             }
         }
 
-         stage('Docker Deploy') {
-             steps {
-                 dir('bibliotek/dockercompose') {
-                     sh 'docker compose up -d --build angular'
-                 }
-             }
-         }
+        //  stage('Docker Deploy') {
+        //      steps {
+        //          dir('bibliotek/dockercompose') {
+        //              sh 'docker compose up -d --build angular'
+        //          }
+        //      }
+        //  }
     }
 }
