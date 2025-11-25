@@ -19,6 +19,7 @@ pipeline {
                     args '''
                         -v $HOME/.m2:/root/.m2:z
                         -u root
+                        --network bibliotek
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
                 }
@@ -26,8 +27,9 @@ pipeline {
 
             steps {
                 dir('bibliotek/bibliotek-boot') {
-                    sh 'mvn -version'
-                    sh 'mvn package'
+                    withSonarQubeEnv('SonarQube') {
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=bibliotek-boot -Dsonar.projectName='bibliotek-boot'"
+                    }
                 }
             }
         }
