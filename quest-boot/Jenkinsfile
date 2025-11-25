@@ -2,60 +2,50 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Maven Package') {
             agent {
                 docker {
-                    image 'node:lts-bullseye'
+                    image 'maven:3.9.11-eclipse-temurin-21'
                     args '''
-                        -v $HOME/.npm:/root/.npmm2:z
+                        -v $HOME/.m2:/root/.m2:z
                         -u root
                         --network devops
                     '''
-                    reuseNode true // Sans ça, il y aura un 2eme workspace
+                    reuseNode true
                 }
             }
-
-            stages {
-                stage('Installation dependances') {
-                    steps {
-                        dir('ANGULAR/quest-angular') {
-                            sh 'npm install'
-                        }
-                    }
-                }
-
-                stage('Analyse Sonar') {
-                    steps {
-                        dir('ANGULAR/quest-angular') {
-                            withSonarQubeEnv('SonarQube') {
-                                sh './node_modules/.bin/sonar-scanner -Dsonar.projectKey=quest-angular'
-                            }
-                        }
-                    }
-                }
-
-                stage('Build Angular') {
-                    steps {
-                        dir('ANGULAR/quest-angular') {
-                            sh './node_modules/.bin/ng build'
-                        }
-                    }
+            
+            steps {
+                dir('quest-boot') {
+                    sh 'mvn -version'
+                    sh 'mvn package'
                 }
             }
         }
 
+        stage('Analyse Sonar') {
+            steps {
+                dir('quest-boot') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=quest-boot -Dsonar.projectName='quest-boot'"
+                    }
+                }
+            }
+        }
+            
+
         stage('Docker Build') {
             steps {
-                dir('ANGULAR/quest-angular') {
-                    sh 'docker build -t ajc/quest:angular .'
-                }
+                dir('quest-boot') {
+                    sh 'docker build -t ajc/quest:boot .'
+                }    
             }
         }
 
         stage('Docker Deploy') {
             steps {
                 dir('DOCKER/commandes/compose/quest') {
-                    sh 'docker compose up -d --build angular'
+                    sh 'docker compose up -d'
                 }
             }
         }
