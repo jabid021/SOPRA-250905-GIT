@@ -9,6 +9,7 @@ pipeline {
                     args '''
                         -v $HOME/.npm:/root/.npmm2:z
                         -u root
+                        --network devops
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
                 }
