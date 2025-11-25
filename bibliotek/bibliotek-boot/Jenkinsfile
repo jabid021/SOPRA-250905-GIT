@@ -16,7 +16,7 @@ pipeline {
             }
 
             steps {
-                dir('bibliotek-boot') {
+                dir('bibliotek/bibliotek-boot') {
                     sh 'mvn -version'
                     sh 'mvn package'
                 }
