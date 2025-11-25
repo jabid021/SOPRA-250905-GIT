@@ -10,7 +10,7 @@ pipeline {
         stage('Github checkout') {
             steps {
                 script {
-                    git credentialsId: 'github-login',
+                    git credentialsId: '94cb5d88-61b7-4d90-bfa9-61624550e66d',
                     url: 'git@github.com:jabid021/SOPRA-250905-GIT.git',
                     branch: 'main'
                 }
