@@ -17,7 +17,7 @@ pipeline {
                 docker {
                     image 'node:lts-bullseye'
                     args '''
-                        -v $HOME/.npm:/root/.npmm2:z
+                        -v $HOME/.npm:/root/.npm:z
                         -u root
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
