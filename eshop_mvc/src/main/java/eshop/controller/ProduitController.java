@@ -27,6 +27,7 @@ public class ProduitController {
 
 	@GetMapping
 	public String allProduits(Model model) {
+		model.addAttribute("produitV",new Produit());
 		model.addAttribute("produits", daoProduit.findAll());
 		model.addAttribute("fournisseurs", daoPersonne.findAllFournisseur());
 		model.addAttribute("produit",new Produit());

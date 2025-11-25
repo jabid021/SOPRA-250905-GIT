@@ -20,11 +20,11 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @EnableJpaRepositories("eshop.dao")
 @PropertySource("classpath:application.properties")
+@PropertySource("classpath:infos.properties")
 public class AppConfig {
 
 	@Autowired
 	private Environment env;
-	
 	
 	@Bean
 	public BasicDataSource dataSource() {

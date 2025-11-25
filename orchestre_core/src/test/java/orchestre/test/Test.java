@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import orchestre.model.IMusicien;
 
 public class Test {
+	
+	@Autowired
+	@Qualifier("flutiste")
+	IMusicien flutiste;
+	
+	@Autowired
+	@Qualifier("guitariste")
 
 	@Autowired
 	IMusicien guitariste;
