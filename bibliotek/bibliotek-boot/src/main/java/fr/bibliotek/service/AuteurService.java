@@ -44,6 +44,7 @@ public class AuteurService {
     }
 
     public void deleteById(String id) {
+        log.info("Supression de l'auteur d'id {}", id);
         this.repository.deleteById(id);
     }
 
@@ -51,7 +52,8 @@ public class AuteurService {
         auteur.setNom(request.getNom());
         auteur.setPrenom(request.getPrenom());
         auteur.setNationalite(request.getNationalite());
-
+        log.info("Save d'un auteur d'id initial {} avec les données {} {} {}", auteur.getId(), request.getPrenom(),
+                request.getNom(), request.getNationalite());
         return this.repository.save(auteur);
     }
 }
