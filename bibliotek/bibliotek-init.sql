@@ -10,4 +10,4 @@ CREATE TABLE `utilisateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-INSERT INTO utilisateur (username, password) VALUES ('jeremy', '$2a$10$zFeTn0rQKrsMXIT2I2NAl.70YWXs05/XyJsnSsznDjB4C.T0yv8hC');
+INSERT INTO utilisateur (id, username, password) VALUES ('jeremy', 'jeremy', '$2a$10$zFeTn0rQKrsMXIT2I2NAl.70YWXs05/XyJsnSsznDjB4C.T0yv8hC');
