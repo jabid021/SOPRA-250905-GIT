@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import fr.bibliotek.api.request.CreateOrUpdateAuteurRequest;
 import fr.bibliotek.exception.AuteurNotFoundException;
 import fr.bibliotek.model.Auteur;
@@ -11,6 +13,9 @@ import fr.bibliotek.repo.AuteurRepository;
 
 @Service
 public class AuteurService {
+
+    private final static Logger log = LoggerFactory.getLogger(AuteurService.class);
+
     private final AuteurRepository repository;
 
     public AuteurService(AuteurRepository repository) {
@@ -18,6 +23,7 @@ public class AuteurService {
     }
 
     public List<Auteur> findAll() {
+        log.error("On recherche tous les auteurs v ia le service");
         return this.repository.findAll();
     }
 

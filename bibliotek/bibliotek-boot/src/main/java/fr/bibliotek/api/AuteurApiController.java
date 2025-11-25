@@ -2,6 +2,8 @@ package fr.bibliotek.api;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +25,18 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auteur")
 public class AuteurApiController {
+
+    private final static Logger log = LoggerFactory.getLogger(AuteurApiController.class);
     private final AuteurService service;
 
     public AuteurApiController(AuteurService service) {
+
         this.service = service;
     }
 
     @GetMapping
     public List<AuteurResponse> findAll() {
+        log.error("On recherche tous les auteurs via le restController ");
         return this.service.findAll().stream().map(AuteurResponse::convert).toList();
     }
 
