@@ -12,32 +12,23 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Maven package') {
             agent {
                 docker {
-                    image 'node:lts-bullseye'
+                    image 'maven:3.9.11-eclipse-temurin-21'
                     args '''
-                        -v $HOME/.npm:/root/.npm:z
+                        -v $HOME/.m2:/root/.m2:z
                         -u root
+                        --network devops
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
                 }
             }
 
-            stages {
-                stage('Installation dependances') {
-                    steps {
-                        dir('ANGULAR/quest-angular') {
-                            sh 'npm install'
-                        }
-                    }
-                }
-
-                stage('Build Angular') {
-                    steps {
-                        dir('ANGULAR/quest-angular') {
-                            sh './node_modules/.bin/ng build'
-                        }
+            steps {
+                dir('quest-boot') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=quest-boot -Dsonar.projectName='quest-boot'"
                     }
                 }
             }
@@ -45,8 +36,8 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                dir('ANGULAR/quest-angular') {
-                    sh 'docker build -t ajc/quest:angular .'
+                dir('quest-boot') {
+                    sh 'docker build -t ajc/quest:boot .'
                 }
             }
         }
@@ -54,7 +45,7 @@ pipeline {
         stage('Docker Deploy') {
             steps {
                 dir('DOCKER/commandes/compose/quest') {
-                    sh 'docker compose up -d --no-deps --build angular'
+                    sh 'docker compose up -d --no-deps --build boot'
                 }
             }
         }
