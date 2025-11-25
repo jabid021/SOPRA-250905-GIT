@@ -23,6 +23,16 @@ pipeline {
                     }
                 }
 
+                stage('Analyse Sonar') {
+                    steps {
+                        dir('ANGULAR/quest-angular') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh './node_modules/.bin/sonar-scanner -Dsonar.projectKey=quest-angular'
+                            }
+                        }
+                    }
+                }
+
                 stage('Build Angular') {
                     steps {
                         dir('ANGULAR/quest-angular') {
