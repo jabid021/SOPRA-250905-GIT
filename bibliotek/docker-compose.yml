@@ -1,0 +1,64 @@
+name: bibliotek-compose
+
+# Les services, c'est tous les containers à créer / à maintenir
+services:
+  # Container "mysql", qui utilisera une image, des volumes, un réseau, des ports, etc...
+  mysql:
+    image: mysql:8.0.44-debian
+    container_name: bibliotek-mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+    networks:
+      - bibliotek
+
+    volumes:
+      # - ./demo-init.sql:/docker-entrypoint-initdb.d/setup.sql
+      - db_data:/var/lib/mysql
+
+    # Comment déterminer que mysql est prêt à l'emploi
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+
+  boot:
+    # build:
+    # context: /workspace/SOPRA-250905-GIT/quest-boot
+    # context: ./quest-boot
+
+    image: ajc/bibliotek:boot
+    container_name: bibliotek-boot
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://bibliotek-mysql/projet_bibliotek
+      SPRING_DATASOURCE_PASSWORD: root
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    networks:
+      - bibliotek
+
+  angular:
+    image: ajc/bibliotek:angular
+    container_name: bibliotek-angular
+
+    ports:
+      - 8081:8081
+
+    depends_on:
+      - boot
+
+    networks:
+      - bibliotek
+
+volumes:
+  db_data:
+    name: bibliotek-db-data
+
+networks:
+  bibliotek:
+    name: bibliotek

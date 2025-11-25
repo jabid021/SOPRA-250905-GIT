@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Github checkout') {
+            steps {
+                script {
+                    git credentialsId: 'github-login',
+                    url: 'git@github.com:jabid021/SOPRA-250905-GIT.git',
+                    branch: 'gr3-projet-jenkins'
+                }
+            }
+        }
+
+        stage('Maven package') {
+            agent {
+                docker {
+                    image 'maven:3.9.11-eclipse-temurin-21'
+                    args '''
+                        -v $HOME/.m2:/root/.m2:z
+                        -u root
+                    '''
+                    reuseNode true // Sans ça, il y aura un 2eme workspace
+                }
+            }
+
+            steps {
+                dir('bibliotek/bibliotek-boot') {
+                    sh 'mvn -version'
+                    sh 'mvn package'
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                dir('bibliotek/bibliotek-boot') {
+                    sh 'docker build -t ajc/bibliotek:boot .'
+                }
+            }
+        }
+
+        stage('Docker Deploy') {
+            steps {
+                dir('bibliotek') {
+                    sh 'docker compose up -d'
+                }
+            }
+        }
+    }
+}
