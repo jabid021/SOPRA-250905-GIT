@@ -39,7 +39,7 @@ pipeline {
             }
 
             steps {
-                dir('bibliotek-boot') {
+                dir('bibliotek/bibliotek-boot') {
                     withSonarQubeEnv('SonarQube') {
                         sh "mvn clean verify sonar:sonar -Dsonar.projectKey=bibliotek-boot -Dsonar.projectName='bibliotek-boot'"
                     }
@@ -49,7 +49,7 @@ pipeline {
     
         stage('Docker Build') {
             steps {
-                dir('bibliotek-boot') {
+                dir('bibliotek/bibliotek-boot') {
                     sh 'docker build -t ajc/bibliotek:boot .'
                 }
             }
