@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Maven Package') {
+        stage('Maven Build & Sonar') {
             agent {
                 docker {
                     image 'maven:3.9.11-eclipse-temurin-21'
@@ -14,25 +14,30 @@ pipeline {
                     reuseNode true
                 }
             }
-            
-            steps {
-                dir('quest-boot') {
-                    sh 'mvn -version'
-                    sh 'mvn package'
-                }
-            }
-        }
 
-        stage('Analyse Sonar') {
-            steps {
-                dir('quest-boot') {
-                    withSonarQubeEnv('SonarQube') {
-                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=quest-boot -Dsonar.projectName='quest-boot'"
+            stages {
+
+                stage('Maven Package') {
+                    steps {
+                        dir('quest-boot') {
+                            sh 'mvn -version'
+                            sh 'mvn clean package'
+                        }
                     }
                 }
+
+                stage('Analyse Sonar') {
+                    steps {
+                        dir('quest-boot') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=quest-boot -Dsonar.projectName=quest-boot"
+                            }
+                        }
+                    }
+                }
+
             }
-        }
-            
+        }           
 
         stage('Docker Build') {
             steps {
