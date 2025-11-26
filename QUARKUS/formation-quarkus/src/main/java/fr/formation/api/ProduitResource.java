@@ -1,5 +1,6 @@
 package fr.formation.api;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import fr.formation.dto.request.CreateOrUpdateProduitRequest;
 import fr.formation.dto.request.CreateProduitRequest;
 import fr.formation.dto.response.ProduitResponse;
+import fr.formation.model.Produit;
 import fr.formation.service.ProduitService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.BeanParam;
@@ -28,10 +30,10 @@ public class ProduitResource {
     private ProduitService service;
 
     @GET
-    public void findAll() {
+    public List<Produit> findAll() {
         log.debug("Recherche de la liste des produits");
 
-        this.service.findAll();
+        return this.service.findAll();
     }
 
     // @GET
