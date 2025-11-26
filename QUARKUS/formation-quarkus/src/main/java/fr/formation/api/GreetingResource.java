@@ -1,4 +1,4 @@
-package fr.formation;
+package fr.formation.api;
 
 import fr.formation.dto.response.ExempleResponse;
 import fr.formation.musique.Guitariste;
