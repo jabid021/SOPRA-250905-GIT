@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import fr.formation.dto.request.CreateProduitRequest;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
@@ -20,24 +21,31 @@ public class ProduitResource {
         return "Produit " + id + " !";
     }
 
-
     @Path("/{id}")
     @GET
     public String findByIdPath(@PathParam("id") int id) {
         return "Produit " + id + " !";
     }
 
-    @Path("/create")
-    @GET
-    public Response create(@BeanParam CreateProduitRequest request) {
-        // System.out.println(request.getLibelle());
-        // System.out.println(request.getPrix());
+    // @Path("/create")
+    // @GET
+    // public Response createGet(@BeanParam CreateProduitRequest request) {
+    //     // System.out.println(request.getLibelle());
+    //     // System.out.println(request.getPrix());
 
+    //     log.debug("Le nom du produit est : {}", request.getLibelle());
+    //     log.debug("Le prix du produit est : {}", request.getPrix());
+
+    //     // return Response.ok().build();
+
+    //     return Response.ok("OK !").build();
+    // }
+
+    @POST
+    public Response createPost(CreateProduitRequest request) {
         log.debug("Le nom du produit est : {}", request.getLibelle());
         log.debug("Le prix du produit est : {}", request.getPrix());
 
-        // return Response.ok().build();
-
-        return Response.ok("OK !").build();
+        return Response.ok().build();
     }
 }

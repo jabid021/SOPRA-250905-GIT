@@ -2,13 +2,11 @@ package fr.formation.dto.request;
 
 import java.math.BigDecimal;
 
-import jakarta.ws.rs.QueryParam;
-
 public class CreateProduitRequest {
-    @QueryParam("libelle")
+    // @QueryParam("libelle")
     private String libelle;
 
-    @QueryParam("prix")
+    // @QueryParam("prix")
     private BigDecimal prix;
 
     public String getLibelle() {
