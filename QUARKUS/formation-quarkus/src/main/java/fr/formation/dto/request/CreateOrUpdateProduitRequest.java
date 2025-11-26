@@ -2,8 +2,14 @@ package fr.formation.dto.request;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+
 public class CreateOrUpdateProduitRequest {
+    @NotBlank
     private String libelle;
+
+    @Positive
     private BigDecimal prix;
 
     public String getLibelle() {

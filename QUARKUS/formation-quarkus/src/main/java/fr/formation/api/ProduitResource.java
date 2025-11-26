@@ -13,6 +13,7 @@ import fr.formation.dto.response.ProduitResponse;
 import fr.formation.model.Produit;
 import fr.formation.service.ProduitService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -74,7 +75,7 @@ public class ProduitResource {
     }
 
     @POST
-    public Response create(CreateOrUpdateProduitRequest request) {
+    public Response create(@Valid CreateOrUpdateProduitRequest request) {
         log.debug("Le nom du produit est : {}", request.getLibelle());
         log.debug("Le prix du produit est : {}", request.getPrix());
 
