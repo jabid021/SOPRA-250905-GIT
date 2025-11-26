@@ -1,6 +1,7 @@
 package fr.formation.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +28,10 @@ public class ProduitService {
         return this.repository.findAll().list();
     }
 
-    public Produit findById(int id) {
+    public Optional<Produit> findById(int id) {
         log.debug("Récupération du produit {}", id);
 
-        return new Produit();
+        return this.repository.findByIdOptional(id);
     }
 
     @Transactional
@@ -47,13 +48,24 @@ public class ProduitService {
         return produit;
     }
 
+    @Transactional
     public Produit update(int id, CreateOrUpdateProduitRequest request) {
         log.debug("Mise à jour du produit {}", id);
 
-        return new Produit();
+        Produit produit = this.repository.findByIdOptional(id).orElseThrow();
+
+        produit.setLibelle(request.getLibelle());
+        produit.setPrix(request.getPrix());
+
+        this.repository.persist(produit);
+
+        return produit;
     }
 
+    @Transactional
     public void deleteById(int id) {
         log.debug("Suppression du produit {}", id);
+
+        this.repository.deleteById(id);
     }
 }

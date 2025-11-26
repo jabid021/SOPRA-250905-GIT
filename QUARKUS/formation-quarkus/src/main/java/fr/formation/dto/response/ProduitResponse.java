@@ -2,6 +2,8 @@ package fr.formation.dto.response;
 
 import java.math.BigDecimal;
 
+import fr.formation.model.Produit;
+
 public class ProduitResponse {
     private int id;
     private String libelle;
@@ -29,5 +31,15 @@ public class ProduitResponse {
 
     public void setPrix(BigDecimal prix) {
         this.prix = prix;
+    }
+
+    public static ProduitResponse convert(Produit produit) {
+        ProduitResponse resp = new ProduitResponse();
+
+        resp.setId(produit.getId());
+        resp.setLibelle(produit.getLibelle());
+        resp.setPrix(produit.getPrix());
+
+        return resp;
     }
 }
