@@ -1,15 +1,19 @@
-package fr.formation.dto.request;
+package fr.formation.model;
 
 import java.math.BigDecimal;
 
-import jakarta.ws.rs.QueryParam;
-
-public class CreateProduitRequest {
-    @QueryParam("libelle")
+public class Produit {
+    private int id;
     private String libelle;
-
-    @QueryParam("prix")
     private BigDecimal prix;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLibelle() {
         return libelle;
