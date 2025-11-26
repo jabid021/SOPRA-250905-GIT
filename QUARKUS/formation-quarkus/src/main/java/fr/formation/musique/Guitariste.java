@@ -11,4 +11,9 @@ public class Guitariste {
     public void jouer() {
         System.out.println("Guitariste joue " + guitare);
     }
+
+    @Override
+    public String toString() {
+        return "THE GUITARISTE";
+    }
 }

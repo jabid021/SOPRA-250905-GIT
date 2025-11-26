@@ -1,5 +1,6 @@
 package fr.formation;
 
+import fr.formation.dto.response.ExempleResponse;
 import fr.formation.musique.Guitariste;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -21,5 +22,17 @@ public class GreetingResource {
         this.guitariste.jouer();
 
         return "Hello from Quarkus REST";
+    }
+
+    @Path("/demo")
+    @GET
+    public Guitariste demo() {
+        return this.guitariste;
+    }
+
+    @Path("/exemple")
+    @GET
+    public ExempleResponse exemple() {
+        return new ExempleResponse("Coucou !");
     }
 }
