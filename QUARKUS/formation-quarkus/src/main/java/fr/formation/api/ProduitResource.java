@@ -12,6 +12,8 @@ import fr.formation.dto.request.CreateProduitRequest;
 import fr.formation.dto.response.ProduitResponse;
 import fr.formation.model.Produit;
 import fr.formation.service.ProduitService;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.BeanParam;
@@ -32,6 +34,7 @@ public class ProduitResource {
     private ProduitService service;
 
     @GET
+    @PermitAll
     public List<ProduitResponse> findAll() {
         log.debug("Recherche de la liste des produits");
 
@@ -48,6 +51,7 @@ public class ProduitResource {
 
     @Path("/{id}")
     @GET
+    @RolesAllowed({ "admin", "user" })
     public Response findById(@PathParam("id") int id) {
         log.debug("Recherche du produit {}", id);
 
@@ -75,6 +79,7 @@ public class ProduitResource {
     }
 
     @POST
+    @RolesAllowed("admin")
     public Response create(@Valid CreateOrUpdateProduitRequest request) {
         log.debug("Le nom du produit est : {}", request.getLibelle());
         log.debug("Le prix du produit est : {}", request.getPrix());
@@ -89,6 +94,7 @@ public class ProduitResource {
 
     @Path("/{id}")
     @PUT
+    @RolesAllowed("admin")
     public Response update(@PathParam("id") int id, CreateOrUpdateProduitRequest request) {
         log.debug("Le nom du produit est : {}", request.getLibelle());
         log.debug("Le prix du produit est : {}", request.getPrix());
@@ -100,6 +106,7 @@ public class ProduitResource {
 
     @Path("/{id}")
     @DELETE
+    @RolesAllowed("admin")
     public Response deleteById(@PathParam("id") int id) {
         log.debug("Suppression du produit {}", id);
 
