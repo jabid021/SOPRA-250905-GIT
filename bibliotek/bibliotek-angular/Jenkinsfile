@@ -7,9 +7,9 @@ pipeline {
                 docker {
                     image 'node:lts-bullseye'
                     args '''
-                        -v $HOME/.npm:/root/.npmm2:z
+                        -v $HOME/.npm:/root/.npm:z
                         -u root
-                        --network biblio
+                        --network devops
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
                 }
@@ -34,7 +34,7 @@ pipeline {
                     }
                 }
 
-                stage('Build bibliotek') {
+                stage('Build Angular') {
                     steps {
                         dir('bibliotek/bibliotek-angular') {
                             sh './node_modules/.bin/ng build'
@@ -54,8 +54,8 @@ pipeline {
 
         stage('Docker Deploy') {
             steps {
-                dir('bibliotek/dockercompose') {
-                    sh 'docker compose up -d --build biblio-angular'
+                dir('bibliotek') {
+                    sh 'docker compose up -d --no-deps --build angular'
                 }
             }
         }

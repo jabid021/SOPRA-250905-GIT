@@ -9,30 +9,7 @@ pipeline {
                     args '''
                         -v $HOME/.m2:/root/.m2:z
                         -u root
-                        --network biblio
-                    '''
-                    reuseNode true // Sans ça, il y aura un 2eme workspace
-                }
-            }
-
-            steps {
-                dir('bibliotek/bibliotek-boot') {
-                    sh 'mvn -version'
-                    sh 'mvn package'
-                }
-            }
-        }
-
-
-        stage('Analyse Sonar') {
-
-            agent {
-                docker {
-                    image 'maven:3.9.11-eclipse-temurin-21'
-                    args '''
-                        -v $HOME/.m2:/root/.m2:z
-                        -u root
-                        --network biblio
+                        --network devops
                     '''
                     reuseNode true // Sans ça, il y aura un 2eme workspace
                 }
@@ -46,7 +23,7 @@ pipeline {
                 }
             }
         }
-    
+
         stage('Docker Build') {
             steps {
                 dir('bibliotek/bibliotek-boot') {
@@ -55,12 +32,12 @@ pipeline {
             }
         }
 
-        //  stage('Docker Deploy') {
-        //      steps {
-        //          dir('bibliotek/dockercompose') {
-        //              sh 'docker compose up -d --build angular'
-        //          }
-        //      }
-        //  }
+        stage('Docker Deploy') {
+            steps {
+                dir('bibliotek') {
+                    sh 'docker compose up -d --no-deps --build boot'
+                }
+            }
+        }
     }
 }

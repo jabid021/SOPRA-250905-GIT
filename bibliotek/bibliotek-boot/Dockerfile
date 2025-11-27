@@ -2,8 +2,8 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-COPY ./target/*.war bibliotek-boot.war
+COPY ./target/*.jar bibliotek-boot.jar
 
-CMD [ "java", "-jar", "bibliotek-boot.war" ]
+CMD [ "java", "-jar", "bibliotek-boot.jar" ]
 
 EXPOSE 8080
