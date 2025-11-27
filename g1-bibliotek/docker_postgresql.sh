@@ -1,0 +1,1 @@
+docker run --name biblio-psql -it -d -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=bibliotek -p 5432:5432  postgres
