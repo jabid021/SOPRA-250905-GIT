@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.quarkus.security.Authenticated;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -21,6 +22,7 @@ import quest.model.Matiere;
 import quest.service.MatiereService;
 
 @Path("/matiere")
+@Authenticated
 public class MatiereResource {
     private final static Logger log = LoggerFactory.getLogger(MatiereResource.class);
 
