@@ -4,24 +4,17 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class CreateOrUpdateLivreRequest {
     
-    @NotBlank
     private String nom;
 
     private String resume;
 
-    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate publication;
-
-    @NotBlank
     private Integer auteurId;
 
-    @NotBlank
     private Integer editeurId;
 
     private Integer collectionId;

@@ -11,6 +11,7 @@ import bibliotek.dto.response.EditeurResponse;
 import bibliotek.model.Editeur;
 import bibliotek.service.EditeurService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -50,7 +51,7 @@ public class EditeurResource {
 
     @Path("/{id}")
     @GET
-    //@RolesAllowed({"admin","user"})
+    @RolesAllowed({"admin","user"})
     public Response findById(@PathParam("id") int id) {
         log.debug("findById de l'éditeur {}", id);
 
@@ -63,7 +64,7 @@ public class EditeurResource {
         return Response.ok(EditeurResponse.convert(optEditeur.get())).build();
     }
 
-    //@RolesAllowed({"admin"})
+    @RolesAllowed({"admin"})
     @POST
     public Response create(@Valid CreateOrUpdateEditeurRequest request) {
         log.debug("create de l'éditeur {}", request.getNom());
@@ -73,7 +74,7 @@ public class EditeurResource {
         return Response.status(Status.CREATED).entity(EditeurResponse.convert(editeur)).build();
     }
 
-    //@RolesAllowed({"admin"})
+    @RolesAllowed({"admin"})
     @Path("/{id}")
     @PUT
     public Response update(@PathParam("id") int id, @Valid CreateOrUpdateEditeurRequest request) {
@@ -84,7 +85,7 @@ public class EditeurResource {
         return Response.ok(EditeurResponse.convert(editeur)).build();
     }
 
-    //@RolesAllowed({"admin"})
+    @RolesAllowed({"admin"})
     @Path("/{id}")
     @DELETE
     public Response deleteById(@PathParam("id") int id) {
