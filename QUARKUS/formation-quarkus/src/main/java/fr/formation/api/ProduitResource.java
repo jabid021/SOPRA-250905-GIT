@@ -46,7 +46,7 @@ public class ProduitResource {
 
     // @GET
     // public String findByIdQuery(@QueryParam("id") int id) {
-    //     return "Produit " + id + " !";
+    // return "Produit " + id + " !";
     // }
 
     @Path("/{id}")

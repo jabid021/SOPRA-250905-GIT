@@ -73,10 +73,11 @@ export class LivrePage implements OnInit {
     else {
       this.livreService.save(new LivreDto("", this.nameCtrl.value, this.publicationCtrl.value, this.authorCtrl.value, "", this.editorCtrl.value, "", this.collectionCtrl.value));
     }
-
+    
     this.showForm = false;
     this.editingLivre = null;
     this.livreForm.reset();
+    
   }
 
   public editer(livre: LivreDto) {
@@ -99,4 +100,6 @@ export class LivrePage implements OnInit {
   public supprimer(livre: LivreDto) {
     this.livreService.deleteById(livre.id);
   }
+
+ 
 }

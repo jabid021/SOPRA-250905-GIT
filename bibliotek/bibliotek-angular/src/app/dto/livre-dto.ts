@@ -89,7 +89,8 @@ export class LivreDto {
             publication: this.publication,
             auteurId: this.auteurId,
             editeurId: this.editeurId,
-            collectionId: this.collectionId
+            collectionId: this.collectionId,
+            auteurNom:this.auteurNom
         };
     }
 }
