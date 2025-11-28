@@ -26,7 +26,6 @@ import bibliotek.service.EditeurService;
 
 
 @Path("/editeurs")
-@PermitAll
 public class EditeurResource {
     
     private final static Logger log = LoggerFactory.getLogger(EditeurResource.class);
@@ -43,6 +42,7 @@ public class EditeurResource {
     //public Editeur update(int id, CreateOrUpdateEditeurRequest request)
 
     @GET
+    @PermitAll
     public List<EditeurResponse> findAll() {
         log.debug("findAll des editeurs");
 
@@ -53,6 +53,7 @@ public class EditeurResource {
 
     @Path("/{id}")
     @GET
+    //@RolesAllowed({"admin","user"})
     public Response findById(@PathParam("id") int id) {
         log.debug("findById de l'éditeur {}", id);
 
@@ -65,6 +66,7 @@ public class EditeurResource {
         return Response.ok(EditeurResponse.convert(editeur)).build();
     }
 
+    //@RolesAllowed({"admin"})
     @POST
     public Response create(@Valid CreateOrUpdateEditeurRequest request) {
         log.debug("create de l'éditeur {}", request.getNom());
@@ -74,6 +76,7 @@ public class EditeurResource {
         return Response.status(Status.CREATED).entity(EditeurResponse.convert(editeur)).build();
     }
 
+    //@RolesAllowed({"admin"})
     @Path("/{id}")
     @PUT
     public Response update(@PathParam("id") int id, @Valid CreateOrUpdateEditeurRequest request) {
@@ -84,6 +87,7 @@ public class EditeurResource {
         return Response.ok(EditeurResponse.convert(editeur)).build();
     }
 
+    //@RolesAllowed({"admin"})
     @Path("/{id}")
     @DELETE
     public Response deleteById(@PathParam("id") int id) {
