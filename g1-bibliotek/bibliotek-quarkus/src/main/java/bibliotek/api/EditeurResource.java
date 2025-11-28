@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.quarkus.security.Authenticated;
+import bibliotek.dto.request.CreateOrUpdateEditeurRequest;
+import bibliotek.dto.response.EditeurResponse;
+import bibliotek.model.Editeur;
+import bibliotek.service.EditeurService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
@@ -17,11 +20,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
-
-import bibliotek.dto.request.CreateOrUpdateEditeurRequest;
-import bibliotek.dto.response.EditeurResponse;
-import bibliotek.model.Editeur;
-import bibliotek.service.EditeurService;
 
 
 @Path("/editeurs")
