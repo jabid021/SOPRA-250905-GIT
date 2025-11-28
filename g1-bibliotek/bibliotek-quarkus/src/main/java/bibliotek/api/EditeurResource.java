@@ -2,7 +2,6 @@ package bibliotek.api;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +19,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 import bibliotek.dto.request.CreateOrUpdateEditeurRequest;
-import bibliotek.dto.response.AuteurResponse;
 import bibliotek.dto.response.EditeurResponse;
-import bibliotek.model.Auteur;
 import bibliotek.model.Editeur;
 import bibliotek.service.EditeurService;
 
