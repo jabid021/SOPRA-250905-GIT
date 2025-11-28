@@ -1,9 +1,9 @@
-package bibliotek.dto.Request;
+package bibliotek.dto.request;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 
 public class CreateOrUpdateAuteurRequest {
+    
     @NotBlank
     private String nom;
     @NotBlank

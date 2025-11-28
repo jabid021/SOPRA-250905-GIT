@@ -1,11 +1,12 @@
 package bibliotek.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import bibliotek.dto.Request.CreateOrUpdateAuteurRequest;
+import bibliotek.dto.request.CreateOrUpdateAuteurRequest;
 import bibliotek.model.Auteur;
 import bibliotek.repository.AuteurRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -26,9 +27,9 @@ public class AuteurService {
         // == return this.repository.findAll().list()
     }
 
-    public Auteur findById(int id) {
+    public Optional<Auteur> findById(int id) {
         log.debug("Récupération du auteur {}", id);
-        return this.repository.findById(id);
+        return this.repository.findByIdOptional(id);
     }
 
     @Transactional
