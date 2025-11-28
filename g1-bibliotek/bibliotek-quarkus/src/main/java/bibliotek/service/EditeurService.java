@@ -1,6 +1,7 @@
 package bibliotek.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +28,9 @@ public class EditeurService {
         // == return this.repository.findAll().list()
     }
 
-    public Editeur findById(int id) {
+    public Optional<Editeur> findById(int id) {
         log.debug("findById de l'éditeur {}", id);
-        return this.repository.findById(id);
+        return this.repository.findByIdOptional(id);
     }
 
     @Transactional

@@ -20,7 +20,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 import bibliotek.dto.request.CreateOrUpdateEditeurRequest;
+import bibliotek.dto.response.AuteurResponse;
 import bibliotek.dto.response.EditeurResponse;
+import bibliotek.model.Auteur;
 import bibliotek.model.Editeur;
 import bibliotek.service.EditeurService;
 
@@ -57,13 +59,13 @@ public class EditeurResource {
     public Response findById(@PathParam("id") int id) {
         log.debug("findById de l'éditeur {}", id);
 
-        Editeur editeur = this.service.findById(id);
+        Optional<Editeur> optEditeur = this.service.findById(id);
 
-        if (editeur == null) {
+        if(optEditeur.isEmpty()) {
             return Response.status(Status.NOT_FOUND).build();
         }
 
-        return Response.ok(EditeurResponse.convert(editeur)).build();
+        return Response.ok(EditeurResponse.convert(optEditeur.get())).build();
     }
 
     //@RolesAllowed({"admin"})
