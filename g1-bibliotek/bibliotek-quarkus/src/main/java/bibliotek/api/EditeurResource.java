@@ -22,7 +22,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 
-@Path("/editeurs")
+@Path("/editeur")
 public class EditeurResource {
     
     private final static Logger log = LoggerFactory.getLogger(EditeurResource.class);
